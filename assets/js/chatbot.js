@@ -8,7 +8,7 @@
   const INQ = '<a href="inquiry.html">send an inquiry</a>';
   const KB = [
     { id: "greet", k: ["hi", "hello", "hey", "good morning", "good afternoon", "good evening", "kumusta", "musta", "yo", "sup"], small: true,
-      a: "<p>Hi! I'm Expo, the Canton Fair assistant. Ask me about dates, phases, buyer badges, visas, hotels, packages or first-timer tips.</p>",
+      a: "<p>Hi! I'm Expo, your China trade expo assistant. Ask me about the Canton Fair, CIIE, the Hong Kong fairs, dates, visas, hotels, packages or first-timer tips.</p>",
       q: ["When is the next Canton Fair?", "What's sold in each phase?", "How do I get a buyer badge?"] },
     { id: "thanks", k: ["thanks", "thank you", "ty", "salamat", "appreciate", "great", "nice", "awesome", "ok thanks"], small: true,
       a: "<p>You're welcome! Anything else about the trip? When you're ready, " + INQ + " and our team will prepare a quotation.</p>" },
@@ -19,7 +19,7 @@
       a: "<p>The <b>Canton Fair</b> (China Import and Export Fair) is China's largest trade fair, running since 1957 in <b>Guangzhou</b>. Thousands of Chinese manufacturers and exporters exhibit to buyers from around the world.</p><p>It runs twice a year, spring (April–May) and autumn (October–November), and each session is split into <b>three phases</b> by product category.</p>",
       q: ["What's sold in each phase?", "When is the next session?"] },
     { id: "dates", k: ["when", "date", "dates", "schedule", "next fair", "next session", "spring", "autumn", "kailan", "calendar", "session", "upcoming"],
-      a: "<p>The fair runs twice a year in three phases of about 5 days each:</p><ul><li><b>Autumn 2026</b> (140th): Phase 1 Oct 15–19 · Phase 2 Oct 23–27 · Phase 3 Oct 31–Nov 4</li><li><b>Spring 2027</b> (141st, expected): Phase 1 Apr 15–19 · Phase 2 Apr 23–27 · Phase 3 May 1–5</li></ul><p class='msg-note'>The organiser confirms the exact dates every session. We check them before we book anything.</p>",
+      a: "<p>The fair runs twice a year in three phases of about 5 days each:</p><ul><li><b>Spring 2027</b> (141st): Phase 1 Apr 15–19 · Phase 2 Apr 23–27 · Phase 3 May 1–5</li><li><b>Autumn 2027</b> (142nd): Phase 1 Oct 15–19 · Phase 2 Oct 23–27 · Phase 3 Oct 31–Nov 4</li></ul><p class='msg-note'>These follow the fair's usual pattern; the organiser confirms exact dates each session.</p>",
       q: ["What's sold in each phase?", "How early should I book?"] },
     { id: "phases", k: ["phase", "phases", "category", "categories", "products", "what sold", "what can i buy", "which phase", "electronics", "furniture", "textile", "garments", "toys", "machinery", "lighting", "hardware", "gifts", "kitchen", "home decor", "building materials", "food", "shoes", "bags", "phase 1", "phase 2", "phase 3"],
       a: "<p>Each phase covers different industries:</p><ul><li><b>Phase 1</b>: electronics and appliances, lighting, machinery, hardware and tools, vehicles and new energy, building and industrial products.</li><li><b>Phase 2</b>: daily consumer goods, kitchenware, gifts, home decor, furniture, building and garden products.</li><li><b>Phase 3</b>: textiles and garments, shoes and bags, toys and baby products, office supplies, health, recreation and food.</li></ul><p>Tell us what you buy and we'll match you to the right phase.</p>",
@@ -37,10 +37,11 @@
     { id: "visa-china", k: ["visa", "china visa", "chinese visa", "m visa", "business visa", "visa requirements", "visa free", "transit", "embassy", "consulate", "requirements", "documents", "papers", "kailangan"],
       a: "<p>Philippine passport holders need a <b>China visa</b>. For the fair it's usually the <b>M (business) visa</b>. Typical requirements:</p><ul><li>Passport valid 6+ months with blank pages</li><li>Online application form and a recent photo</li><li>Invitation letter (fair or Chinese company)</li><li>Company or employment certificate</li><li>Flight and hotel details, bank statement if asked</li></ul><p>Regular processing is about 4 working days after submission, with express options. See the full checklist on our <a href='visa.html#china'>visa page</a>.</p><p class='msg-note'>Rules change. We confirm the current requirements before you apply.</p>",
       q: ["How much is the visa?", "How early should I apply?"] },
-    { id: "visa-japan", k: ["japan", "japan visa", "japanese visa", "tokyo", "osaka"],
-      a: "<p>Philippine passport holders need a visa for Japan, filed through <b>embassy-accredited agencies</b>. For business trips you'll usually need an invitation or guarantee letter from the Japanese company, plus your PSA birth certificate, bank certificate and ITR. Processing is roughly 5–7 working days after filing. Details are on our <a href='visa.html#japan'>visa page</a>.</p>" },
-    { id: "visa-usa", k: ["usa", "us visa", "america", "american visa", "b1", "b2", "ds160", "ds 160", "united states", "interview"],
-      a: "<p>A <b>B1/B2 visa</b> covers US business events and trade shows. The steps: fill in the DS-160 online, pay the visa fee, book the interview at the US Embassy in Manila, then attend with proof of strong ties (business, employment, finances). We help with the forms, appointment booking and interview prep. See our <a href='visa.html#usa'>visa page</a>.</p>" },
+    { id: "world", k: ["world", "worldwide", "international", "abroad", "outside china", "europe", "germany", "dubai", "middle east", "las vegas", "ces 2027", "gulfood", "anuga", "salone", "milan", "frankfurt", "ambiente", "hannover", "singapore", "vietnam", "thailand", "india", "world expo", "global"],
+      a: "<p>China is our specialty, but we also plan trips to major shows worldwide: CES in Las Vegas, Ambiente and Hannover Messe in Germany, Salone del Mobile in Milan, Gulfood in Dubai, FHA in Singapore and more. Each show has its own guide on <a href='world-expos.html'>Expo articles</a>: dates, venue, who should go and trip planning.</p>",
+      q: ["China expo guide", "Get a quotation"] },
+    { id: "visa-other", k: ["japan visa", "japanese visa", "us visa", "american visa", "b1", "b2", "ds160", "schengen", "korea visa"],
+      a: "<p>We focus on the <b>China business (M) visa</b> for the Canton Fair and China trade expos, so we don't process other countries' visas, though we can still plan the trip itself. For China, see our <a href='visa.html'>visa checklist</a>.</p>" },
     { id: "price", k: ["price", "cost", "how much", "rate", "rates", "fee", "fees", "budget", "magkano", "presyo", "expensive", "cheap", "package price", "quotation", "quote", "estimate"],
       a: "<p>The price depends on the <b>phase and dates</b>, your <b>departure city</b>, <b>hotel class</b> and <b>group size</b>. Hotels near the venue cost much more during fair weeks, so booking early saves the most.</p><p>Quotations are free and we never take payment on the website. " + INQ + " and we'll reply with a full breakdown.</p>",
       q: ["What's included in a package?", "Group discounts?"] },
@@ -71,7 +72,7 @@
     { id: "group", k: ["group", "groups", "delegation", "company trip", "team", "corporate", "employees", "members", "association", "chamber", "discount", "group discount", "pax", "people", "minimum"],
       a: "<p>Groups are our speciality. For company, association and chamber delegations we arrange charter-style coordination, a group visa filing, a dedicated coordinator and interpreters. Larger groups get better rates on hotels and transfers. " + INQ + " with your headcount.</p>" },
     { id: "ciie", k: ["ciie", "import expo", "shanghai", "hong kong", "hongkong", "hk", "shenzhen", "expo", "expos", "other expo", "other fairs", "exhibition", "trade show", "east china fair", "2027", "next year", "ciff", "furniture fair", "gile", "lighting fair", "hotelex", "auto shanghai", "auto show", "yiwu fair", "china asean", "caexpo", "nanning", "ciif", "furniture china", "hktdc", "electronics fair", "toys fair", "gifts fair", "beauty expo", "hi-tech fair"],
-      a: "<p>Besides the Canton Fair, we plan trips to upcoming China trade expos:</p><ul><li><b>Hong Kong</b>: Toys &amp; Games Fair (Jan), Electronics Fair, Lighting Fair and Gifts &amp; Premium Fair (spring)</li><li><b>Guangzhou</b>: CIFF furniture and the Beauty Expo (Mar), GILE lighting (Jun)</li><li><b>Shanghai</b>: East China Fair (Mar), HOTELEX and Auto Shanghai (spring), CIIF and Furniture China (Sep), CIIE (Nov)</li><li><b>Shenzhen</b>: China Hi-Tech Fair (Nov)</li><li><b>Yiwu and Nanning</b>: Yiwu Fair (Oct), China-ASEAN Expo (Sep)</li></ul><p>Months follow each show's usual slot; exact dates are confirmed when organisers publish them. Philippine passport holders can visit Hong Kong visa-free. See <a href='itineraries.html?event=expo'>China expos</a>.</p>",
+      a: "<p>Besides the Canton Fair, we plan trips to upcoming China trade expos:</p><ul><li><b>Hong Kong</b>: Toys &amp; Games Fair (Jan), Electronics Fair, Lighting Fair and Gifts &amp; Premium Fair (spring)</li><li><b>Guangzhou</b>: CIFF furniture and the Beauty Expo (Mar), GILE lighting (Jun)</li><li><b>Shanghai</b>: East China Fair (Mar), HOTELEX and Auto Shanghai (spring), CIIF and Furniture China (Sep), CIIE (Nov)</li><li><b>Shenzhen</b>: China Hi-Tech Fair (Nov)</li><li><b>Yiwu and Nanning</b>: Yiwu Fair (Oct), China-ASEAN Expo (Sep)</li></ul><p>Months follow each show's usual slot; exact dates are confirmed when organisers publish them. Philippine passport holders can visit Hong Kong visa-free. Our <a href='china-expos.html'>China expo guide</a> lists all 51 shows for 2027 on a map, with visa notes; ready-made trips are under <a href='itineraries.html?event=expo'>China expos</a>.</p>",
       q: ["Hong Kong fairs", "Canton Fair dates"] },
     { id: "industry", k: ["industry", "industries", "my industry", "which phase for", "my products", "what phase", "sector", "hall", "halls", "hardware", "construction", "hotel supply", "restaurant", "horeca", "retail", "ecommerce", "e-commerce"],
       a: "<p>Each industry has its own phase, halls and factory clusters. Our industry guides cover electronics, machinery, lighting, construction, furniture, hotel and restaurant supply, fashion and retail. Start at <a href='industries.html'>Industries</a>, or filter <a href='itineraries.html'>itineraries</a> by industry.</p>",
@@ -87,8 +88,15 @@
     { id: "who", k: ["who are you", "company", "about you", "expobusiness", "legit", "accredited", "office", "contact", "phone", "email", "call", "human", "agent", "person", "talk to someone", "viber", "whatsapp number"],
       a: "<p><b>ExpoBusiness Travel Services</b> is a B2B travel team for the Canton Fair and China trade expos. To talk to a person, use the <a href='inquiry.html'>inquiry page</a>. Our contact details are listed there.</p>" },
     { id: "services", k: ["services", "service", "what do you do", "offer", "help with", "assist"],
-      a: "<p>We handle the whole business trip: buyer badge registration, invitation letters, visas (China, Japan, USA), flights, hotels near the venue, transfers, interpreters, factory visits and shipping coordination. See <a href='services.html'>Services</a>.</p>" },
+      a: "<p>We handle the whole business trip: buyer badge registration, invitation letters, China business visas, flights, hotels near the venue, transfers, interpreters, factory visits and shipping coordination. See <a href='services.html'>Services</a>.</p>" },
   ];
+  // Dates and contact details come from data/site-config.js, so the answers never drift from the rest of the site.
+  const fmtD = d => new Date(d + "T00:00:00+08:00").toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "Asia/Manila" });
+  const rng = ([a, b]) => { const A = fmtD(a), B = fmtD(b); return A.slice(0, 3) === B.slice(0, 3) ? `${A}–${B.slice(4)}` : `${A}–${B}`; };
+  const dated = KB.find(e => e.id === "dates");
+  if (dated && window.SITE) Object.defineProperty(dated, "a", { get: () => `<p>The fair runs twice a year in three phases of about 5 days each:</p><ul>${SITE.canton.sessions.map(s => `<li><b>${s.name}</b> (${s.num}): ${s.phases.map((p, i) => `Phase ${i + 1} ${rng(p)}`).join(" · ")}</li>`).join("")}</ul><p class='msg-note'>${SITE.canton.sessions.some(s => s.expected) ? "These follow the fair's usual pattern; the organiser confirms exact dates each session." : "Dates confirmed by the organiser."} See the <a href='china-expos.html#canton'>Canton Fair guide</a>.</p>` });
+  const who = KB.find(e => e.id === "who");
+  if (who && window.SITE) Object.defineProperty(who, "a", { get: () => { const c = SITE.contact, real = v => v && !/^\[/.test(v); const lines = [real(c.mobile) && `Mobile / Viber: <b>${c.mobile}</b>`, real(c.email) && `Email: <a href='mailto:${c.email}'>${c.email}</a>`, real(c.address) && `Office: ${c.address}`].filter(Boolean); return `<p><b>${SITE.brand.name} ${SITE.brand.descriptor}</b> is a B2B travel team for the Canton Fair and China trade expos.</p>${lines.length ? `<p>${lines.join("<br>")}</p>` : ""}<p>To talk to a person, use the <a href='inquiry.html'>inquiry page</a>.</p>`; } });
 
   // Taglish + shorthand → canonical words.
   const SYN = {
@@ -161,7 +169,7 @@
   function hint(tokens, id) {
     const has = w => tokens.includes(w);
     if (id === "dates" && has("when") && !has("visa") && !has("book")) return 2.2;
-    if (id === "visa-china" && has("visa") && !has("japan") && !has("usa")) return .5;
+    if (id === "visa-china" && has("visa") && !has("japan") && !has("usa") && !has("america")) return .5;
     if (id === "price" && (has("price") || (has("how") && has("much")))) return .8;
     if (id === "weather" && (has("weather") || has("temperature"))) return .6;
     return 0;
@@ -179,7 +187,6 @@
       const t = lastTopic;
       if (top.e.id === "price" && t.startsWith("visa"))
         return { e: top.e, a: "<p>Visa fees depend on the visa type, entry count and processing speed, and embassies revise them. We give you the current official fee plus our service fee in your quotation. " + INQ + ".</p>" };
-      if (top.e.id === "visa-china" && (t === "visa-japan" || t === "visa-usa")) return { e: KB.find(x => x.id === t), a: KB.find(x => x.id === t).a };
     }
     if (top.s < .75) return null;
     const out = [top.e];
@@ -194,15 +201,15 @@
   const SVG = id => `<svg class="icon" aria-hidden="true"><use href="#i-${id}"/></svg>`;
   const launch = document.createElement("button");
   launch.className = "bot-launch"; launch.type = "button";
-  launch.setAttribute("aria-label", "Open the Canton Fair assistant");
-  launch.innerHTML = `<span class="bot-face">${SVG("chat")}</span><span class="bot-label">Ask about the fair</span>`;
+  launch.setAttribute("aria-label", "Open the China expo assistant");
+  launch.innerHTML = `<span class="bot-face">${SVG("chat")}</span><span class="bot-label">Ask about China expos</span>`;
 
   const panel = document.createElement("section");
-  panel.className = "bot"; panel.setAttribute("aria-label", "Canton Fair assistant"); panel.setAttribute("role", "dialog");
+  panel.className = "bot"; panel.setAttribute("aria-label", "China expo assistant"); panel.setAttribute("role", "dialog");
   panel.innerHTML = `
     <header class="bot-head">
       <span class="bot-face">${SVG("spark")}</span>
-      <div><b>Expo · Canton Fair assistant</b><small>Answers instantly, typos welcome</small></div>
+      <div><b>Expo · China expo assistant</b><small>Answers instantly, typos welcome</small></div>
       <button type="button" class="bot-close" aria-label="Close assistant">${SVG("close")}</button>
     </header>
     <div class="bot-log" aria-live="polite"></div>

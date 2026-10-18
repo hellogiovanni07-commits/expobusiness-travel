@@ -5,18 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Send an inquiry · ExpoBusiness Travel Services</title>
   <meta name="description" content="Request a free, itemised quotation for your Canton Fair or China trade expo business trip.">
+  <!--SEO-->
+  <link rel="canonical" href="https://hellogiovanni07-commits.github.io/expobusiness-travel/inquiry.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ExpoBusiness Travel Services">
+  <meta property="og:title" content="Send an inquiry · ExpoBusiness Travel Services">
+  <meta property="og:description" content="Request a free, itemised quotation for your Canton Fair or China trade expo business trip.">
+  <meta property="og:url" content="https://hellogiovanni07-commits.github.io/expobusiness-travel/inquiry.html">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1758518730384-be3d205838e8?w=1200&h=630&fit=crop&q=72">
+  <meta property="og:locale" content="en_PH">
+  <meta name="twitter:card" content="summary_large_image">
+  <!--/SEO-->
   <!--HEAD-->
   <meta name="theme-color" content="#c9460b">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/site.css?v=20261017b">
+  <link rel="stylesheet" href="assets/css/site.css?v=202610180255">
   <script>document.documentElement.classList.add("js");try{if(sessionStorage.getItem("introSeen")!=="1"&&!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("intro-pending");setTimeout(function(){if(!document.querySelector(".intro"))document.documentElement.classList.remove("intro-pending")},6000)}}catch(e){}</script>
   <!--/HEAD-->
-  <link rel="stylesheet" href="assets/css/pages.css?v=20261017b">
+  <link rel="stylesheet" href="assets/css/pages.css?v=202610180255">
 </head>
-<body>
+<body class="nav-over">
   <!--SPRITE--><svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
     <symbol id="i-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></symbol>
@@ -73,11 +84,12 @@
     <nav class="nav-links" aria-label="Main">
       <span class="nav-pill" aria-hidden="true"></span>
       <a href="index.html">Home</a>
-      <a href="industries.html">Industries</a>
       <a href="itineraries.html">Itineraries</a>
+      <a href="china-expos.html">China guide</a>
+      <a href="world-expos.html">Expo articles</a>
+      <a href="industries.html">Industries</a>
       <a href="services.html">Services</a>
       <a href="visa.html">Visa</a>
-      <a href="inquiry.html" aria-current="page">Inquiry</a>
     </nav>
     <div class="nav-cta">
       <a href="inquiry.html" class="btn btn-sm">Request a quotation</a>
@@ -88,11 +100,11 @@
 
   <main>
     <section class="phero">
-      <div class="phero-bg" aria-hidden="true"></div>
+      <div class="phero-photo" aria-hidden="true"><img src="https://images.unsplash.com/photo-1758518730384-be3d205838e8?w=2000&q=72" alt="" width="2000" height="1333" fetchpriority="high"></div>
       <div class="wrap phero-grid">
         <div>
           <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span>Inquiry</nav>
-          <h1>Tell us the trip. <span class="hl">We'll price it.</span></h1>
+          <h1>Tell us the trip, we’ll price it</h1>
           <p class="lede" data-in style="--k:0">Three short steps, about two minutes. You'll receive an itemised quotation for flights, hotel, visa and services, addressed to your company. Nothing is paid on this website.</p>
           <div class="phero-actions" data-in style="--k:1"><a class="btn" href="#inqStart">Start the inquiry <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-ghost" href="#" data-open-bot>Ask Expo first</a></div>
         </div>
@@ -160,7 +172,7 @@
                   </label>
                   <label class="field"><span>Session</span>
                     <select class="input" id="session" name="session">
-                      <option value="autumn-2026">Autumn 2026 (current, Oct–Nov)</option><option value="spring-2027" selected>Spring 2027 (Apr–May)</option><option value="autumn-2027">Autumn 2027 (Oct–Nov)</option><option value="flexible">Flexible</option>
+                      <option value="spring-2027" selected>Spring 2027 (Apr–May)</option><option value="autumn-2027">Autumn 2027 (Oct–Nov)</option><option value="flexible">Flexible</option>
                     </select>
                   </label>
                 </div>
@@ -190,8 +202,6 @@
                     <label class="chip"><input type="checkbox" name="services" value="interpreter" data-label="Interpreter"><span class="chip-check"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>Interpreter</label>
                     <label class="chip"><input type="checkbox" name="services" value="factory" data-label="Factory visit"><span class="chip-check"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>Factory visit</label>
                     <label class="chip"><input type="checkbox" name="services" value="shipping" data-label="Shipping coordination"><span class="chip-check"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>Shipping</label>
-                    <label class="chip"><input type="checkbox" name="services" value="visa-japan" data-label="Japan visa"><span class="chip-check"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>Japan visa</label>
-                    <label class="chip"><input type="checkbox" name="services" value="visa-usa" data-label="US visa"><span class="chip-check"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>US visa</label>
                   </div>
                 </div>
                 <label class="field"><span>What do you plan to buy? <em>(optional)</em></span><input class="input" id="products" name="products" placeholder="e.g. LED lighting, kitchenware, garments"></label>
@@ -225,10 +235,10 @@
           <div class="side-card dark">
             <h3>Talk to the team</h3>
             <ul class="contact-list">
-              <li><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span><div><small>Mobile / Viber</small><span class="placeholder">[phone number]</span></div></li>
-              <li><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span><div><small>Email</small><span class="placeholder">[email address]</span></div></li>
-              <li><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span><div><small>Office</small><span class="placeholder">[office address]</span></div></li>
-              <li><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span><div><small>Office hours</small><span class="placeholder">[Mon–Sat, 9:00–18:00]</span></div></li>
+              <li><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span><div><small>Mobile / Viber</small><a data-site="contact.mobile" class="placeholder">[mobile / Viber number]</a></div></li>
+              <li><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span><div><small>Email</small><a data-site="contact.email" class="placeholder">[email address]</a></div></li>
+              <li><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span><div><small>Office</small><span data-site="contact.address" class="placeholder">[office address]</span></div></li>
+              <li><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span><div><small>Office hours</small><span data-site="contact.hours" class="placeholder">[Mon–Sat, 9:00–18:00]</span></div></li>
             </ul>
           </div>
           <div class="side-card">
@@ -251,21 +261,22 @@
       <div class="footer-grid">
         <div>
           <a href="index.html" class="brand"><svg class="brand-mark" viewBox="0 0 44 40" aria-hidden="true"><rect class="bm-bar b1" x="7" y="24" width="7" height="13" rx="1.5" fill="#ff8a3d"/><rect class="bm-bar b2" x="17" y="18" width="7" height="19" rx="1.5" fill="#f26a1b"/><rect class="bm-bar b3" x="27" y="12" width="7" height="25" rx="1.5" fill="#c9460b"/><path class="bm-arc" d="M3 26 C 12 8, 28 2, 41 6" fill="none" stroke="#ff5a4f" stroke-width="2.4" stroke-linecap="round"/><circle class="bm-dot" r="3" fill="#ff5a4f"/></svg><span class="brand-name">ExpoBusiness<small>Travel Services</small></span></a>
-          <p>Corporate travel and MICE for the Canton Fair, for Philippine businesses.</p>
+          <p>Business travel and MICE for China's trade expos, for Philippine companies.</p>
         </div>
-        <div><p class="f-h">Canton Fair</p><ul><li><a href="itineraries.html">Itineraries</a></li><li><a href="index.html#calendar">Fair calendar</a></li><li><a href="itineraries.html?event=expo">China expos</a></li><li><a href="services.html">Services</a></li></ul></div>
+        <div><p class="f-h">Expos</p><ul><li><a href="itineraries.html">2027 itineraries</a></li><li><a href="china-expos.html">China expo guide</a></li><li><a href="world-expos.html">Expo articles</a></li><li><a href="index.html#planner">Expo planner</a></li></ul></div>
         <div><p class="f-h">Industries</p><ul><li><a href="industry-electronics.html">Electronics</a></li><li><a href="industry-lighting.html">Lighting</a></li><li><a href="industry-furniture.html">Furniture</a></li><li><a href="industries.html">All industries</a></li></ul></div>
-        <div><p class="f-h">Help</p><ul><li><a href="visa.html">Visa requirements</a></li><li><a href="#" data-open-bot>Ask Expo</a></li><li><a href="inquiry.html">Request a quotation</a></li></ul></div>
-        <div><p class="f-h">Contact</p><ul><li><span class="placeholder">[phone number]</span></li><li><span class="placeholder">[email address]</span></li><li><span class="placeholder">[office address]</span></li></ul></div>
+        <div><p class="f-h">Help</p><ul><li><a href="services.html">Services</a></li><li><a href="visa.html">China visa</a></li><li><a href="#" data-open-bot>Ask Expo</a></li><li><a href="inquiry.html">Request a quotation</a></li></ul></div>
+        <div><p class="f-h">Contact</p><ul><li><a data-site="contact.phone" class="placeholder">[phone number]</a></li><li><a data-site="contact.email" class="placeholder">[email address]</a></li><li><span data-site="contact.address" class="placeholder">[office address]</span></li></ul></div>
       </div>
-      <div class="footer-bottom"><span>© <span data-year>2026</span> ExpoBusiness Travel Services</span><span>Canton Fair dates are set by the organiser and confirmed before booking.</span></div>
+      <div class="footer-bottom"><span>© <span data-year>2026</span> ExpoBusiness Travel Services</span><span>Expo dates are set by each organiser and confirmed before booking.</span></div>
     </div>
   </footer>
-  <script src="assets/js/site.js?v=20261017b" defer></script>
-  <script src="assets/js/chatbot.js?v=20261017b" defer></script>
-  <script src="assets/js/intro.js?v=20261017b" defer></script>
+  <script src="assets/js/data/site-config.js?v=202610180255" defer></script>
+  <script src="assets/js/site.js?v=202610180255" defer></script>
+  <script src="assets/js/chatbot.js?v=202610180255" defer></script>
+  <script src="assets/js/intro.js?v=202610180255" defer></script>
   <!--/FOOTER-->
-  <script src="assets/js/itineraries-data.js?v=20261017b" defer></script>
-  <script src="assets/js/pages.js?v=20261017b" defer></script>
+  <script src="assets/js/data/itineraries-data.js?v=202610180255" defer></script>
+  <script src="assets/js/pages.js?v=202610180255" defer></script>
 </body>
 </html>

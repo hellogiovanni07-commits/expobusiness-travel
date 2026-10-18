@@ -94,7 +94,7 @@
   const tabs = $$("#eventTabs [role=tab]"), tabInd = $(".cat-tab-ind");
   const moveTab = () => { const t = tabs.find(x => x.dataset.event === S.event) || tabs[0]; tabInd.style.transform = `translateX(${t.offsetLeft}px) scaleX(${(t.offsetWidth / 100).toFixed(3)})`; };
   tabs.forEach((t, i) => {
-    t.addEventListener("click", () => { S.event = t.dataset.event; update(true); });
+    t.addEventListener("click", () => { S.event = t.dataset.event; if (S.event === "expo") S.phase = []; update(true); });
     t.addEventListener("keydown", e => {
       if (!["ArrowRight", "ArrowLeft"].includes(e.key)) return;
       const n = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length]; n.click(); n.focus();
@@ -129,7 +129,7 @@
       });
     });
     // Phase only applies to Canton Fair trips.
-    $('[data-facet="phase"]').classList.toggle("is-muted", S.event === "expo");
+    $('[data-facet="phase"]').hidden = S.event === "expo";
     monthSel.innerHTML = `<option value="">Any month (${T.filter(t => matches(t, "month")).length})</option>` + months.map(m => `<option value="${m}">${monthLabel(m)} (${countWith("month", m)})</option>`).join("");
     monthSel.value = S.month;
     departSel.innerHTML = `<option value="">Any city (${T.filter(t => matches(t, "depart")).length})</option>` + departs.map(d => `<option value="${d}">${d} (${countWith("depart", d)})</option>`).join("");
@@ -139,7 +139,7 @@
 
     // Active filter chips.
     const chips = [];
-    if (S.event !== "all") chips.push(["event", null, S.event === "canton" ? "Canton Fair" : "China expos"]);
+    if (S.event !== "all") chips.push(["event", null, S.event === "canton" ? "Canton Fair" : "Other China expos"]);
     if (S.q) chips.push(["q", null, `"${S.q}"`]);
     S.phase.forEach(v => chips.push(["phase", v, `Phase ${v}`]));
     S.industry.forEach(v => chips.push(["industry", v, F.industries[v]]));
@@ -170,7 +170,7 @@
     const nextSub = !nx ? "" : nx.tbc ? "Dates to be confirmed" : `Phase ${nx.phase} · ${nx.session}${nx.expected ? " (expected)" : ""}`;
     return `
     <article class="row${S.open === t.id ? " open" : ""}" id="${t.id}" style="view-transition-name: r-${t.id}">
-      <figure class="row-media"><img src="${t.img}" alt="" loading="lazy" width="900" height="600"><span class="row-len">${t.days ? `${t.days}D${t.nights}N` : "Custom"}</span></figure>
+      <figure class="row-media">${eventBanner(t)}<span class="row-len">${t.days ? `${t.days}D${t.nights}N` : "Custom"}</span></figure>
       <div class="row-main">
         <div class="row-ev">${eventLine}</div>
         <h3>${esc(t.title)}</h3>
@@ -193,6 +193,9 @@
       <div class="row-details" id="d-${t.id}"><div><div class="rd-inner">
         <div class="rd-plan"><h4>${t.days ? "Day by day" : "How it runs"}</h4><ol>${t.plan.map((d, i) => `<li><b>${t.days ? "Day " + (i + 1) : "Step " + (i + 1)}</b><div><strong>${esc(d[0])}</strong><p>${esc(d[1])}</p></div></li>`).join("")}</ol></div>
         <div class="rd-side">
+          <h4>About the event</h4>
+          <dl class="rd-facts"><div><dt>Venue</dt><dd>${esc(t.venue)}</dd></div><div><dt>Organiser</dt><dd>${esc(t.org)}</dd></div><div><dt>Usual timing</dt><dd>${esc(t.timing)}</dd></div><div><dt>Who should go</dt><dd>${esc(t.who)}</dd></div></dl>
+          <ul class="rd-high">${(t.highlights || []).map(h => `<li>${svg("check")}${esc(h)}</li>`).join("")}</ul>
           <h4>Included</h4><ul class="rd-inc">${t.inc.map(i => `<li>${svg(ICON[i])}${F.inclusions[i]}</li>`).join("")}</ul>
           <h4>Upcoming departures</h4><div class="rd-deps">${t.upcoming.length ? t.upcoming.map(d => `<span>${dateTxt(d)}${d.tbc ? " · TBC" : ` · P${d.phase}`}${d.expected && !d.tbc ? "*" : ""}</span>`).join("") : "<span>On request</span>"}</div>
           ${t.upcoming.some(d => d.expected) ? `<p class="rd-note">${t.event === "expo" ? "Usual month for this show. Exact dates are confirmed when the organiser publishes them." : "* Spring 2027 dates are expected until the organiser confirms them."}</p>` : ""}
@@ -205,7 +208,7 @@
   const rowsEl = $("#rows");
   function sortList(list) {
     const by = {
-      rec: (a, b) => (a.event === b.event ? (a.next?.date ?? Infinity) - (b.next?.date ?? Infinity) : a.event === "canton" ? -1 : 1),
+      rec: (a, b) => (a.next?.date ?? Infinity) - (b.next?.date ?? Infinity) || a.rank - b.rank,
       next: (a, b) => (a.next?.date ?? Infinity) - (b.next?.date ?? Infinity),
       short: (a, b) => (a.days || 99) - (b.days || 99) || a.rank - b.rank,
       long: (a, b) => (b.days || 0) - (a.days || 0) || a.rank - b.rank,
@@ -267,7 +270,7 @@
     const mon = d.tbc ? `${yy} TBC` : `${d.date.toLocaleDateString("en-US", { month: "short", timeZone: "Asia/Manila" })} ${yy}`;
     const ev = t.event === "canton" ? `Phase ${d.phase}` : t.city;
     const st = d.tbc ? ["TBC", "tbc"] : d.expected ? ["Expected", "exp"] : ["Open", "open"];
-    return `<li style="--i:${i}"><a href="?open=${t.id}#${t.id}" data-open="${t.id}"><span class="bd-date"><b>${day}</b><small>${mon}</small></span><span class="bd-trip">${esc(t.event === "canton" ? t.title : t.expo)}</span><span class="bd-ev">${esc(ev)}</span><span class="bd-st ${st[1]}">${st[0]}</span></a></li>`;
+    return `<li style="--i:${i}"><a href="?open=${t.id}#${t.id}" data-open="${t.id}"><span class="bd-date"><b>${day}</b><small>${mon}</small></span><span class="bd-trip">${esc(t.event === "canton" ? t.title.split(" · ")[0] : t.short)}</span><span class="bd-ev">${esc(ev)}</span><span class="bd-st ${st[1]}">${st[0]}</span></a></li>`;
   }).join("");
   $("#boardRows").addEventListener("click", e => {
     const a = e.target.closest("[data-open]"); if (!a) return;

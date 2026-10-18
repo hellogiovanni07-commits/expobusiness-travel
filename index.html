@@ -3,15 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>ExpoBusiness Travel Services · Canton Fair business travel from the Philippines</title>
-  <meta name="description" content="Corporate travel and MICE for the Canton Fair: buyer badges, China visas, flights, hotels near Pazhou, interpreters and factory visits for Philippine companies, by industry.">
+  <title>ExpoBusiness · Business travel to China's trade expos</title>
+  <meta name="description" content="Business travel and MICE for Philippine companies at China’s trade expos: Canton Fair trips by phase, expo planning, visas and itemised quotations.">
+  <!--SEO-->
+  <link rel="canonical" href="https://hellogiovanni07-commits.github.io/expobusiness-travel/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ExpoBusiness Travel Services">
+  <meta property="og:title" content="ExpoBusiness · Business travel to China&#x27;s trade expos">
+  <meta property="og:description" content="Business travel and MICE for Philippine companies at China’s trade expos: Canton Fair trips by phase, expo planning, visas and itemised quotations.">
+  <meta property="og:url" content="https://hellogiovanni07-commits.github.io/expobusiness-travel/">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1768396855393-42624b5f0be5?w=1200&h=630&fit=crop&q=72">
+  <meta property="og:locale" content="en_PH">
+  <meta name="twitter:card" content="summary_large_image">
+  <!--/SEO-->
   <meta name="theme-color" content="#c9460b">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/site.css?v=20261017b">
-  <link rel="stylesheet" href="assets/css/home.css?v=20261017b">
+  <link rel="stylesheet" href="assets/css/site.css?v=202610180255">
+  <link rel="stylesheet" href="assets/css/home.css?v=202610180255">
   <script>document.documentElement.classList.add("js");try{if(sessionStorage.getItem("introSeen")!=="1"&&!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("intro-pending");setTimeout(function(){if(!document.querySelector(".intro"))document.documentElement.classList.remove("intro-pending")},6000)}}catch(e){}</script>
   <script src="https://cdn.jsdelivr.net/npm/motion@12.23.12/dist/motion.js" defer></script>
 </head>
@@ -72,11 +83,12 @@
     <nav class="nav-links" aria-label="Main">
       <span class="nav-pill" aria-hidden="true"></span>
       <a href="index.html" aria-current="page">Home</a>
-      <a href="industries.html">Industries</a>
       <a href="itineraries.html">Itineraries</a>
+      <a href="china-expos.html">China guide</a>
+      <a href="world-expos.html">Expo articles</a>
+      <a href="industries.html">Industries</a>
       <a href="services.html">Services</a>
       <a href="visa.html">Visa</a>
-      <a href="inquiry.html">Inquiry</a>
     </nav>
     <div class="nav-cta">
       <a href="inquiry.html" class="btn btn-sm">Request a quotation</a>
@@ -91,12 +103,12 @@
       <div class="hx-photo" aria-hidden="true"><img src="https://images.unsplash.com/photo-1768396855393-42624b5f0be5?w=2000&q=75" alt="" width="2000" height="1333" fetchpriority="high"></div>
       <div class="hx-inner wrap">
         <div class="hx-copy">
-          <a class="hx-live" href="#calendar" data-in><span class="live"><i></i><b id="liveLabel">Canton Fair · Guangzhou</b></span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          <h1 id="heroTitle" class="hero-title" data-split>The Canton Fair, <span class="hl">fully managed</span> for your business.</h1>
-          <p class="hero-sub" data-in>Corporate travel and MICE for Philippine companies: buyer badges, China visas, flights, hotels near the venue, interpreters and factory visits, under one coordinator and one itemised quotation.</p>
+          <a class="hx-live" href="china-expos.html#canton" data-in><span class="live"><i></i><b id="liveLabel">Canton Fair · Guangzhou</b></span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <h1 id="heroTitle" class="hero-title" data-split>China’s trade expos, <span class="hl">fully managed</span> for your business.</h1>
+          <p class="hero-sub" data-in>Business travel for Philippine companies at China's biggest trade shows, from the Canton Fair and CIIE to CIFF and Hong Kong's spring fairs. Buyer badges, China visas, flights, hotels, interpreters and factory visits, under one coordinator.</p>
           <div class="hero-ctas" data-in>
-            <a href="inquiry.html" class="btn" data-magnetic=".18">Request a corporate quotation <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            <a href="itineraries.html" class="btn btn-ghost on-dark">Browse fair itineraries</a>
+            <a href="inquiry.html" class="btn" data-magnetic=".18">Plan my expo trip <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a href="itineraries.html" class="btn btn-ghost on-dark">Browse 2027 expos</a>
           </div>
           <ul class="proof-row on-dark" data-in>
             <li><svg class="icon" aria-hidden="true"><use href="#i-doc"/></svg>Itemised quotation</li>
@@ -115,13 +127,13 @@
             <button class="badge3d" id="badge" type="button" aria-label="Sample Canton Fair buyer badge. Drag to swing, click to flip.">
               <span class="bf front">
                 <span class="bf-hole" aria-hidden="true"></span>
-                <span class="bf-top"><small lang="zh">中国进出口商品交易会</small><b>Canton Fair</b><em id="bfSession">Next session · Spring 2027</em></span>
+                <span class="bf-top"><small lang="zh" id="bfZh">中国进出口商品交易会</small><b id="bfName">Canton Fair</b><em id="bfSession">Next session · Spring 2027</em></span>
                 <span class="bf-role">Buyer</span>
                 <span class="bf-id">
                   <span class="bf-avatar" aria-hidden="true"><svg class="icon"><use href="#i-briefcase"/></svg></span>
                   <span class="bf-who"><b>Your Company Inc.</b><small id="bfInd">Electronics buyer</small></span>
                 </span>
-                <span class="bf-meta"><span><small>Phase</small><b id="bfPhase">1 · 2 · 3</b></span><span><small>Venue</small><b>Pazhou</b></span><span><small>From</small><b>Manila</b></span></span>
+                <span class="bf-meta"><span><small id="bfL1">Phase</small><b id="bfPhase">1 · 2 · 3</b></span><span><small>Venue</small><b id="bfVenue">Pazhou</b></span><span><small>From</small><b>Manila</b></span></span>
                 <span class="bf-foot"><span class="bf-idno"><small>Badge no.</small><b class="tnum" id="bfNo">EB-141-0418</b><small>Valid</small><b>All phases</b></span><span class="bf-qr" id="bfQr" aria-hidden="true"></span></span>
               </span>
               <span class="bf back">
@@ -140,6 +152,7 @@
             </button>
           </div></div>
           <p class="lanyard-hint" aria-hidden="true"><svg class="icon"><use href="#i-target"/></svg>Drag to swing, tap to flip</p>
+          <div class="badge-dots" role="group" aria-label="Show a badge for another expo"></div>
         </div>
       </div>
 
@@ -158,77 +171,17 @@
       </nav>
     </section>
 
-    <!-- ================= FAIR CALENDAR (countdown) ================= -->
-    <section class="section calendar" id="calendar" aria-labelledby="calTitle">
+    <!-- ================= EXPO PLANNER 2027 ================= -->
+    <section class="section planner-home" id="planner" aria-labelledby="plTitle">
       <div class="wrap">
         <div class="section-head">
           <div>
-            <h2 id="calTitle" class="section-title" data-reveal>Fair calendar</h2>
-            <p class="section-sub" data-reveal style="--d:.08s">Three phases per session, about five days each. Pick a phase to see which halls open and when.</p>
+            <h2 id="plTitle" class="section-title" data-reveal>China’s 2027 expo calendar, on one map</h2>
+            <p class="section-sub" data-reveal style="--d:.08s">Guangzhou, Shanghai, Hong Kong, Shenzhen and beyond. Tap a city or a month to see what is on and who it is for.</p>
           </div>
+          <a class="pc-count" href="china-expos.html#canton" data-reveal style="--d:.12s"><b id="pcDays" class="tnum">–</b><span id="pcLabel">days to the next Canton Fair</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
-        <div class="cal-panel" data-reveal="scale">
-          <div class="cal-grid">
-            <div class="console">
-              <div class="console-head">
-                <span class="live"><i></i><b>Pazhou Complex · Guangzhou</b></span>
-                <span class="console-loc"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg>Hall preview</span>
-              </div>
-              <div class="phase-switch" role="tablist" aria-label="Canton Fair phases">
-                <span class="phase-ind" aria-hidden="true"></span>
-                <button role="tab" type="button" aria-selected="true" data-phase="0">Phase 1</button>
-                <button role="tab" type="button" aria-selected="false" data-phase="1" tabindex="-1">Phase 2</button>
-                <button role="tab" type="button" aria-selected="false" data-phase="2" tabindex="-1">Phase 3</button>
-              </div>
-              <div class="hall" id="hall" aria-hidden="true"><div class="floor" id="floor"></div></div>
-              <div class="console-foot">
-                <div><span class="label">Main sectors</span><p id="phaseCaption" aria-live="polite">Electronics, machinery, lighting, hardware, vehicles, new energy</p></div>
-                <span class="console-link tnum" id="phaseDates">Oct 15–19</span>
-              </div>
-            </div>
-
-            <div class="cal-right">
-              <div class="cal-count" id="countdown">
-                <div class="cal-status"><span class="live"><i></i><b id="cdLabel">Autumn 2026 · Phase 1</b></span></div>
-                <div class="cd-row" aria-live="off">
-                  <div class="cd-unit"><b data-u="d">00</b><span>Days</span></div>
-                  <span class="cd-sep" aria-hidden="true">:</span>
-                  <div class="cd-unit"><b data-u="h">00</b><span>Hours</span></div>
-                  <span class="cd-sep" aria-hidden="true">:</span>
-                  <div class="cd-unit"><b data-u="m">00</b><span>Minutes</span></div>
-                  <span class="cd-sep" aria-hidden="true">:</span>
-                  <div class="cd-unit"><b data-u="s">00</b><span>Seconds</span></div>
-                </div>
-                <p class="cd-note" id="cdNote">until the doors open</p>
-              </div>
-              <div class="timeline" id="timeline">
-                <div class="tl-head"><b id="tlSession">Autumn 2026 · 140th session</b><div class="tl-switch" role="group" aria-label="Session"><button type="button" class="is-on" data-session="0" aria-pressed="true">Autumn 2026</button><button type="button" data-session="1" aria-pressed="false">Spring 2027</button></div></div>
-                <div class="tl-track">
-                  <button type="button" class="tl-seg" data-p="0"><span class="tl-bar"></span><b>Phase 1</b><small class="tnum" data-dates></small></button>
-                  <button type="button" class="tl-seg" data-p="1"><span class="tl-bar"></span><b>Phase 2</b><small class="tnum" data-dates></small></button>
-                  <button type="button" class="tl-seg" data-p="2"><span class="tl-bar"></span><b>Phase 3</b><small class="tnum" data-dates></small></button>
-                  <span class="tl-now" id="tlNow" hidden><i></i>Today</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="sched-wrap">
-            <table class="sched" id="sched">
-              <caption class="sr-only">Canton Fair phases, sectors and dates</caption>
-              <thead><tr><th scope="col">Phase</th><th scope="col">Main sectors</th><th scope="col">Autumn 2026</th><th scope="col">Spring 2027 <small>expected</small></th><th scope="col">Industries</th></tr></thead>
-              <tbody>
-                <tr data-p="0"><th scope="row"><span class="tag-phase p1">Phase 1</span></th><td>Electronics &amp; appliances, manufacturing &amp; machinery, vehicles, lighting &amp; electrical, hardware &amp; tools, new energy</td><td class="tnum">Oct 15–19</td><td class="tnum">Apr 15–19</td><td><a href="industry-electronics.html">Electronics</a> · <a href="industry-machinery.html">Machinery</a> · <a href="industry-lighting.html">Lighting</a></td></tr>
-                <tr data-p="1"><th scope="row"><span class="tag-phase p2">Phase 2</span></th><td>Daily consumer goods, kitchenware &amp; tableware, gifts &amp; decorations, building materials, furniture</td><td class="tnum">Oct 23–27</td><td class="tnum">Apr 23–27</td><td><a href="industry-furniture.html">Furniture</a> · <a href="industry-construction.html">Construction</a> · <a href="industry-horeca.html">HoReCa</a></td></tr>
-                <tr data-p="2"><th scope="row"><span class="tag-phase p3">Phase 3</span></th><td>Toys &amp; baby products, fashion &amp; garments, home textiles, stationery, health &amp; recreation, food</td><td class="tnum">Oct 31–Nov 4</td><td class="tnum">May 1–5</td><td><a href="industry-fashion.html">Fashion</a> · <a href="industry-retail.html">Retail &amp; gifts</a></td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="cal-foot">
-            <p>Dates are set by the organiser each session. We confirm them before booking anything.</p>
-            <a href="itineraries.html?month=2027-04" class="btn btn-light btn-sm">See Spring 2027 itineraries <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          </div>
-        </div>
+        <div data-planner="china" data-limit="5"></div>
       </div>
     </section>
 
@@ -237,8 +190,8 @@
       <div class="wrap">
         <div class="section-head">
           <div>
-            <h2 id="indTitle" class="section-title" data-reveal>Trips planned around your industry.</h2>
-            <p class="section-sub" data-reveal style="--d:.08s">Each industry has its own phase, halls and factory clusters. Start from yours.</p>
+            <h2 id="indTitle" class="section-title" data-reveal>Every industry has its expo in China</h2>
+            <p class="section-sub" data-reveal style="--d:.08s">Lighting has GILE, furniture has CIFF, everything has the Canton Fair. Start from what you buy and we map the shows, halls and factory clusters.</p>
           </div>
           <a href="industries.html" class="link-arrow" data-reveal>All industries <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
@@ -259,7 +212,7 @@
     <section class="section journey" id="journey" aria-labelledby="journeyTitle">
       <div class="wrap journey-grid">
         <div class="journey-head">
-          <h2 id="journeyTitle" class="section-title" data-reveal>From inquiry to the halls, one coordinator.</h2>
+          <h2 id="journeyTitle" class="section-title" data-reveal>From inquiry to the expo floor, one coordinator</h2>
           <p class="section-sub" data-reveal style="--d:.08s">Business trips fail in the gaps: a late visa, a hotel an hour away, no interpreter at the table. We close those gaps before you fly.</p>
           <a href="services.html" class="btn btn-ghost" data-reveal style="--d:.16s">See all services <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
@@ -280,7 +233,7 @@
     <section class="section rail-section" aria-labelledby="railTitle">
       <div class="wrap section-head">
         <div>
-          <h2 id="railTitle" class="section-title" data-reveal>Canton Fair phases and China expos.</h2>
+          <h2 id="railTitle" class="section-title" data-reveal>Canton Fair phases and China expos</h2>
           <p class="section-sub" data-reveal style="--d:.08s">One itinerary per Canton Fair phase, plus upcoming trade expos in Guangzhou, Shanghai, Hong Kong, Shenzhen and more.</p>
           <div class="rail-tabs" role="tablist" aria-label="Itinerary type" data-reveal style="--d:.12s"><button role="tab" type="button" aria-selected="true" data-ev="canton">Canton Fair</button><button role="tab" type="button" aria-selected="false" data-ev="expo">China expos</button></div>
         </div>
@@ -302,7 +255,7 @@
           <div class="mice-note"><span class="ico" data-m="pop"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span><div><b>Delegations of 10 to 100+</b><small>One coordinator, rooming lists, coach transfers</small></div></div>
         </div>
         <div>
-          <h2 id="miceTitle" class="section-title" data-reveal>Corporate travel and MICE around the fair.</h2>
+          <h2 id="miceTitle" class="section-title" data-reveal>Corporate travel and MICE around China’s expos</h2>
           <p class="section-sub" data-reveal style="--d:.08s">From a two-person buying team to a chamber delegation, we run the trip like a business event, with paperwork your finance team will accept.</p>
           <div class="mice-cols" data-stagger=".06">
             <div class="ico-host" data-reveal><span class="ico" data-m="pop"><svg class="icon" aria-hidden="true"><use href="#i-briefcase"/></svg></span><h3>Company buying teams</h3><p>Split teams by product line, each with its own hall plan and interpreter.</p></div>
@@ -319,20 +272,15 @@
     <section class="section visax" id="visa" aria-labelledby="visaTitle">
       <div class="wrap visax-grid">
         <div class="visax-copy">
-          <h2 id="visaTitle" class="section-title" data-reveal>Visa processing, off your desk.</h2>
-          <p class="section-sub" data-reveal style="--d:.08s">China business visas for the fair, plus Japan and US business visas for your team's other trips. We check, file and track every application.</p>
-          <div class="vx-tabs" role="tablist" aria-label="Visa country" data-reveal style="--d:.14s">
-            <button role="tab" type="button" aria-selected="true" data-v="china">China</button>
-            <button role="tab" type="button" aria-selected="false" data-v="japan" tabindex="-1">Japan</button>
-            <button role="tab" type="button" aria-selected="false" data-v="usa" tabindex="-1">USA</button>
-          </div>
+          <h2 id="visaTitle" class="section-title" data-reveal>Visa processing, off your desk</h2>
+          <p class="section-sub" data-reveal style="--d:.08s">The China M (business) visa you need for the Canton Fair and China trade expos. We check your documents, file the application and track it until your passport is back.</p>
           <ol class="vx-steps" id="vxSteps" data-reveal style="--d:.2s">
             <li><span class="n">1</span><div><b>Document check</b><small id="vxS1">Passport, invitation letter, company certificate</small></div></li>
             <li><span class="n">2</span><div><b>Forms and filing</b><small id="vxS2">Online form, then the visa application center</small></div></li>
             <li><span class="n">3</span><div><b>Processing</b><small id="vxS3">About 4 working days, regular service</small></div></li>
             <li><span class="n">4</span><div><b>Passport returned</b><small>Visa checked against your travel dates</small></div></li>
           </ol>
-          <a href="visa.html" class="btn" data-reveal style="--d:.26s">Requirements and checklists <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a href="visa.html" class="btn" data-reveal style="--d:.26s">China visa checklist <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
 
         <div class="book-stage" id="bookStage" aria-hidden="true">
@@ -367,8 +315,8 @@
     <section class="section tinted ask" aria-labelledby="askTitle">
       <div class="wrap ask-grid">
         <div>
-          <h2 id="askTitle" class="section-title" data-reveal>Questions about the fair? Ask Expo.</h2>
-          <p class="section-sub" data-reveal style="--d:.08s">Our Canton Fair assistant answers instantly, typos and Taglish welcome. Tap a question to try it.</p>
+          <h2 id="askTitle" class="section-title" data-reveal>Questions about China’s expos? Ask Expo</h2>
+          <p class="section-sub" data-reveal style="--d:.08s">Our expo assistant answers instantly, typos and Taglish welcome. Tap a question to try it.</p>
           <div class="ask-chips" data-stagger=".04">
           <button class="chip" type="button" data-reveal data-open-bot="Kailan ang phase 2?">Kailan ang phase 2?</button>
           <button class="chip" type="button" data-reveal data-open-bot="what do i need for chinese visa">What do I need for a China visa?</button>
@@ -380,7 +328,7 @@
           <button class="chip" type="button" data-reveal data-open-bot="first timer tips">First-timer tips</button>
         </div>
         </div>
-        <div class="chat-demo" data-reveal aria-hidden="true"><div class="bot-head"><span class="bot-face"><svg class="icon"><use href="#i-spark"/></svg></span><div><b>Expo · Canton Fair assistant</b><small>Answers instantly, typos welcome</small></div></div><div class="bot-log"><div class="msg msg-user">kailan ang phase 2?</div><div class="msg msg-bot"><p><b>Phase 2</b> runs <b>Oct 23–27, 2026</b>, and is expected <b>Apr 23–27, 2027</b>.</p><p>It covers furniture, kitchenware, gifts, home decor and building materials.</p></div><div class="msg msg-user">visa reqs?</div><div class="msg msg-bot"><p>For the fair you need a China <b>M (business) visa</b>: passport, form, photo, invitation letter and company certificate.</p></div></div><div class="cta"><span>Try your own question</span><button type="button" class="btn btn-sm" data-open-bot>Ask Expo</button></div></div>
+        <div class="chat-demo" data-reveal aria-hidden="true"><div class="bot-head"><span class="bot-face"><svg class="icon"><use href="#i-spark"/></svg></span><div><b>Expo · China expo assistant</b><small>Answers instantly, typos welcome</small></div></div><div class="bot-log"><div class="msg msg-user">kailan ang phase 2?</div><div class="msg msg-bot"><p><b>Phase 2</b> of spring 2027 is expected <b>Apr 23–27</b>, and autumn Phase 2 <b>Oct 23–27</b>.</p><p>It covers furniture, kitchenware, gifts, home decor and building materials.</p></div><div class="msg msg-user">visa reqs?</div><div class="msg msg-bot"><p>For the fair you need a China <b>M (business) visa</b>: passport, form, photo, invitation letter and company certificate.</p></div></div><div class="cta"><span>Try your own question</span><button type="button" class="btn btn-sm" data-open-bot>Ask Expo</button></div></div>
       </div>
     </section>
 
@@ -388,8 +336,8 @@
     <section class="wrap section" aria-labelledby="ctaTitle">
       <div class="cta-band" data-art="plane" data-reveal="scale">
         <div>
-          <h2 id="ctaTitle">Spring 2027 rooms near Pazhou go first.</h2>
-          <p>Send your products, phase and headcount. You'll receive an itemised quotation. Nothing is paid on the website.</p>
+          <h2 id="ctaTitle">China’s expo season peaks in spring</h2>
+          <p>CIFF, HOTELEX, the Hong Kong fairs and the Canton Fair all land between March and May 2027. Send your products and headcount, and we'll plan the right shows. Nothing is paid on the website.</p>
         </div>
         <div class="cta-actions"><a href="inquiry.html" class="btn" data-magnetic=".2">Request a quotation <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="#" class="btn btn-ghost on-dark" data-open-bot>Ask Expo</a></div>
       </div>
@@ -402,21 +350,24 @@
       <div class="footer-grid">
         <div>
           <a href="index.html" class="brand"><svg class="brand-mark" viewBox="0 0 44 40" aria-hidden="true"><rect class="bm-bar b1" x="7" y="24" width="7" height="13" rx="1.5" fill="#ff8a3d"/><rect class="bm-bar b2" x="17" y="18" width="7" height="19" rx="1.5" fill="#f26a1b"/><rect class="bm-bar b3" x="27" y="12" width="7" height="25" rx="1.5" fill="#c9460b"/><path class="bm-arc" d="M3 26 C 12 8, 28 2, 41 6" fill="none" stroke="#ff5a4f" stroke-width="2.4" stroke-linecap="round"/><circle class="bm-dot" r="3" fill="#ff5a4f"/></svg><span class="brand-name">ExpoBusiness<small>Travel Services</small></span></a>
-          <p>Corporate travel and MICE for the Canton Fair, for Philippine businesses.</p>
+          <p>Business travel and MICE for China's trade expos, for Philippine companies.</p>
         </div>
-        <div><p class="f-h">Canton Fair</p><ul><li><a href="itineraries.html">Itineraries</a></li><li><a href="index.html#calendar">Fair calendar</a></li><li><a href="itineraries.html?event=expo">China expos</a></li><li><a href="services.html">Services</a></li></ul></div>
+        <div><p class="f-h">Expos</p><ul><li><a href="itineraries.html">2027 itineraries</a></li><li><a href="china-expos.html">China expo guide</a></li><li><a href="world-expos.html">Expo articles</a></li><li><a href="index.html#planner">Expo planner</a></li></ul></div>
         <div><p class="f-h">Industries</p><ul><li><a href="industry-electronics.html">Electronics</a></li><li><a href="industry-lighting.html">Lighting</a></li><li><a href="industry-furniture.html">Furniture</a></li><li><a href="industries.html">All industries</a></li></ul></div>
-        <div><p class="f-h">Help</p><ul><li><a href="visa.html">Visa requirements</a></li><li><a href="#" data-open-bot>Ask Expo</a></li><li><a href="inquiry.html">Request a quotation</a></li></ul></div>
-        <div><p class="f-h">Contact</p><ul><li><span class="placeholder">[phone number]</span></li><li><span class="placeholder">[email address]</span></li><li><span class="placeholder">[office address]</span></li></ul></div>
+        <div><p class="f-h">Help</p><ul><li><a href="services.html">Services</a></li><li><a href="visa.html">China visa</a></li><li><a href="#" data-open-bot>Ask Expo</a></li><li><a href="inquiry.html">Request a quotation</a></li></ul></div>
+        <div><p class="f-h">Contact</p><ul><li><a data-site="contact.phone" class="placeholder">[phone number]</a></li><li><a data-site="contact.email" class="placeholder">[email address]</a></li><li><span data-site="contact.address" class="placeholder">[office address]</span></li></ul></div>
       </div>
-      <div class="footer-bottom"><span>© <span data-year>2026</span> ExpoBusiness Travel Services</span><span>Canton Fair dates are set by the organiser and confirmed before booking.</span></div>
+      <div class="footer-bottom"><span>© <span data-year>2026</span> ExpoBusiness Travel Services</span><span>Expo dates are set by each organiser and confirmed before booking.</span></div>
     </div>
   </footer>
-  <script src="assets/js/site.js?v=20261017b" defer></script>
-  <script src="assets/js/chatbot.js?v=20261017b" defer></script>
-  <script src="assets/js/intro.js?v=20261017b" defer></script>
+  <script src="assets/js/data/site-config.js?v=202610180255" defer></script>
+  <script src="assets/js/site.js?v=202610180255" defer></script>
+  <script src="assets/js/chatbot.js?v=202610180255" defer></script>
+  <script src="assets/js/intro.js?v=202610180255" defer></script>
   <!--/FOOTER-->
-  <script src="assets/js/itineraries-data.js?v=20261017b" defer></script>
-  <script src="assets/js/home.js?v=20261017b" defer></script>
+  <script src="assets/js/data/itineraries-data.js?v=202610180255" defer></script>
+  <script src="assets/js/data/expo-china.js?v=202610180255" defer></script>
+  <script src="assets/js/planner.js?v=202610180255" defer></script>
+  <script src="assets/js/home.js?v=202610180255" defer></script>
 </body>
 </html>

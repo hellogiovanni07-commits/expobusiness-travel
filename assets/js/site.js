@@ -74,9 +74,12 @@ if (finePointer && !reduceMotion) {
   });
 }
 
-/* ---------- CTA band art: one large line icon per page ---------- */
+/* ---------- CTA band as a boarding pass: the stub names this page's destination ---------- */
+const STUB = { globe: ["MNL", "WORLD", "Any show, any city"], calendar: ["MNL", "CAN", "Canton Fair 2027"], passport: ["MNL", "PEK", "M visa filing"], plane: ["MNL", "CAN", "Door to door"], briefcase: ["MNL", "CAN", "Your quotation"], grid: ["MNL", "CAN", "Pick your phase"] };
 document.querySelectorAll(".cta-band[data-art]").forEach(b => {
-  b.insertAdjacentHTML("afterbegin", `<span class="cta-art" aria-hidden="true"><svg class="icon"><use href="#i-${b.dataset.art}"/></svg></span>`);
+  const [from, to, note] = STUB[b.dataset.art] || ["MNL", "CAN", "Industry trip"];
+  const acts = b.querySelector(".cta-actions");
+  if (acts) acts.insertAdjacentHTML("afterbegin", `<p class="cta-stub" aria-hidden="true"><span>${from}</span><svg class="icon"><use href="#i-plane"/></svg><span>${to}</span><small>${note}</small></p>`);
 });
 
 /* ---------- small helpers ---------- */

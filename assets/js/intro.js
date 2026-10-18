@@ -32,7 +32,7 @@
         <circle class="im-dot" r="2.6" fill="#ff5a4f"/>
       </svg>
       <div class="intro-word" aria-hidden="true">${"ExpoBusiness".split("").map((c, i) => `<span style="--i:${i}">${c}</span>`).join("")}</div>
-      <p class="intro-tag">Canton Fair business travel · Philippines → Guangzhou</p>
+      <p class="intro-tag">Business travel to China's trade expos · Philippines → China</p>
       <div class="intro-route" aria-hidden="true">
         <span class="ir-city"><b>MNL</b><small>Manila</small></span>
         <span class="ir-track"><i class="ir-fill"></i><span class="ir-plane"><svg class="icon"><use href="#i-plane"/></svg></span></span>

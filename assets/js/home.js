@@ -1,4 +1,4 @@
-// Home: buyer-badge hero (lanyard physics), fair calendar module (3D hall + countdown + timeline + table),
+// Home: buyer-badge hero (lanyard physics), live fair label, animated visa booklet,
 // animated visa booklet, scroll-linked process line and the itinerary rail.
 const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const FINE = matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -88,173 +88,59 @@ const curSession = FAIR.sessions.find(s => new Date(s.phases[2][1] + "T18:00:00+
     setTimeout(kick, 600);
   }
   badge.addEventListener("click", () => { if (moved > 0.06) return; badge.classList.toggle("flipped"); w += 0.2; kick(); });
+
+  // The badge cycles through China's flagship expos; dots jump straight to one.
+  const EVENTS = [
+    { zh: "中国进出口商品交易会", name: "Canton Fair", sess: `Next session · ${next.name}`, l1: "Phase", v1: "1 · 2 · 3", venue: "Pazhou", no: "EB-141-0418", c: ["#16163a", "#c9460b", "#d7261e"] },
+    { zh: "中国（广州）国际家具博览会", name: "CIFF Guangzhou", sess: "Guangzhou · March 2027", l1: "When", v1: "Mar 2027", venue: "Pazhou", no: "EB-CF27-0311", c: ["#3a1a0a", "#c9460b", "#e0790b"] },
+    { zh: "香港电子产品展", name: "HK Electronics Fair", sess: "Hong Kong · Spring 2027", l1: "When", v1: "Apr 2027", venue: "HKCEC", no: "EB-HK27-0412", c: ["#2a0a18", "#7a1030", "#d7261e"] },
+    { zh: "中国—东盟博览会", name: "China-ASEAN Expo", sess: "Nanning · September 2027", l1: "When", v1: "Sep 2027", venue: "Nanning", no: "EB-CA27-0916", c: ["#0e2a24", "#16463a", "#2f7f5f"] },
+    { zh: "中国国际进口博览会", name: "CIIE", sess: "Shanghai · November 2027", l1: "When", v1: "Nov 2027", venue: "NECC", no: "EB-II27-1105", c: ["#0e1440", "#1f2a6b", "#3b4cc0"] },
+  ];
+  const dots = document.querySelector(".badge-dots");
+  let ev = 0, cycleT = 0;
+  dots.innerHTML = EVENTS.map((e, i) => `<button type="button" aria-label="${e.name}" aria-pressed="${i === 0}"><span>${e.name}</span></button>`).join("");
+  const front = badge.querySelector(".front");
+  function showEvent(i) {
+    ev = (i + EVENTS.length) % EVENTS.length;
+    const e = EVENTS[ev];
+    badge.classList.add("swap");
+    setTimeout(() => {
+      document.getElementById("bfZh").textContent = e.zh;
+      document.getElementById("bfName").textContent = e.name;
+      document.getElementById("bfSession").textContent = e.sess;
+      document.getElementById("bfL1").textContent = e.l1;
+      document.getElementById("bfPhase").textContent = e.v1;
+      document.getElementById("bfVenue").textContent = e.venue;
+      document.getElementById("bfNo").textContent = e.no;
+      front.style.setProperty("--b0", e.c[0]); front.style.setProperty("--b1", e.c[1]); front.style.setProperty("--b2", e.c[2]);
+      badge.classList.remove("swap");
+    }, RM ? 0 : 260);
+    [...dots.children].forEach((d, j) => d.setAttribute("aria-pressed", String(j === ev)));
+    w += RM ? 0 : 0.18; kick();
+  }
+  const autoCycle = () => { clearTimeout(cycleT); if (!RM) cycleT = setTimeout(() => { if (!dragging && !badge.classList.contains("flipped") && visible) showEvent(ev + 1); autoCycle(); }, 6500); };
+  [...dots.children].forEach((d, j) => d.addEventListener("click", () => { showEvent(j); autoCycle(); }));
+  autoCycle();
   badge.addEventListener("keydown", e => {
     if (e.key === "ArrowLeft" || e.key === "ArrowRight") { e.preventDefault(); w += e.key === "ArrowLeft" ? -1.2 : 1.2; kick(); }
   });
   apply();
 })();
 
-/* ================= LIVE LABEL + COUNTDOWN ================= */
-const all = FAIR.sessions.flatMap(s => s.phases.map(([a, b], i) => ({ s: s.name, p: i + 1, start: new Date(a + "T09:30:00+08:00"), end: new Date(b + "T18:00:00+08:00") })));
-const cd = document.getElementById("countdown");
-const units = Object.fromEntries([...cd.querySelectorAll("[data-u]")].map(b => [b.dataset.u, b]));
-const prev = {};
-function tick() {
-  const t0 = new Date();
-  const live = all.find(x => t0 >= x.start && t0 <= x.end);
-  const nx = all.find(x => x.start > t0);
-  const ref = live || nx;
-  if (!ref) return;
-  cd.classList.toggle("is-live", !!live);
-  document.getElementById("cdLabel").textContent = live ? `${ref.s} · Phase ${ref.p} is open now` : `Next: ${ref.s} · Phase ${ref.p}`;
-  document.getElementById("cdNote").textContent = live ? "until this phase closes. The next phases are still bookable." : `until Phase ${ref.p} opens in Guangzhou`;
-  document.getElementById("liveLabel").textContent = live ? `Canton Fair Phase ${ref.p} is open now` : `Next Canton Fair: ${ref.s}, Phase ${ref.p}`;
-  const t = Math.max(0, (live ? ref.end : ref.start) - t0) / 1000;
-  const v = { d: Math.floor(t / 86400), h: Math.floor(t % 86400 / 3600), m: Math.floor(t % 3600 / 60), s: Math.floor(t % 60) };
-  for (const k in v) {
-    const str = String(v[k]).padStart(2, "0");
-    if (prev[k] !== str) {
-      units[k].innerHTML = `<span>${str}</span>`;
-      if (prev[k] !== undefined && !RM) { units[k].classList.remove("tick"); void units[k].offsetWidth; units[k].classList.add("tick"); }
-      prev[k] = str;
-    }
+/* ================= HERO LIVE LABEL + PLANNER COUNTDOWN ================= */
+(() => {
+  const all = FAIR.sessions.flatMap(s => s.phases.map(([a, b], i) => ({ s: s.name, p: i + 1, start: new Date(a + "T09:30:00+08:00"), end: new Date(b + "T18:00:00+08:00") })));
+  const liveEl = document.getElementById("liveLabel"), days = document.getElementById("pcDays"), lab = document.getElementById("pcLabel");
+  function tick() {
+    const t0 = new Date(), live = all.find(x => t0 >= x.start && t0 <= x.end), ref = live || all.find(x => x.start > t0);
+    if (!ref) return;
+    if (liveEl) liveEl.textContent = live ? `Canton Fair Phase ${ref.p} is open now` : `Next Canton Fair: ${ref.s}, Phase ${ref.p}`;
+    if (days) days.textContent = Math.max(0, Math.ceil(((live ? ref.end : ref.start) - t0) / 864e5));
+    if (lab) lab.textContent = live ? `days left in Phase ${ref.p}, ${ref.s}` : `days to Canton Fair ${ref.s}, Phase ${ref.p}`;
   }
-}
-tick(); setInterval(tick, 1000);
-
-/* ================= CALENDAR: 3D HALL synced with timeline + table ================= */
-const PHASES = [
-  { items: "Electronics, machinery, lighting, hardware, vehicles, new energy", tone: "#c9460b", tags: { 9: "Electronics", 24: "Machinery", 30: "Lighting", 40: "New energy" } },
-  { items: "Consumer goods, kitchenware, gifts, home decor, building materials, furniture", tone: "#d7261e", tags: { 8: "Furniture", 18: "Kitchenware", 33: "Building", 44: "Gifts" } },
-  { items: "Garments, textiles, toys, shoes and bags, stationery, health, food", tone: "#a8380a", tags: { 10: "Garments", 22: "Toys", 36: "Shoes & bags", 43: "Food" } },
-];
-const N = 7;
-const floor = document.getElementById("floor");
-const booths = [];
-const rand = seed => () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
-const layouts = PHASES.map((p, pi) => {
-  const r = rand(97 + pi * 131);
-  return Array.from({ length: N * N }, (_, i) => {
-    const x = i % N, y = Math.floor(i / N);
-    const bias = [x / N, y / N, 1 - (x + y) / (2 * N)][pi];
-    const v = r() * .75 + bias * .45;
-    if (p.tags[i]) return { cls: "hot", h: 44 + r() * 20 };
-    if (v > .78) return { cls: "on", h: 28 + r() * 28 };
-    if (v > .55) return { cls: "lit", h: 10 + r() * 14 };
-    return { cls: "", h: 3 };
-  });
-});
-for (let i = 0; i < N * N; i++) {
-  const b = document.createElement("div");
-  b.className = "booth"; b.dataset.x = i % N; b.dataset.y = Math.floor(i / N);
-  b.innerHTML = '<span class="tag"><span></span></span>';
-  floor.append(b); booths.push(b);
-}
-let phase = 0, shownSession = FAIR.sessions.indexOf(curSession);
-const caption = document.getElementById("phaseCaption");
-const datesEl = document.getElementById("phaseDates");
-const tabs = [...document.querySelectorAll(".phase-switch [role=tab]")];
-const ind = document.querySelector(".phase-ind");
-const segs = [...document.querySelectorAll(".tl-seg")];
-const rows = [...document.querySelectorAll("#sched tbody tr")];
-function setPhase(p, origin = { x: 0, y: N - 1 }) {
-  phase = p;
-  layouts[p].forEach((cell, i) => {
-    const b = booths[i];
-    const d = Math.hypot(+b.dataset.x - origin.x, +b.dataset.y - origin.y);
-    b.style.setProperty("--delay", RM ? "0s" : (d * 0.045).toFixed(3) + "s");
-    b.classList.remove("on", "hot", "lit", "show-tag");
-    if (cell.cls) b.classList.add(cell.cls);
-    b.style.setProperty("--base", (RM ? Math.min(cell.h, 30) : cell.h).toFixed(0) + "px");
-    const tag = PHASES[p].tags[i];
-    b.querySelector(".tag span").textContent = tag || "";
-    if (tag) b.classList.add("show-tag");
-  });
-  tabs.forEach((t, i) => { t.setAttribute("aria-selected", String(i === p)); t.tabIndex = i === p ? 0 : -1; });
-  segs.forEach((s, i) => s.classList.toggle("is-picked", i === p));
-  rows.forEach((r, i) => r.classList.toggle("is-picked", i === p));
-  moveInd();
-  caption.textContent = PHASES[p].items;
-  datesEl.textContent = rangeTxt(FAIR.sessions[shownSession].phases[p]);
-}
-function moveInd() {
-  const t = tabs[phase], w = ind.parentElement.clientWidth - 8;
-  ind.style.setProperty("--l", (t.offsetLeft - 4) + "px");
-  ind.style.setProperty("--r", (w - (t.offsetLeft - 4) - t.offsetWidth) + "px");
-  ind.style.background = PHASES[phase].tone;
-}
-
-let auto = !RM, timer = null, hallVisible = false;
-const loop = () => { clearTimeout(timer); if (auto && hallVisible && !document.hidden) timer = setTimeout(() => { setPhase((phase + 1) % 3); loop(); }, 5200); };
-const takeOver = () => { auto = false; clearTimeout(timer); };
-tabs.forEach((t, i) => {
-  t.addEventListener("click", () => { takeOver(); setPhase(i, { x: N - 1, y: 0 }); });
-  t.addEventListener("keydown", e => {
-    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
-    const n = (i + (e.key === "ArrowRight" ? 1 : 2)) % 3; takeOver(); setPhase(n); tabs[n].focus();
-  });
-});
-segs.forEach((s, i) => s.addEventListener("click", () => { takeOver(); setPhase(i); }));
-rows.forEach((r, i) => r.addEventListener("mouseenter", () => { if (FINE) { takeOver(); setPhase(i); } }));
-addEventListener("resize", moveInd);
-document.fonts?.ready.then(moveInd);
-
-if (FINE && !RM) {
-  let raf = 0, lastB = null;
-  floor.addEventListener("pointermove", e => {
-    const b = e.target.closest(".booth");
-    if (!b || b === lastB) return;
-    lastB = b; cancelAnimationFrame(raf);
-    raf = requestAnimationFrame(() => {
-      const cx = +b.dataset.x, cy = +b.dataset.y;
-      booths.forEach(o => o.style.setProperty("--hov", Math.max(0, 32 - Math.hypot(+o.dataset.x - cx, +o.dataset.y - cy) * 12).toFixed(0) + "px"));
-    });
-  });
-  floor.addEventListener("pointerleave", () => { lastB = null; booths.forEach(o => o.style.setProperty("--hov", "0px")); });
-  floor.addEventListener("click", takeOver);
-  const hall = document.getElementById("hall");
-  hall.addEventListener("pointermove", e => {
-    const r = hall.getBoundingClientRect();
-    const px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
-    floor.style.transform = `rotateX(${58 - py * 8}deg) rotateZ(${-40 + px * 10}deg)`;
-  });
-  hall.addEventListener("pointerleave", () => { floor.style.transform = ""; });
-}
-// The hall rises when it scrolls into view.
-let raised = false;
-new IntersectionObserver(([en]) => {
-  hallVisible = en.isIntersecting;
-  if (hallVisible && !raised) { raised = true; setTimeout(() => setPhase(0), RM ? 0 : 250); }
-  loop();
-}, { threshold: .35 }).observe(floor);
-document.addEventListener("visibilitychange", loop);
-
-// Timeline bars fill with how much of each phase has passed; "Today" marks the position.
-const tlNow = document.getElementById("tlNow");
-const swBtns = [...document.querySelectorAll(".tl-switch button")];
-function showSession(i) {
-  shownSession = i;
-  const s = FAIR.sessions[i];
-  document.getElementById("tlSession").textContent = `${s.name} · ${s.num} session${s.expected ? " (expected dates)" : ""}`;
-  swBtns.forEach((b, j) => { b.classList.toggle("is-on", i === j); b.setAttribute("aria-pressed", String(i === j)); });
-  let marker = null;
-  segs.forEach((seg, p) => {
-    const [a, b] = s.phases[p];
-    const A = new Date(a + "T09:30:00+08:00"), B = new Date(b + "T18:00:00+08:00");
-    const fill = now <= A ? 0 : now >= B ? 1 : (now - A) / (B - A);
-    seg.querySelector("[data-dates]").textContent = rangeTxt([a, b]);
-    seg.style.setProperty("--fill", fill.toFixed(3));
-    seg.classList.toggle("is-now", fill > 0 && fill < 1);
-    if (fill > 0 && fill < 1) marker = (p + fill) / 3;
-  });
-  tlNow.hidden = marker === null;
-  if (marker !== null) tlNow.style.left = (marker * 100).toFixed(2) + "%";
-  datesEl.textContent = rangeTxt(s.phases[phase]);
-}
-swBtns.forEach((b, i) => b.addEventListener("click", () => showSession(i)));
-segs.forEach(s => s.style.setProperty("--fill", 0));
-const tlIO = new IntersectionObserver(([en]) => { if (en.isIntersecting) { showSession(shownSession); tlIO.disconnect(); } }, { threshold: .3 });
-tlIO.observe(document.getElementById("timeline"));
+  tick(); setInterval(tick, 60000);
+})();
 
 /* ================= VISA BOOKLET ================= */
 (() => {
@@ -262,8 +148,6 @@ tlIO.observe(document.getElementById("timeline"));
   if (!book) return;
   const V = {
     china: { cover: "#6b1426", country: "CHINA", kind: "VISA · M", foot: "Business · Entries 1 · 30 days", city: "GUANGZHOU", s1: "Passport, invitation letter, company certificate", s2: "Online form, then the visa application center", s3: "About 4 working days, regular service" },
-    japan: { cover: "#6b1426", country: "JAPAN", kind: "VISA · TEMPORARY VISITOR", foot: "Business · Short-term stay", city: "OSAKA", s1: "PSA birth certificate, bank certificate, ITR", s2: "Filed through an accredited agency", s3: "About 5–7 working days after filing" },
-    usa: { cover: "#6b1426", country: "UNITED STATES", kind: "VISA · B1/B2", foot: "Business & tourism visitor", city: "LOS ANGELES", s1: "DS-160, photo, proof of business ties", s2: "Fee payment and embassy interview booking", s3: "Interview at the US Embassy in Manila" },
   };
   const steps = [...document.querySelectorAll("#vxSteps li")];
   const vtabs = [...document.querySelectorAll(".vx-tabs [role=tab]")];
@@ -360,7 +244,7 @@ if (rail && window.ITINERARIES) {
   const len = t => t.days ? `${t.days}D${t.nights}N` : "Custom";
   const card = t => `
     <a class="trip" href="itineraries.html?open=${t.id}#${t.id}">
-      <figure><img src="${t.img}" alt="" loading="lazy" width="900" height="560"><span class="tags">${t.event === "expo" ? `<span class="tag-phase p2">${t.city} · ${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][+t.month.slice(5) - 1]} 2027</span>` : t.phases.map(p => `<span class="tag-phase p${p}">Phase ${p}</span>`).join("")}</span></figure>
+      <figure>${eventBanner(t)}<span class="tags">${t.event === "expo" ? `<span class="tag-phase p2">${t.city} · ${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][+t.month.slice(5) - 1]} 2027</span>` : t.phases.map(p => `<span class="tag-phase p${p}">Phase ${p}</span>`).join("")}</span></figure>
       <div class="trip-body"><div class="trip-meta"><span>${len(t)}</span><span>${t.event === "expo" ? t.city : "Guangzhou"}</span></div><h3>${t.title}</h3><p>${t.sum}</p>
       <span class="link-arrow">View itinerary <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
     </a>`;

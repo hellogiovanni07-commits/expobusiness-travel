@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /brand-kit/
+Sitemap: https://hellogiovanni07-commits.github.io/expobusiness-travel/sitemap.xml

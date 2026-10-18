@@ -38,12 +38,12 @@ if (indMain && window.ITINERARIES) {
   const list = [...ITINERARIES.filter(t => t.event === "canton" && fits(t)), ...ITINERARIES.filter(t => t.event === "expo" && fits(t))].slice(0, 6);
   $("#indTrips").innerHTML = list.map(t => `
     <a class="mini" href="itineraries.html?open=${t.id}#${t.id}" data-reveal>
-      <img src="${t.img}" alt="" loading="lazy" width="300" height="240">
-      <div><div class="tags">${t.event === "canton" ? t.phases.map(p => `<span class="tag-phase p${p}">Phase ${p}</span>`).join("") : `<span class="tag-phase">${t.city} · ${MON[+t.month.slice(5) - 1]} 2027</span>`}</div><h4>${t.title}</h4><p>${t.days ? t.days + "D" + t.nights + "N · " : ""}${t.sum.split(". ")[0].replace(/\.$/, "")}.</p></div>
+      <span class="mini-media">${eventBanner(t, "sm")}</span>
+      <div><div class="tags">${t.event === "canton" ? t.phases.map(p => `<span class="tag-phase p${p}">Phase ${p}</span>`).join("") : `<span class="tag-phase">${t.city} · ${MON[+t.month.slice(5) - 1]} 2027</span>`}</div><h3>${t.title}</h3><p>${t.days ? t.days + "D" + t.nights + "N · " : ""}${t.sum.split(". ")[0].replace(/\.$/, "")}.</p></div>
     </a>`).join("");
   const expos = ITINERARIES.filter(t => t.event === "expo" && fits(t)).sort((a, b) => a.month.localeCompare(b.month));
   $("#indExpos").innerHTML = expos.length ? expos.map(t => `
-    <li><a href="itineraries.html?open=${t.id}#${t.id}"><span class="m"><b>${MON[+t.month.slice(5) - 1]}</b><small>2027</small></span><span><strong>${t.expo}</strong><span class="s">${t.city} · usual month, dates TBC</span></span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>`).join("")
+    <li><a href="itineraries.html?open=${t.id}#${t.id}"><span class="m"><b>${MON[+t.month.slice(5) - 1]}</b><small>2027</small></span><span><strong>${t.short || t.title}</strong><span class="s">${t.city} · usual month, dates TBC</span></span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>`).join("")
     : `<li class="label">No matching 2027 expos yet. Ask us about specialist shows.</li>`;
   $$("#indTrips [data-reveal]").forEach(el => revealLate(el));
 }
@@ -87,33 +87,12 @@ if (svcList) {
   if (fromHash) show(fromHash, true);
 }
 
-/* ================= VISA ================= */
-const visaTabs = $("#visaTabs");
-if (visaTabs) {
-  const tabs = $$("[role=tab]", visaTabs);
-  const ind = $(".visa-ind", visaTabs);
-  const moveInd = t => {
-    const w = ind.parentElement.clientWidth - 10;
-    ind.style.setProperty("--l", (t.offsetLeft - 5) + "px");
-    ind.style.setProperty("--r", (w - (t.offsetLeft - 5) - t.offsetWidth) + "px");
-  };
-  const select = (id, push) => {
-    tabs.forEach(t => {
-      const on = t.dataset.tab === id;
-      t.setAttribute("aria-selected", String(on)); t.tabIndex = on ? 0 : -1;
-      const p = document.getElementById("panel-" + t.dataset.tab);
-      p.hidden = !on;
-      if (on) { p.classList.remove("enter"); void p.offsetWidth; p.classList.add("enter"); moveInd(t); }
-    });
-    if (push) history.replaceState(null, "", "#" + id);
-    const order = [id, ...["china", "japan", "usa"].filter(x => x !== id)];
-    $$(".pp-card").forEach(c => (c.dataset.pos = order.indexOf(c.dataset.c)));
-  };
-  $$(".pp-card").forEach(c => c.addEventListener("click", () => {
-    select(c.dataset.c, true);
-    if (c.dataset.pos === "0") document.getElementById("panel-" + c.dataset.c).scrollIntoView({ behavior: RMp ? "auto" : "smooth", block: "start" });
+/* ================= VISA (China business visa) ================= */
+if ($(".visa-panel")) {
+  $$(".pp-card, [data-goto]").forEach(c => c.addEventListener("click", e => {
+    e.preventDefault();
+    $("#panel-china").scrollIntoView({ behavior: RMp ? "auto" : "smooth", block: "start" });
   }));
-  $$("[data-goto]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); select(a.dataset.goto, true); document.getElementById("visaTabs").scrollIntoView({ behavior: RMp ? "auto" : "smooth", block: "center" }); }));
   const track = $$("#trackSteps span");
   if (track.length) {
     let k = 0;
@@ -121,20 +100,7 @@ if (visaTabs) {
     tickT();
     if (!RMp) setInterval(tickT, 1100); else track.forEach(t => t.classList.add("on"));
   }
-  tabs.forEach((t, i) => {
-    t.addEventListener("click", () => select(t.dataset.tab, true));
-    t.addEventListener("keydown", e => {
-      if (!["ArrowRight", "ArrowLeft"].includes(e.key)) return;
-      const n = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
-      select(n.dataset.tab, true); n.focus();
-    });
-  });
-  const start = ["china", "japan", "usa"].includes(location.hash.slice(1)) ? location.hash.slice(1) : "china";
-  select(start);
-  addEventListener("resize", () => moveInd(tabs.find(t => t.getAttribute("aria-selected") === "true")));
-  document.fonts?.ready.then(() => moveInd(tabs.find(t => t.getAttribute("aria-selected") === "true")));
-
-  // Checklists remember ticks in this browser only.
+  // Checklist remembers ticks in this browser only.
   $$(".visa-panel").forEach(panel => {
     const key = "visa-" + panel.id;
     const boxes = $$(".check input", panel);
@@ -150,7 +116,6 @@ if (visaTabs) {
       try { localStorage.setItem(key, JSON.stringify(boxes.map(b => b.checked))); } catch {}
     };
     boxes.forEach(b => b.addEventListener("change", update));
-    $("[data-reset]", panel)?.addEventListener("click", () => { boxes.forEach(b => (b.checked = false)); update(); });
     $("[data-print]", panel)?.addEventListener("click", () => print());
     update();
   });
@@ -174,6 +139,9 @@ if (inq) {
       <option value="services">Services only (no package)</option>`;
   }
   if (params.get("trip") && tripSel) tripSel.value = params.get("trip");
+  // From the expo planner: "Plan a trip" carries the show name into the notes.
+  const expo = params.get("expo"), notes = $("#notes");
+  if (expo && notes && !notes.value) notes.value = `I'd like to visit ${expo.slice(0, 80)} in 2027.`;
   if (params.get("visa")) { const c = $(`input[name=services][value="visa-${params.get("visa")}"]`); if (c) c.checked = true; }
 
   const validate = i => {
