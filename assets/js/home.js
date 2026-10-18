@@ -66,7 +66,7 @@ const curSession = FAIR.sessions.find(s => new Date(s.phases[2][1] + "T18:00:00+
 
   if (!RM) {
     badge.addEventListener("pointerdown", e => {
-      dragging = true; moved = 0; badge.setPointerCapture(e.pointerId);
+      dragging = true; moved = 0; stage.classList.add("is-dragging"); badge.setPointerCapture(e.pointerId);
       lastAng = angTo(e); kick();
     });
     badge.addEventListener("pointermove", e => {
@@ -75,7 +75,7 @@ const curSession = FAIR.sessions.find(s => new Date(s.phases[2][1] + "T18:00:00+
       moved += Math.abs(a - lastAng);
       w = (a - lastAng) * 60; th = a; lastAng = a;
     });
-    const end = () => { if (!dragging) return; dragging = false; kick(); };
+    const end = () => { if (!dragging) return; dragging = false; stage.classList.remove("is-dragging"); kick(); };
     badge.addEventListener("pointerup", end);
     badge.addEventListener("pointercancel", end);
     // A gentle push when the pointer passes near the badge.

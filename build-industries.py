@@ -143,7 +143,7 @@ def head(title, desc):
   <title>{html.escape(title)}</title>
   <meta name="description" content="{html.escape(desc)}">
   <!--HEAD--><!--/HEAD-->
-  <link rel="stylesheet" href="assets/css/pages.css?v=202610181141">
+  <link rel="stylesheet" href="assets/css/pages.css?v=202610181653">
 </head>
 <body class="nav-over">
   <!--SPRITE--><!--/SPRITE-->
@@ -153,8 +153,8 @@ def head(title, desc):
 
 TAIL = """
   <!--FOOTER--><!--/FOOTER-->
-  <script src="assets/js/data/itineraries-data.js?v=202610181141" defer></script>
-  <script src="assets/js/pages.js?v=202610181141" defer></script>
+  <script src="assets/js/data/itineraries-data.js?v=202610181653" defer></script>
+  <script src="assets/js/pages.js?v=202610181653" defer></script>
 </body>
 </html>
 """

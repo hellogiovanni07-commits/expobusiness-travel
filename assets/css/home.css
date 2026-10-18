@@ -467,8 +467,8 @@
 @media (max-width: 1080px) { .lanyard { height: 570px; } }
 @media (max-width: 600px) { .lanyard { height: 520px; } }
 @media (max-width: 600px) { .lanyard { height: 456px; } }
-@media (max-width: 600px) { .lanyard { overflow: clip; overflow-clip-margin: 0; } }
-.lanyard { overflow: clip; overflow-clip-margin: 24px; }
+/* Hide only the lace above the top edge; the card keeps its full swing on the sides and below (.hx still stops page overflow). */
+.lanyard { overflow: visible; clip-path: inset(0 -100vw -100vh -100vw); }
 .vx-steps { margin-top: 24px; }
 
 .trip figure .tags { z-index: 2; }
@@ -502,3 +502,7 @@
 
 /* review: industry cards drop the duplicate icon; the photo carries the subject */
 .ind-card .ind-body > .ico { display: none; }
+
+/* the hint steps aside while the badge is being dragged */
+.lanyard-hint { transition: opacity .25s; }
+.lanyard.is-dragging .lanyard-hint { opacity: 0; }
