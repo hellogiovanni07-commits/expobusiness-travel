@@ -5,7 +5,7 @@
   const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const svg = id => `<svg class="icon" aria-hidden="true"><use href="#i-${id}"/></svg>`;
   const P = new URLSearchParams(location.search);
-  const S = { cat: P.get("cat") || "", m: P.get("m") || "", q: P.get("q") || "" };
+  const S = { cat: P.get("cat") || "", m: P.get("m") || "", ind: P.get("ind") || "", q: P.get("q") || "" };
   const norm = s => String(s).toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "");
 
   $("#axCount").textContent = `${X.all.length} expo guides`;
@@ -21,7 +21,8 @@
   const cats = X.CATEGORIES.filter(c => X.all.some(e => e.cat === c));
   $("#axCats").innerHTML = [["", "All"], ...cats.map(c => [c, c])].map(([v, l]) => `<button type="button" data-cat="${esc(v)}"><span>${esc(l)}</span><small>${v ? X.all.filter(e => e.cat === v).length : X.all.length}</small></button>`).join("");
   $("#axM").insertAdjacentHTML("beforeend", X.MONTHS.map((m, i) => `<option value="${String(i + 1).padStart(2, "0")}">${m} 2027</option>`).join(""));
-  $("#axQ").value = S.q; $("#axM").value = S.m;
+  $("#axI").insertAdjacentHTML("beforeend", Object.keys(X.INDUSTRY).filter(k => X.all.some(e => (e.industries || []).includes(k))).map(k => `<option value="${k}">${esc(window.TAXONOMY.industries[k].name)}</option>`).join(""));
+  $("#axQ").value = S.q; $("#axM").value = S.m; $("#axI").value = S.ind;
 
   const card = e => `<article class="ax-card">
       <a class="ax-img" href="${X.url(e)}" tabindex="-1" aria-hidden="true"><span style="background-image:url('${X.photo(e, 700)}')"></span><i class="ax-date"><b>${X.MON[e.mi]}</b><small>2027</small></i></a>
@@ -36,22 +37,23 @@
 
   function render() {
     const q = norm(S.q.trim());
-    const items = X.all.filter(e => (!S.cat || e.cat === S.cat) && (!S.m || e.month.slice(5) === S.m) &&
+    const items = X.all.filter(e => (!S.cat || e.cat === S.cat) && (!S.m || e.month.slice(5) === S.m) && (!S.ind || (e.industries || []).includes(S.ind)) &&
       (!q || norm([e.name, e.short, e.city, e.country, e.sectors, e.cat].join(" ")).includes(q)));
     document.querySelectorAll("#axCats button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.cat === S.cat)));
-    const bits = [S.cat, S.m && X.MONTHS[+S.m - 1], S.q && `“${S.q}”`].filter(Boolean);
+    const bits = [S.cat, S.m && X.MONTHS[+S.m - 1], S.ind && window.TAXONOMY.industries[S.ind]?.name, S.q && `“${S.q}”`].filter(Boolean);
     $("#axStatus").innerHTML = `<b>${items.length}</b> guide${items.length === 1 ? "" : "s"}${bits.length ? " · " + esc(bits.join(" · ")) + ` <button type="button" class="link-btn" id="axClear">Clear</button>` : ""}`;
     const months = [...new Set(items.map(e => e.mi))];
     $("#axList").innerHTML = months.map(mi => {
       const list = items.filter(e => e.mi === mi);
       return `<section class="ax-month-block" aria-label="${X.MONTHS[mi]} 2027"><h3 class="ax-mh"><b>${X.MONTHS[mi]}</b><span>2027 · ${list.length} expo${list.length === 1 ? "" : "s"}</span></h3><div class="ax-grid">${list.map(card).join("")}</div></section>`;
     }).join("") || `<p class="ax-empty">No guides match. Try another region or month, or <a href="inquiry.html">ask us about a show</a>.</p>`;
-    $("#axClear")?.addEventListener("click", () => { S.cat = S.m = S.q = ""; $("#axQ").value = ""; $("#axM").value = ""; render(); });
+    $("#axClear")?.addEventListener("click", () => { S.cat = S.m = S.q = S.ind = ""; $("#axQ").value = ""; $("#axM").value = ""; $("#axI").value = ""; render(); });
     const u = new URLSearchParams(); Object.entries(S).forEach(([k, v]) => v && u.set(k, v));
     history.replaceState(null, "", u.toString() ? "?" + u : location.pathname);
   }
   document.getElementById("axCats").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; S.cat = S.cat === b.dataset.cat ? "" : b.dataset.cat; render(); });
   $("#axM").addEventListener("change", e => { S.m = e.target.value; render(); });
+  $("#axI").addEventListener("change", e => { S.ind = e.target.value; render(); });
   let t; $("#axQ").addEventListener("input", e => { clearTimeout(t); t = setTimeout(() => { S.q = e.target.value; render(); }, 180); });
   render();
 })();

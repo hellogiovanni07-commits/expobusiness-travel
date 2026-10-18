@@ -11,7 +11,8 @@ const rangeTxt = ([a, b]) => {
 const now = new Date();
 const curSession = FAIR.sessions.find(s => new Date(s.phases[2][1] + "T18:00:00+08:00") > now) || FAIR.sessions.at(-1);
 const liveEl = document.getElementById("liveLabel");
-// Schedule table cells follow SITE.canton.sessions too.
+// Schedule table: dates follow SITE.canton.sessions, sectors follow TAXONOMY.phases.
+document.querySelectorAll("#sched tbody tr").forEach((tr, p) => { const c = tr.querySelector("td"); if (c && window.TAXONOMY) c.textContent = TAXONOMY.phases[p].sectors; });
 document.querySelectorAll("#sched tbody tr").forEach((tr, p) => { const tds = tr.querySelectorAll("td.tnum"); FAIR.sessions.forEach((s, i) => { if (tds[i]) tds[i].textContent = rangeTxt(s.phases[p]); }); });
 document.querySelectorAll("#sched thead th small").forEach((sm, i) => { const s = FAIR.sessions[i]; if (s) sm.textContent = s.expected ? "expected" : "confirmed"; });
 /* ================= LIVE LABEL + COUNTDOWN ================= */
@@ -44,10 +45,10 @@ tick(); setInterval(tick, 1000);
 
 /* ================= CALENDAR: 3D HALL synced with timeline + table ================= */
 const PHASES = [
-  { items: "Electronics, machinery, lighting, hardware, vehicles, new energy", tone: "#c9460b", tags: { 9: "Electronics", 24: "Machinery", 30: "Lighting", 40: "New energy" } },
-  { items: "Consumer goods, kitchenware, gifts, home decor, building materials, furniture", tone: "#d7261e", tags: { 8: "Furniture", 18: "Kitchenware", 33: "Building", 44: "Gifts" } },
-  { items: "Garments, textiles, toys, shoes and bags, stationery, health, food", tone: "#a8380a", tags: { 10: "Garments", 22: "Toys", 36: "Shoes & bags", 43: "Food" } },
-];
+  { tags: { 9: "Electronics", 24: "Machinery", 30: "Lighting", 40: "New energy" } },
+  { tags: { 8: "Furniture", 18: "Kitchenware", 33: "Building", 44: "Gifts" } },
+  { tags: { 10: "Garments", 22: "Toys", 36: "Shoes & bags", 43: "Food" } },
+].map((p, i) => ({ ...p, items: window.TAXONOMY.phases[i].short, tone: window.TAXONOMY.phases[i].tone })); // captions + colours from data/taxonomy.js
 const N = 7;
 const floor = document.getElementById("floor");
 const booths = [];

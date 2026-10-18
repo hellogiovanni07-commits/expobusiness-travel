@@ -12,7 +12,7 @@
   const f0 = (e.frequency || "").toLowerCase();
   const freq = f0.replace(/^annual/, "every year").replace(/^twice yearly/, "twice a year").replace(/^biennial/, "every two years").replace(/^roughly biennial/, "roughly every two years");
   const cap = t => t ? t[0].toUpperCase() + t.slice(1) : t;
-  const trip = (window.ITINERARIES || []).find(t => (e.canton && t.event === "canton") ? false : t.event === "expo" && (t.short === e.short || (t.title || "").toLowerCase().startsWith((e.short || "~").toLowerCase())));
+  const trip = e.canton ? null : (window.ITINERARIES || []).find(t => t.expo === e.slug);
   const cantonTrips = e.canton ? (window.ITINERARIES || []).filter(t => t.event === "canton") : [];
 
   // ---- head + meta
@@ -24,7 +24,8 @@
   document.getElementById("evKicker").textContent = `${e.cat}${e.cat !== e.city ? " · " + e.city : ""} · ${X.MONTHS[e.mi]} 2027`;
   document.getElementById("evTitle").textContent = title;
   document.getElementById("evDek").textContent = `${e.name} runs ${e.when} in ${e.city}${e.venue ? ", at " + e.venue : ""}. Who should go, what is on the floor and how to plan the trip from Manila.`;
-  document.getElementById("evMeta").innerHTML = `<li>${svg("calendar")}${esc(e.when)}</li><li>${svg("pin")}${esc(e.city)}, ${esc(e.country)}</li><li>${svg("clock")}${e.read} min read</li><li class="ev-st ${e.dates_status === "confirmed" ? "ok" : ""}">${e.dates_status === "confirmed" ? "Dates confirmed" : "Expected dates"}</li>`;
+  const updated = e.updated || (window.SITE && SITE.site.researched) || "";
+  document.getElementById("evMeta").innerHTML = `<li>${svg("calendar")}${esc(e.when)}</li><li>${svg("pin")}${esc(e.city)}, ${esc(e.country)}</li><li>${svg("clock")}${e.read} min read</li>${updated ? `<li>${svg("check")}Updated ${esc(updated)}</li>` : ""}<li class="ev-st ${e.dates_status === "confirmed" ? "ok" : ""}">${e.dates_status === "confirmed" ? "Dates confirmed" : "Expected dates"}</li>`;
 
   // ---- body sections
   const sectors = (e.sectors || "").split(/,|·/).map(s => s.trim().replace(/^P\d\s+/, "")).filter(Boolean).map(s => s[0].toUpperCase() + s.slice(1));
@@ -35,7 +36,7 @@
     : isHK ? `<p>Philippine nationals can visit <b>Hong Kong visa-free for up to 14 days</b>. If you also go to Guangzhou or Shenzhen, get a <b>double or multiple-entry China visa</b>: re-entering the mainland after Hong Kong counts as a new entry.</p>`
     : `<p>Visa rules depend on the destination and change often. We confirm the current requirements for Philippine passports when we quote, and list official fees separately.</p>`;
   const canton = e.canton ? `<h2>Choosing a phase</h2><p>The fair runs in three phases of about five days, each with different halls. Most buyers need only one.</p>
-      <ul class="ev-phases"><li><span class="tag-phase p1">Phase 1</span>Electronics, machinery, vehicles, lighting, hardware, new energy</li><li><span class="tag-phase p2">Phase 2</span>Housewares, gifts, furniture, building materials, ceramics</li><li><span class="tag-phase p3">Phase 3</span>Fashion, textiles, toys, food, health and personal care</li></ul>
+      <ul class="ev-phases">${window.TAXONOMY.phases.map(p => `<li><span class="tag-phase p${p.n}">Phase ${p.n}</span>${esc(p.sectors)}</li>`).join("")}</ul>
       <p>Overseas buyers pre-register in the Canton Fair app or Buyer Service System; the invitation letter for your visa comes from the same system. See the <a href="china-expos.html#canton">Canton Fair guide</a> for the hall preview and countdown.</p>` : "";
   const near = X.all.filter(o => o !== e && Math.abs(o.mi - e.mi) <= 0 && (o.cat === e.cat || (isCN && o.cat === "Hong Kong") || (isHK && o.cat === "China"))).slice(0, 4);
   const related = X.all.filter(o => o !== e && (o.industries || [])[0] && (e.industries || []).includes(o.industries[0]) && !near.includes(o)).slice(0, 3);
@@ -49,6 +50,7 @@
     <h2>Who should go</h2>
     <p>Buyers, importers and distributors in these sectors get the most from a visit:</p>
     <p class="ev-ind">${X.industryLinks(e)}</p>
+    <p class="ev-tags">${svg("grid")}<span>More guides by industry:</span>${(e.industries || []).map(k => `<a href="world-expos.html?ind=${k}">${esc(X.INDUSTRY[k] || k)}</a>`).join("")}</p>
     ${canton}
     <h2>Planning the trip from Manila</h2>
     ${visa}
@@ -72,6 +74,17 @@
     <button type="button" class="link-btn ev-share" id="evShare">${svg("send")}Copy link to this guide</button>`;
   document.getElementById("evShare").addEventListener("click", () => navigator.clipboard?.writeText(location.href).then(() => { document.getElementById("evShare").lastChild.textContent = "Link copied"; }));
   document.getElementById("evRelated").innerHTML = related.length ? `<h2 class="section-title">More ${esc(X.INDUSTRY[e.industries[0]] || "")} guides</h2><div class="ev-rel">${related.map(o => `<a class="ax-card ev-rcard" href="${X.url(o)}"><span class="ax-img"><span style="background-image:url('${X.photo(o, 700)}')"></span><i class="ax-date"><b>${X.MON[o.mi]}</b><small>2027</small></i></span><span class="ax-body"><span class="ax-kicker">${esc(o.cat)} · ${esc(o.city)}</span><b class="ev-rt">${esc(o.name)}</b><span class="ax-ex">${esc(o.why)}</span></span></a>`).join("")}</div>` : "";
+  // Contents list from the article's headings, plus a reading-progress bar.
+  const heads = [...document.querySelectorAll("#evBody h2")];
+  heads.forEach((h, i) => (h.id = "s" + (i + 1)));
+  document.querySelector(".ev-side").insertAdjacentHTML("afterbegin", `<nav class="ev-toc" aria-label="In this guide"><p class="ev-fh">In this guide</p><ol>${heads.map(h => `<li><a href="#${h.id}">${esc(h.textContent)}</a></li>`).join("")}</ol></nav>`);
+  const tocLinks = [...document.querySelectorAll(".ev-toc a")];
+  const tocIO = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) tocLinks.forEach(a => a.classList.toggle("is-on", a.hash === "#" + en.target.id)); }), { rootMargin: "-20% 0px -70% 0px" });
+  heads.forEach(h => tocIO.observe(h));
+  document.body.insertAdjacentHTML("afterbegin", `<div class="ev-progress" aria-hidden="true"><i></i></div>`);
+  const bar = document.querySelector(".ev-progress i"), body = document.getElementById("evBody");
+  const prog = () => { const r = body.getBoundingClientRect(), t = Math.min(1, Math.max(0, (innerHeight * .35 - r.top) / r.height)); bar.style.transform = `scaleX(${t})`; };
+  addEventListener("scroll", prog, { passive: true }); prog();
   document.getElementById("evFallback")?.remove();
   root.hidden = false;
 

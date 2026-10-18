@@ -32,17 +32,27 @@ def slugify(s):
     return re.sub(r"[^a-z0-9]+", "-", s.replace("&", " and ")).strip("-")
 cn = (ROOT / "assets/js/data/expo-china.js").read_text(encoding="utf8")
 world = (ROOT / "assets/js/data/expo-world.js").read_text(encoding="utf8")
-rows = [(m.group(1), m.group(2)) for m in re.finditer(r'short: "([^"]+)", city: "([^"]+)"', cn)]
-rows += [(m.group(1), m.group(2)) for m in re.finditer(r'"short":"([^"]+)","city":"([^"]+)"', world)]
-seen, slugs = set(), []
-for short, city in rows:
+# one expo per line in both files; pull the fields the sitemap and feed need
+def field(line, k):
+    m = re.search(rf'"?{k}"?:\s*"([^"]*)"', line); return m.group(1) if m else ""
+rows = [l for l in cn.splitlines() if "short:" in l] + [l for l in world.splitlines() if '"short":' in l]
+seen, slugs, items = set(), [], []
+for line in rows:
+    short, city = field(line, "short"), field(line, "city")
     s = slugify(short)
     if s in seen: s += "-" + slugify(city)
     seen.add(s); slugs.append(s)
+    items.append((s, field(line, "name"), city, field(line, "why"), field(line, "month")))
 today = datetime.date.today().isoformat()
 pages = sorted(p.name for p in ROOT.glob("*.html") if p.name != "event.html")
 urls = [base + ("" if p == "index.html" else p) for p in pages] + [f"{base}event.html?e={s}" for s in slugs]
 (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
     "".join(f"  <url><loc>{u.replace('&', '&amp;')}</loc><lastmod>{today}</lastmod></url>\n" for u in urls) + "</urlset>\n", encoding="utf8")
 (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /brand-kit/\nSitemap: {base}sitemap.xml\n", encoding="utf8")
+# RSS feed of expo guides, soonest first
+from xml.sax.saxutils import escape as x
+feed = "".join(f"<item><title>{x(n)} · 2027 guide</title><link>{base}event.html?e={sl}</link><guid>{base}event.html?e={sl}</guid><category>{x(c)}</category><description>{x(w)}</description></item>\n"
+               for sl, n, c, w, mo in sorted(items, key=lambda r: r[4]))
+head = f'<rss version="2.0"><channel><title>{x(SITE["brand"]["name"])} expo guides</title><link>{base}world-expos.html</link><description>One guide per 2027 trade show for Philippine buyers.</description><language>en-ph</language>'
+(ROOT / "feed.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n{head}\n{feed}</channel></rss>\n', encoding="utf8")
 print(f"sitemap.xml: {len(pages)} pages + {len(slugs)} expo articles · assets v={v}")

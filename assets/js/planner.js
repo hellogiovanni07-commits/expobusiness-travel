@@ -19,7 +19,8 @@
 
   // Same slug rule as expos.js, so planner rows link to their article (event.html?e=slug).
   const slugify = s => String(s).toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-  const findTrip = e => (window.ITINERARIES || []).find(t => t.event === "expo" && (t.short === e.short || e.name.toLowerCase().includes((t.short || "~").toLowerCase()) || (t.title && t.title.toLowerCase().startsWith((e.short || "~").toLowerCase()))));
+  const findTrip = e => (window.ITINERARIES || []).find(t => t.expo && t.expo === slugify(e.short || e.name)) || findTripByName(e);
+  const findTripByName = e => (window.ITINERARIES || []).find(t => t.event === "expo" && (t.short === e.short || e.name.toLowerCase().includes((t.short || "~").toLowerCase()) || (t.title && t.title.toLowerCase().startsWith((e.short || "~").toLowerCase()))));
 
   function mount(el) {
     const scope = el.dataset.planner;

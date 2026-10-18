@@ -27,6 +27,9 @@ All data files are in `assets/js/data/`.
 | What | File | Notes |
 |---|---|---|
 | Phone, email, address, hours, social links, DOT and registration numbers | `site-config.js` | Must stay valid JSON after `window.SITE =`. Values in `[brackets]` show as placeholders. |
+| Industries (names, short names, Canton phases, article photos, which have a page) | `taxonomy.js` → `industries` | Feeds itineraries filters, industry pages, article tags and the Expo articles industry filter. |
+| Canton Fair phase names and sectors | `taxonomy.js` → `phases` | Feeds the hall preview, schedule table, China brief and every Canton article. |
+| Article regions (hub chips) | `taxonomy.js` → `regions` | Order shown on Expo articles. |
 | Canton Fair session dates (both 2027 sessions, all phases) | `site-config.js` → `canton.sessions` | Feeds itineraries, countdowns, the schedule table, industry pages, the chatbot and the China guide. Set `"expected": false` once the organiser confirms. |
 | China and Hong Kong expos (planner + articles) | `expo-china.js` → `EXPO_CN` | One object per show. |
 | Expos outside China (articles) | `expo-world.js` → `EXPO_WORLD` | One object per show, one per line. |
@@ -35,7 +38,20 @@ All data files are in `assets/js/data/`.
 | Chatbot answers | `assets/js/chatbot.js` → `KB` | Dates and contact answers read `site-config.js` automatically. |
 | Industry page copy | `build-industries.py` → `INDUSTRIES` | Rerun the build after editing. |
 
-## 3. Expo entry fields
+## 3. Content types
+
+| Type | Lives in | Shown on | Key |
+|---|---|---|---|
+| Page | `*.html` | its own URL | file name |
+| Site details | `site-config.js` | footer, inquiry, chatbot, brand kit | `SITE.contact`, `SITE.legal` |
+| Category | `taxonomy.js` | filters, tags, industry pages | industry key (`furniture`), phase number, region |
+| Expo | `expo-china.js` / `expo-world.js` | planner, Expo articles, its article, sitemap, feed | slug from `short` |
+| Expo article | generated from an Expo | `event.html?e=<slug>` | same slug |
+| Trip | `itineraries-data.js` | itineraries catalogue, inquiry form, home rail | `id`; `expo:` links it to an expo's slug |
+| Industry page | `build-industries.py` + `taxonomy.js` | `industry-<key>.html` | industry key |
+| Chatbot answer | `chatbot.js` | Ask Expo | intent `id` |
+
+## 4. Expo entry fields
 
 ```js
 { name: "Full official name", short: "Short name", city: "Guangzhou", country: "China",   // country only in expo-world.js
@@ -49,7 +65,7 @@ All data files are in `assets/js/data/`.
 
 The article URL is made from `short` (for example `short: "CIFF Guangzhou"` → `event.html?e=ciff-guangzhou`). Changing `short` changes the URL, so avoid renaming published shows.
 
-## 4. Common updates
+## 5. Common updates
 
 **Add an expo.** Add one entry to `expo-china.js` (China/Hong Kong) or `expo-world.js` (elsewhere), run `python build.py`. The show appears in the planner (China list), on Expo articles, gets its own article and is added to `sitemap.xml`.
 
@@ -57,21 +73,25 @@ The article URL is made from `short` (for example `short: "CIFF Guangzhou"` → 
 
 **Contact details arrive.** Replace the bracketed values in `site-config.js`, run `python build.py`. Footer, inquiry page, chatbot and brand kit update.
 
-**Add a ready-made trip.** Add it in `itineraries-data.js` with the `CANTON(...)` or `E({...})` helper. Articles link to a trip automatically when its `short` matches the expo's `short`.
+**Add a ready-made trip.** Add it in `itineraries-data.js` with the `CANTON(...)` or `E({...})` helper and set `expo: "<slug>"` to the expo it serves (the slug is the article URL's `e=` value). The article and planner then show "View itinerary".
+
+**Add or rename an industry.** Edit `taxonomy.js`. To give it its own page, set `"page": true` and add its copy to `build-industries.py` → `INDUSTRIES`.
+
+**Update a Canton phase's sectors.** Edit `taxonomy.js` → `phases`.
 
 **Change the nav or footer.** Edit them in `index.html` only, then run the build.
 
 **New photo.** Article photos are picked by the show's first industry in `assets/js/expos.js` → `PHOTO`.
 
-## 5. Build and publish
+## 6. Build and publish
 
 ```
 python build.py
 ```
 
-Runs the industry builder, layout sync, SEO tags and sitemap, and bumps the `?v=` cache version. Check pages locally at `http://localhost:5210/`, then publish the folder (GitHub Pages) when you approve.
+Runs the industry builder, layout sync, SEO tags, `sitemap.xml`, the RSS feed `feed.xml` (one item per expo guide) and bumps the `?v=` cache version. Check pages locally at `http://localhost:5210/`, then publish the folder (GitHub Pages) when you approve.
 
-## 6. Folder structure
+## 7. Folder structure
 
 ```
 index.html … event.html        pages (one per route)
@@ -79,7 +99,7 @@ assets/css/site.css            tokens, nav, footer, buttons, chatbot, planner
 assets/css/pages.css           inner-page heroes and sections
 assets/css/home.css            home + Canton Fair calendar module
 assets/css/articles.css        Expo articles hub + article
-assets/js/data/                ALL content data (edit here)
+assets/js/data/                ALL content data (edit here): site-config, taxonomy, expo-china, expo-world, itineraries-data
 assets/js/site.js              shared behaviour (nav, reveals, CTA stubs)
 assets/js/expos.js             combined expo list + slugs, categories, photos
 assets/js/articles.js          Expo articles hub

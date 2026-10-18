@@ -68,7 +68,7 @@ window.CN_BRIEF = {
   canton: [
     ["Twice a year, three phases", "Spring (April–May) and autumn (October–November) at the Canton Fair Complex in Pazhou, Guangzhou. Each phase runs about five days, with three days between phases to change the halls."],
     ["2027 is the 141st and 142nd session", `${window.CN_CANTON_DATES}. Expected dates follow the usual pattern until the organiser publishes 2027.`],
-    ["Pick one phase", "Phase 1 is electronics, machinery, vehicles, lighting and hardware. Phase 2 is housewares, gifts, furniture, building materials and ceramics. Phase 3 is fashion, textiles, toys, food, health and pet products. Most buyers need one phase, not three weeks."],
+    ["Pick one phase", window.TAXONOMY.phases.map(p => `Phase ${p.n} is ${p.sectors.toLowerCase()}.`).join(" ") + " Most buyers need one phase, not three weeks."],
     ["Register as a buyer", "Overseas buyers pre-register in the Canton Fair app or the Buyer Service System. The invitation letter for your visa comes from the same system; for spring 2026 it opened on Feb 14, about two months before the fair."],
   ],
   scale: [["32,000+", "exhibitors at the 140th session"], ["75,000+", "booths"], ["1.55M", "sqm of halls"], ["314,000", "overseas buyers, spring 2026"]],

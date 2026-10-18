@@ -92,6 +92,13 @@ INDUSTRIES = [
          note="Toys in the Philippines need proper safety labelling under the Toy and Game Safety Labeling Act, and some products need FDA clearance. Check before you order."),
 ]
 
+# Names, short names and Canton phases come from assets/js/data/taxonomy.js; the copy above stays here.
+_tx = (pathlib.Path(__file__).parent / "assets/js/data/taxonomy.js").read_text(encoding="utf8")
+TAXONOMY = _json.loads(_tx[_tx.index("{"):_tx.rindex("}") + 1])
+for _d in INDUSTRIES:
+    _t = TAXONOMY["industries"][_d["id"]]
+    _d.update(name=_t["name"], short=_t["short"], phases=_t["phases"])
+
 
 # Schematic Pearl River Delta map: approximate positions, approximate road times from the Pazhou complex.
 PRD = {"Guangzhou": (205, 92, ""), "Foshan": (150, 112, "~1 h by road"), "Dongguan": (268, 128, "~1 h by road"),
@@ -136,7 +143,7 @@ def head(title, desc):
   <title>{html.escape(title)}</title>
   <meta name="description" content="{html.escape(desc)}">
   <!--HEAD--><!--/HEAD-->
-  <link rel="stylesheet" href="assets/css/pages.css?v=202610180255">
+  <link rel="stylesheet" href="assets/css/pages.css?v=202610181141">
 </head>
 <body class="nav-over">
   <!--SPRITE--><!--/SPRITE-->
@@ -146,8 +153,8 @@ def head(title, desc):
 
 TAIL = """
   <!--FOOTER--><!--/FOOTER-->
-  <script src="assets/js/data/itineraries-data.js?v=202610180255" defer></script>
-  <script src="assets/js/pages.js?v=202610180255" defer></script>
+  <script src="assets/js/data/itineraries-data.js?v=202610181141" defer></script>
+  <script src="assets/js/pages.js?v=202610181141" defer></script>
 </body>
 </html>
 """

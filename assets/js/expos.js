@@ -6,26 +6,16 @@
   const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
   // Category = where the article files under. Mainland China and Hong Kong get their own; everything else uses its region.
-  const CATEGORIES = ["China", "Hong Kong", "East Asia", "Southeast Asia", "South Asia", "Middle East", "Europe", "North America"];
+  const T = window.TAXONOMY;
+  const CATEGORIES = T.regions;
   const category = e => e.city === "Hong Kong" ? "Hong Kong" : e._src === "cn" ? "China" : (e.region || "Other");
 
-  // Industry keys used in the data. Eight have their own industry page on the site.
-  const INDUSTRY = {
-    electronics: "Electronics", machinery: "Machinery", lighting: "Lighting", construction: "Construction",
-    furniture: "Furniture", horeca: "Hotel & restaurant", fashion: "Fashion & textiles", retail: "Retail & gifts",
-    food: "Food & beverage", auto: "Automotive", beauty: "Beauty", medical: "Medical", packaging: "Packaging",
-  };
-  const PAGES = ["electronics", "machinery", "lighting", "construction", "furniture", "horeca", "fashion", "retail"];
+  // Industry labels, which industries have a page, and article photos all come from data/taxonomy.js.
+  const INDUSTRY = Object.fromEntries(Object.entries(T.industries).map(([k, v]) => [k, v.short]));
+  const PAGES = Object.keys(T.industries).filter(k => T.industries[k].page);
 
-  // Article photos by lead industry (all photos already used on the site).
   const U = id => `https://images.unsplash.com/photo-${id}?w=1400&q=72`;
-  const PHOTO = {
-    electronics: "1515940175183-6798529cb860", machinery: "1716191300020-b52dec5b70a8", lighting: "1561794919-75618574e915",
-    construction: "1581783898377-1c85bf937427", furniture: "1687180498602-5a1046defaa4", horeca: "1785068540682-6917367db28e",
-    fashion: "1532453288672-3a27e9be9efd", retail: "1779684998897-ce5de594a5ac", food: "1555396273-367ea4eb4db5",
-    auto: "1717386255773-1e3037c81788", beauty: "1779684998897-ce5de594a5ac", medical: "1717386255767-52643970d483",
-    canton: "1768396855393-42624b5f0be5", expo: "1711390811937-1b061eaf28ea",
-  };
+  const PHOTO = { ...Object.fromEntries(Object.entries(T.industries).map(([k, v]) => [k, v.photo])), ...T.photos };
   const photo = (e, w = 1400) => U(e.canton ? PHOTO.canton : PHOTO[(e.industries || [])[0]] || PHOTO.expo).replace("w=1400", "w=" + w);
 
   const slugify = s => String(s).toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
