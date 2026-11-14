@@ -69,16 +69,17 @@ ICONS = {
     "pin": '<path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
     "headset": '<path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-6h3zM3 19a2 2 0 0 0 2 2h1v-6H3z"/>',
     "bell": '<path d="M4 17h16"/><path d="M5 17a7 7 0 0 1 14 0"/><path d="M12 10V8M10 8h4"/><path d="M2 20h20"/>',
+    "plane": '<path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>',
     "ext": '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/>',
 }
 SPRITE = '<svg width="0" height="0" style="position:absolute" aria-hidden="true">' + "".join(
     f'<symbol id="i-{k}" viewBox="0 0 24 24">{v}</symbol>' for k, v in ICONS.items()) + "</svg>"
 icon = lambda n, cls="icon": f'<svg class="{cls}" aria-hidden="true"><use href="#i-{n}"/></svg>'
 
-LOGO_MARK = ('<svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="6" fill="#0B2545"/>'
-             '<rect x="9" y="22" width="5" height="10" rx="1" fill="#fff"/><rect x="17.5" y="17" width="5" height="15" rx="1" fill="#fff"/>'
-             '<rect x="26" y="12" width="5" height="20" rx="1" fill="#D4AF37"/>'
-             '<path d="M7 19C13 10 22 7 33 8" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/></svg>')
+LOGO_MARK = ('<svg viewBox="0 0 44 40" aria-hidden="true"><rect x="7" y="24" width="7" height="13" rx="1.5" fill="#ff8a3d"/>'
+             '<rect x="17" y="18" width="7" height="19" rx="1.5" fill="#f26a1b"/><rect x="27" y="12" width="7" height="25" rx="1.5" fill="#c9460b"/>'
+             '<path class="logo-arc" d="M3 26 C 12 8, 28 2, 41 6" fill="none" stroke="#d7261e" stroke-width="2.6" stroke-linecap="round"/>'
+             '<circle cx="41" cy="6" r="3.2" fill="#d7261e"/></svg>')
 LOGO = (f'<a class="logo" href="index.html" aria-label="ExpoBusiness Travel Services, home">{LOGO_MARK}'
         '<span class="logo-text"><b>Expo<span>Business</span></b><small>Travel Services</small></span></a>')
 
@@ -90,7 +91,7 @@ def topbar():
     bits = []
     if PHONE: bits.append(f'<a href="{tel(PHONE)}">{icon("phone")}{esc(PHONE)}</a>')
     if EMAIL: bits.append(f'<a href="mailto:{esc(EMAIL)}">{icon("mail")}{esc(EMAIL)}</a>')
-    sub = "A subsidiary of Immaculate Connections" + (" (DOT Accredited)" if DOT else "")
+    sub = 'Powered by <a href="https://www.immaculateconnectionsph.com/" rel="noopener" target="_blank">Immaculate Connections</a>' + (" (DOT Accredited)" if DOT else "")
     return f'<div class="topbar"><div class="wrap"><div class="tb-contact">{"".join(bits)}</div><div class="tb-sub">{sub}</div></div></div>'
 
 
@@ -121,11 +122,11 @@ def footer():
     reg = f" Reg. no. {esc(REG)}." if REG else ""
     year = datetime.date.today().year
     return f'''<footer class="site-footer"><div class="wrap"><div class="f-grid">
-  <div>{LOGO}<p class="powered">Powered by Immaculate Connections</p><address>{esc(ADDRESS)}</address>{contact_html}</div>
+  <div>{LOGO}<p class="powered">Powered by <a href="https://www.immaculateconnectionsph.com/" rel="noopener" target="_blank">Immaculate Connections</a></p><p class="small" style="margin:-4px 0 12px"><a href="https://www.immaculateconnectionsph.com/" rel="noopener" target="_blank">immaculateconnectionsph.com</a></p><address>{esc(ADDRESS)}</address>{contact_html}</div>
   <div><h4>Services</h4><ul><li><a href="services.html#corporate">Corporate travel</a></li><li><a href="services.html#missions">Trade missions &amp; expos</a></li><li><a href="services.html#mice">Delegations &amp; MICE</a></li><li><a href="visa.html">Business visas</a></li><li><a href="services.html#ground">Interpreters &amp; transport</a></li></ul></div>
   <div><h4>Company</h4><ul><li><a href="about.html">About ExpoBusiness</a></li><li><a href="expos.html">2027 Expo Calendar</a></li><li><a href="proposal.html">Request Corporate Proposal</a></li><li><a href="about.html#faq">Questions</a></li></ul></div>
   <div><h4>Accreditation</h4><div class="badges">{"".join(badges)}</div></div>
-</div><div class="f-bottom"><span>© {year} ExpoBusiness Travel Services, a subsidiary of Immaculate Connections.{reg}</span><span>{social}</span></div></div></footer>'''
+</div><div class="f-bottom"><span>© {year} ExpoBusiness Travel Services, powered by <a href="https://www.immaculateconnectionsph.com/" rel="noopener" target="_blank">Immaculate Connections</a>.{reg}</span><span>{social}</span></div></div></footer>'''
 
 
 CHAT = f'''<button class="cc-fab" type="button" aria-controls="cc" aria-expanded="false"><span class="cc-ava">{icon("bell")}</span><span class="cc-label">Ask Expo</span></button>
@@ -133,12 +134,12 @@ CHAT = f'''<button class="cc-fab" type="button" aria-controls="cc" aria-expanded
 <div class="cc-log" aria-live="polite"></div><form class="cc-form"><label class="sr-only" for="cc-in">Your question</label><input id="cc-in" type="text" autocomplete="off" placeholder="Ask about visas, dates or delegations"><button class="btn" type="submit" aria-label="Send">{icon("send")}</button></form></section>'''
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-         '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">')
+         '<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">')
 
 ORG = {
     "@context": "https://schema.org", "@type": "TravelAgency", "name": "ExpoBusiness Travel Services",
     "url": BASE, "description": SITE["brand"]["short"], "areaServed": "PH",
-    "parentOrganization": {"@type": "Organization", "name": "Immaculate Connections"},
+    "parentOrganization": {"@type": "TravelAgency", "name": "Immaculate Connections", "url": "https://www.immaculateconnectionsph.com/"},
     "address": {"@type": "PostalAddress", "streetAddress": "Unit 4E, 4th Floor, JL Millennium Building, Don Jose Avila Street",
                 "addressLocality": "Cebu City", "addressRegion": "Cebu", "addressCountry": "PH"},
 }
@@ -170,15 +171,17 @@ def page(slug, meta, main):
 <meta property="og:type" content="website"><meta property="og:site_name" content="ExpoBusiness Travel Services">
 <meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}">
 <meta property="og:url" content="{url}"><meta property="og:image" content="{esc(img)}"><meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0B2545">
+<meta name="theme-color" content="#c9460b">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 {FONTS}{preload}
 <link rel="stylesheet" href="assets/css/site.css?v={V}">
+<link rel="stylesheet" href="assets/css/motion.css?v={V}">
 <script>document.documentElement.classList.replace("no-js","js")</script>
 {ld_html}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
 {SPRITE}
 {topbar()}
 {header(meta["nav"])}
@@ -189,6 +192,7 @@ def page(slug, meta, main):
 {CHAT}
 <script src="assets/js/data/site-config.js?v={V}"></script>
 <script src="assets/js/site.js?v={V}" defer></script>
+<script src="assets/js/motion.js?v={V}" defer></script>
 <script src="assets/js/concierge.js?v={V}" defer></script>
 {scripts}
 </body>
@@ -261,7 +265,7 @@ TOKENS = {
     "EMAIL": esc(EMAIL), "ADDRESS": esc(ADDRESS),
     "ICON_CHECK": icon("check"), "ICON_ARROW": icon("arrow"), "ICON_OK": icon("check-circle"),
     "ICON_RECEIPT": icon("receipt"), "ICON_USERS": icon("users"), "ICON_SHIELD": icon("shield"),
-    "ICON_PIN": icon("pin"), "ICON_HEADSET": icon("headset"), "ICON_SEND": icon("send"),
+    "ICON_PIN": icon("pin"), "ICON_HEADSET": icon("headset"), "ICON_SEND": icon("send"), "ICON_PLANE": icon("plane"), "IC_URL": "https://www.immaculateconnectionsph.com/",
     "CONTACT_LINES": "".join(x for x in (
         f'<li>{icon("mail")} <a href="mailto:{esc(EMAIL)}">{esc(EMAIL)}</a></li>' if EMAIL else "",
         f'<li>{icon("phone")} <a href="{tel(PHONE)}">{esc(PHONE)}</a></li>' if PHONE else "",

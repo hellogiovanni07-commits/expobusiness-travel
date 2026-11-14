@@ -1,4 +1,4 @@
-<!--meta {"title": "ExpoBusiness Travel Services · Corporate travel for Philippine companies", "desc": "Corporate travel, trade missions and delegations for Philippine companies: flights, hotels, business visas, interpreters and ground logistics under one coordinator.", "nav": "home", "crumb": "Home", "scripts": ["home.js"], "preload": "https://images.unsplash.com/photo-1775314054195-85f31de0c944?w=1600&q=70&auto=format&fit=crop"} -->
+<!--meta {"title": "ExpoBusiness Travel Services · Corporate travel for Philippine companies", "desc": "Corporate travel, trade missions and delegations for Philippine companies: flights, hotels, business visas, interpreters and ground logistics under one coordinator.", "nav": "home", "crumb": "Home", "preload": "https://images.unsplash.com/photo-1775314054195-85f31de0c944?w=1600&q=70&auto=format&fit=crop"} -->
 <section class="hero">
   <img class="hero-bg" src="https://images.unsplash.com/photo-1775314054195-85f31de0c944?w=1600&q=70&auto=format&fit=crop"
        srcset="https://images.unsplash.com/photo-1775314054195-85f31de0c944?w=800&q=65&auto=format&fit=crop 800w, https://images.unsplash.com/photo-1775314054195-85f31de0c944?w=1600&q=70&auto=format&fit=crop 1600w, https://images.unsplash.com/photo-1775314054195-85f31de0c944?w=2400&q=70&auto=format&fit=crop 2400w"
@@ -6,7 +6,7 @@
   <div class="wrap">
     <div>
       <p class="promo-chip"><b>Now booking</b>Canton Fair 2027 trade missions</p>
-      <h1>End-to-End China Trade Mission Logistics for Philippine Enterprises.</h1>
+      <h1 class="split-words">End-to-End China Trade Mission Logistics for Philippine Enterprises.</h1>
       <p class="lead">Turnkey corporate travel for the Canton Fair and beyond. Flights, M&nbsp;visas, Pazhou hotels and bilingual factory visits, managed from our office in Cebu.</p>
       <div class="hero-ctas">
         <a class="btn btn-gold" href="proposal.html?expo=canton-fair-spring">Get a Custom B2B Quote {{ICON_ARROW}}</a>
@@ -16,6 +16,12 @@
     <aside class="promo-card" aria-labelledby="promo-h">
       <h2 id="promo-h">Canton Fair, Spring 2027</h2>
       <p class="sub">141st session · Pazhou, Guangzhou</p>
+      <div class="route" aria-hidden="true">
+        <span class="route-pt"><b>CEB</b>Cebu</span>
+        <svg class="route-svg" viewBox="0 0 200 50" preserveAspectRatio="none"><path class="route-bg" d="M4 44 C 60 -8, 140 -8, 196 44"/><path class="route-line" pathLength="1" d="M4 44 C 60 -8, 140 -8, 196 44"/></svg>
+        <span class="route-plane">{{ICON_PLANE}}</span>
+        <span class="route-pt end"><b>CAN</b>Guangzhou</span>
+      </div>
       <div class="count" data-countdown="{{CANTON_START}}"><b>–</b><span>days to Phase 1</span></div>
       <ul class="phase-list">{{PHASES}}</ul>
       <p class="note">Expected dates. The organiser has not published the official 2027 calendar yet; we confirm before anything is booked.</p>
@@ -35,6 +41,12 @@
     </ul>
     {{CLIENT_LOGOS}}
   </div>
+  <div class="marquee" aria-label="Destinations we plan business trips to">
+    <div class="marquee-track">
+      <span>Guangzhou</span><span>Shanghai</span><span>Hong Kong</span><span>Shenzhen</span><span>Tokyo</span><span>Seoul</span><span>Singapore</span><span>Bangkok</span><span>Ho Chi Minh City</span><span>Dubai</span><span>Frankfurt</span><span>Milan</span><span>Las Vegas</span>
+      <span aria-hidden="true">Guangzhou</span><span aria-hidden="true">Shanghai</span><span aria-hidden="true">Hong Kong</span><span aria-hidden="true">Shenzhen</span><span aria-hidden="true">Tokyo</span><span aria-hidden="true">Seoul</span><span aria-hidden="true">Singapore</span><span aria-hidden="true">Bangkok</span><span aria-hidden="true">Ho Chi Minh City</span><span aria-hidden="true">Dubai</span><span aria-hidden="true">Frankfurt</span><span aria-hidden="true">Milan</span><span aria-hidden="true">Las Vegas</span>
+    </div>
+  </div>
 </section>
 
 <section class="section">
@@ -47,16 +59,16 @@
       </div>
       <a class="link" href="services.html">All corporate services {{ICON_ARROW}}</a>
     </div>
-    <div class="grid g3">
-      <a class="card card-img reveal" href="services.html#corporate">
+    <div class="grid g3 stagger">
+      <a class="card card-img reveal tilt" href="services.html#corporate">
         <img src="https://images.unsplash.com/photo-1483450388369-9ed95738483c?w=720&q=65&auto=format&fit=crop" alt="Business travellers in an aircraft cabin" loading="lazy" width="720" height="450">
         <div class="card-body"><h3>Corporate flights &amp; hotels</h3><p>Fares and rooms booked to your travel policy, changes handled by one coordinator.</p><span class="link">Corporate travel {{ICON_ARROW}}</span></div>
       </a>
-      <a class="card card-img reveal" href="services.html#missions">
+      <a class="card card-img reveal tilt" href="services.html#missions">
         <img src="https://images.unsplash.com/photo-1758519288905-38b7b00c1023?w=720&q=65&auto=format&fit=crop" alt="Two business people shaking hands across a meeting table" loading="lazy" width="720" height="450">
         <div class="card-body"><h3>Trade missions &amp; expos</h3><p>Buyer registration, hall planning, supplier meetings and factory visits around the show.</p><span class="link">Trade missions {{ICON_ARROW}}</span></div>
       </a>
-      <a class="card card-img reveal" href="services.html#mice">
+      <a class="card card-img reveal tilt" href="services.html#mice">
         <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=720&q=65&auto=format&fit=crop" alt="Speaker addressing a conference audience" loading="lazy" width="720" height="450">
         <div class="card-body"><h3>Delegations &amp; MICE</h3><p>Group air, rooming lists, coaches, briefings, venues and business dinners.</p><span class="link">Delegations {{ICON_ARROW}}</span></div>
       </a>
@@ -69,10 +81,16 @@
     <div class="head reveal">
       <p class="eyebrow">Built around your headcount</p>
       <h2>The right logistics for the size of your team</h2>
-      <p>A two-person sourcing trip and a forty-person chamber delegation need different handling. We plan for yours.</p>
+      <p>A two-person sourcing trip and a forty-person chamber delegation need different handling. Slide to your team size.</p>
+    </div>
+    <div class="pax-pick reveal">
+      <label for="pax-range">How many are travelling? <output id="pax-out">6</output> <span id="pax-unit">travellers</span></label>
+      <input type="range" id="pax-range" min="1" max="40" value="6" aria-describedby="pax-tip">
+      <div class="pax-scale" aria-hidden="true"><span>1</span><span>10</span><span>20</span><span>30</span><span>40+</span></div>
+      <p id="pax-tip" class="pax-tip" aria-live="polite"></p>
     </div>
     <div class="grid g3">
-      <article class="card seg reveal">
+      <article class="card seg reveal" data-min="1" data-max="3">
         <p class="who">Sourcing teams</p>
         <p class="pax">1–3 pax</p>
         <p>Fast, lean trips for owners and buyers who need results in a few days.</p>
@@ -83,7 +101,7 @@
         </ul>
         <a class="btn btn-ghost" href="proposal.html?pax=1-2">Plan a sourcing trip</a>
       </article>
-      <article class="card seg featured reveal">
+      <article class="card seg reveal" data-min="4" data-max="9">
         <p class="who">Corporate groups</p>
         <p class="pax">4–9 pax</p>
         <p>Company buying teams that split up by product line and regroup each evening.</p>
@@ -94,7 +112,7 @@
         </ul>
         <a class="btn" href="proposal.html?pax=6-10">Plan a group trip</a>
       </article>
-      <article class="card seg reveal">
+      <article class="card seg reveal" data-min="10" data-max="999">
         <p class="who">Chamber delegations</p>
         <p class="pax">10+ pax</p>
         <p>Chambers, associations and corporate delegations travelling as one programme.</p>
@@ -114,7 +132,7 @@
     <div class="reveal">
       <p class="eyebrow">The Immaculate Connections advantage</p>
       <h2>A Philippine travel company behind every booking</h2>
-      <p style="color:#b9c6d6">ExpoBusiness is the business travel arm of Immaculate Connections, a Cebu travel company. Your finance team deals with a local, registered business, not an overseas website.</p>
+      <p style="color:#c9c8db">ExpoBusiness is the business travel arm of, and powered by, <a class="on-dark" href="{{IC_URL}}" rel="noopener" target="_blank">Immaculate Connections</a>, a Cebu travel company. Your finance team deals with a local business, not an overseas website.</p>
       <ul class="adv">
         <li><span class="mark">{{ICON_RECEIPT}}</span><div><h3>Official receipts and invoices</h3><p>Issued in your company's name, ready for your accounting and audit trail.</p></div></li>
         <li><span class="mark">{{ICON_HEADSET}}</span><div><h3>Dedicated Philippine support staff</h3><p>A named coordinator in Cebu who knows your trip, reachable before and during travel.</p></div></li>
@@ -123,6 +141,7 @@
     </div>
     <div class="split-img reveal">
       <img src="https://images.unsplash.com/photo-1694253988732-816ab6e60caa?w=900&q=65&auto=format&fit=crop" alt="Empty corporate meeting room with a long table" loading="lazy" width="900" height="675">
+      <a class="ic-card" href="{{IC_URL}}" rel="noopener" target="_blank"><small>Powered by</small><b>Immaculate Connections</b><span>immaculateconnectionsph.com {{ICON_ARROW}}</span></a>
     </div>
   </div>
 </section>
@@ -133,7 +152,7 @@
       <p class="eyebrow">How it works</p>
       <h2>From brief to boarding in four steps</h2>
     </div>
-    <ol class="steps reveal">
+    <ol class="steps reveal draw">
       <li><h3>Send your brief</h3><p>Destination, dates, headcount and what the trip must achieve.</p></li>
       <li><h3>Receive a proposal</h3><p>An itemised corporate proposal, usually within one working day.</p></li>
       <li><h3>We file and book</h3><p>Visas, flights, hotels, registration and ground transport, tracked for you.</p></li>
