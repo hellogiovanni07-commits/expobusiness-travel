@@ -76,10 +76,11 @@ SPRITE = '<svg width="0" height="0" style="position:absolute" aria-hidden="true"
     f'<symbol id="i-{k}" viewBox="0 0 24 24">{v}</symbol>' for k, v in ICONS.items()) + "</svg>"
 icon = lambda n, cls="icon": f'<svg class="{cls}" aria-hidden="true"><use href="#i-{n}"/></svg>'
 
-LOGO_MARK = ('<svg viewBox="0 0 44 40" aria-hidden="true"><rect x="7" y="24" width="7" height="13" rx="1.5" fill="#ff8a3d"/>'
-             '<rect x="17" y="18" width="7" height="19" rx="1.5" fill="#f26a1b"/><rect x="27" y="12" width="7" height="25" rx="1.5" fill="#c9460b"/>'
-             '<path class="logo-arc" d="M3 26 C 12 8, 28 2, 41 6" fill="none" stroke="#d7261e" stroke-width="2.6" stroke-linecap="round"/>'
-             '<circle cx="41" cy="6" r="3.2" fill="#d7261e"/></svg>')
+# original brand mark: rising booths under a flight arc (animation in motion.css, restored from the first site)
+LOGO_MARK = ('<svg class="brand-mark" viewBox="0 0 44 40" aria-hidden="true"><rect class="bm-bar b1" x="7" y="24" width="7" height="13" rx="1.5" fill="#ff8a3d"/>'
+             '<rect class="bm-bar b2" x="17" y="18" width="7" height="19" rx="1.5" fill="#f26a1b"/><rect class="bm-bar b3" x="27" y="12" width="7" height="25" rx="1.5" fill="#c9460b"/>'
+             '<path class="bm-arc" d="M3 26 C 12 8, 28 2, 41 6" fill="none" stroke="#d7261e" stroke-width="2.4" stroke-linecap="round"/>'
+             '<circle class="bm-dot" r="3" fill="#d7261e"/></svg>')
 LOGO = (f'<a class="logo" href="index.html" aria-label="ExpoBusiness Travel Services, home">{LOGO_MARK}'
         '<span class="logo-text"><b>Expo<span>Business</span></b><small>Travel Services</small></span></a>')
 

@@ -2,10 +2,10 @@
    Once you scroll, the header turns frosted white and the top bar slides away.
    Every page opens with .hx or .page-hero, so their top padding makes room for --hdr. */
 :root { --tb: 33px; --hh: 73px; --hdr: calc(var(--tb) + var(--hh)); }
-.topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 52; background: transparent; border-bottom: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.72); transition: transform .45s var(--ease), opacity .3s; }
+.topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 52; background: transparent; border-bottom: 0; color: rgba(255,255,255,.72); transition: transform .45s var(--ease), opacity .3s; }
 .topbar a { color: rgba(255,255,255,.85); }
 .topbar a:hover { color: #fff; }
-.site-header { position: fixed; top: var(--tb); left: 0; right: 0; z-index: 51; background: transparent; border-bottom: 1px solid rgba(255,255,255,.12);
+.site-header { position: fixed; top: var(--tb); left: 0; right: 0; z-index: 51; background: transparent; border-bottom: 1px solid transparent;
   transition: transform .45s var(--ease), background-color .35s ease, border-color .35s ease, box-shadow .35s ease; }
 /* soft shade behind the transparent bars so text stays readable on any photo */
 .site-header::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: calc(100% + var(--tb) + 30px); z-index: -1; pointer-events: none;
@@ -39,3 +39,6 @@
 
 @media (max-width: 720px) { :root { --tb: 32px; --hh: 72px; } }
 @media (prefers-reduced-motion: reduce) { .topbar, .site-header { transition: none; } }
+
+/* keep the hero's background grid out of the header area: it starts below the bars and fades in */
+.hx-grid { top: calc(var(--hdr) + 16px); -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 120px), radial-gradient(ellipse 70% 80% at 70% 40%, #000 20%, transparent 75%); -webkit-mask-composite: source-in; mask-image: linear-gradient(180deg, transparent 0, #000 120px), radial-gradient(ellipse 70% 80% at 70% 40%, #000 20%, transparent 75%); mask-composite: intersect; }
