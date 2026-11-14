@@ -1,0 +1,71 @@
+// "Ask Expo": the ExpoBusiness concierge. Runs in the browser from the answers below; no data leaves the page.
+(() => {
+  const fab = document.querySelector(".cc-fab"), panel = document.getElementById("cc");
+  if (!fab || !panel) return;
+  const log = panel.querySelector(".cc-log"), form = panel.querySelector(".cc-form"), input = panel.querySelector("input");
+  const S = window.SITE || {}, email = S.contact && !S.contact.email.startsWith("[") ? S.contact.email : "";
+  const M = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const rng = ([a, b]) => { const x = new Date(a), y = new Date(b); return x.getMonth() === y.getMonth() ? `${x.getDate()}–${y.getDate()} ${M[y.getMonth()]}` : `${x.getDate()} ${M[x.getMonth()]} – ${y.getDate()} ${M[y.getMonth()]}`; };
+  const sessions = (S.canton && S.canton.sessions) || [];
+  const cantonDates = sessions.map(s => `<li><b>${s.name}</b> (${s.num}): ${s.phases.map((p, i) => "Phase " + (i + 1) + " " + rng(p)).join(" · ")}</li>`).join("");
+  const PROPOSAL = '<a href="proposal.html">request a corporate proposal</a>';
+  const COORD = "<p>To speak with a corporate travel coordinator, " + PROPOSAL + (email ? ` or email <a href="mailto:${email}">${email}</a>` : "") + ". We reply within one working day.</p>";
+
+  const KB = [
+    { k: ["hello", "hi", "good morning", "good afternoon", "hey"], a: "<p>Hello. How can I help with your business travel?</p>", q: ["China M visa timeline", "Canton Fair 2027 dates", "Speak to a coordinator"] },
+    { k: ["visa", "m visa", "business visa", "china visa", "invitation", "processing", "timeline", "requirements", "documents"],
+      a: "<p>For mainland China, Philippine passport holders need a <b>business (M) visa</b>:</p><ul><li>Passport valid 6+ months, blank pages</li><li>Online application approved before the visa centre visit</li><li>Photo, invitation letter, proof of business (DTI/SEC)</li></ul><p>Allow <b>four to six weeks</b> before departure. Fees and processing times are set by the visa centre and confirmed when we file. Hong Kong is visa-free for 14 days.</p><p>See <a href='visa.html'>business visas</a> for other countries.</p>",
+      q: ["Canton Fair 2027 dates", "Speak to a coordinator"] },
+    { k: ["canton", "fair", "dates", "when", "phase", "guangzhou", "2027", "schedule"],
+      a: "<p>Canton Fair 2027, expected dates (the organiser has not published the official calendar yet):</p><ul>" + cantonDates + "</ul><p>Phase 1: electronics, machinery, lighting. Phase 2: home goods, furniture, gifts. Phase 3: textiles, fashion, toys. Hotels near Pazhou fill early, so book well ahead.</p>",
+      q: ["China M visa timeline", "Other 2027 expos"] },
+    { k: ["expo", "expos", "trade show", "calendar", "exhibition", "fair list", "other"],
+      a: "<p>Our <a href='expos.html'>2027 expo calendar</a> lists major trade shows in Asia, Europe, the Middle East and the US, with dates and sectors. We plan trips to any of them, and to shows not on the list.</p>" },
+    { k: ["price", "cost", "how much", "rate", "quote", "quotation", "budget", "package"],
+      a: "<p>Every trip is quoted individually: the price depends on destination, dates, hotel class and headcount. You receive an <b>itemised proposal</b> with corporate rates where they apply, and official invoices in your company's name.</p>" + COORD },
+    { k: ["group", "delegation", "chamber", "association", "mice", "conference", "incentive", "pax", "people", "team"],
+      a: "<p>We handle teams of every size: <b>1–3</b> (lean sourcing trips), <b>4–9</b> (private van, bilingual coordinator) and <b>10+</b> delegations (group visas, seat blocks, coaches, business dinners, charter on request).</p>" + COORD },
+    { k: ["invoice", "receipt", "or", "official receipt", "finance", "accounting", "payment", "pay", "terms"],
+      a: "<p>Invoices and official receipts are issued in your company's name. Nothing is paid on the website: payment terms are agreed in writing before anything is booked.</p>" },
+    { k: ["interpreter", "translator", "factory", "supplier", "audit", "visit", "transport", "van", "driver"],
+      a: "<p>We book <b>bilingual interpreters</b> by the half or full day, plus private vans, drivers and routing for <b>factory visits</b> around the fair or your meetings.</p>" },
+    { k: ["flight", "hotel", "airline", "cebu", "manila", "davao", "clark", "book"],
+      a: "<p>We book flights and business hotels to your travel policy, with departures from Cebu, Manila, Clark and Davao, and handle changes for you.</p>" },
+    { k: ["coordinator", "contact", "speak", "call", "human", "agent", "email", "phone", "talk"], a: COORD },
+    { k: ["who", "about", "company", "immaculate", "office", "address", "where"],
+      a: "<p>ExpoBusiness Travel Services is a subsidiary of <b>Immaculate Connections</b>, a travel company in Cebu City. Our office: " + ((S.contact && S.contact.address) || "Cebu City") + ".</p>" },
+  ];
+  const norm = s => s.toLowerCase().replace(/[^a-z0-9+ ]/g, " ");
+  function answer(text) {
+    const t = " " + norm(text) + " ";
+    let best = null, score = 0;
+    KB.forEach(item => {
+      const s = item.k.reduce((n, k) => n + (t.includes(" " + k + " ") || (k.length > 4 && t.includes(k)) ? k.length : 0), 0);
+      if (s > score) { score = s; best = item; }
+    });
+    return best || { a: "<p>I don't have a ready answer for that.</p>" + COORD, q: ["China M visa timeline", "Canton Fair 2027 dates"] };
+  }
+  function add(html, who, chips) {
+    const m = document.createElement("div");
+    m.className = "cc-msg " + (who === "me" ? "cc-me" : "cc-bot");
+    if (who === "me") m.textContent = html; else m.innerHTML = html;
+    log.appendChild(m);
+    if (chips && chips.length) {
+      const c = document.createElement("div"); c.className = "cc-chips";
+      chips.forEach(q => { const b = document.createElement("button"); b.type = "button"; b.textContent = q; b.onclick = () => ask(q); c.appendChild(b); });
+      log.appendChild(c);
+    }
+    log.scrollTop = log.scrollHeight;
+  }
+  function ask(q) { add(q, "me"); const r = answer(q); setTimeout(() => add(r.a, "bot", r.q), 250); }
+  let started = false;
+  function toggle(open) {
+    panel.classList.toggle("on", open); fab.setAttribute("aria-expanded", open);
+    if (open && !started) { started = true; add("<p>Welcome to ExpoBusiness. I can provide current M-Visa processing timelines, Canton Fair dates, or connect you with a corporate travel coordinator.</p>", "bot", ["China M visa timeline", "Canton Fair 2027 dates", "Speak to a coordinator"]); }
+    if (open) input.focus(); else fab.focus();
+  }
+  fab.addEventListener("click", () => toggle(!panel.classList.contains("on")));
+  panel.querySelector(".cc-x").addEventListener("click", () => toggle(false));
+  addEventListener("keydown", e => { if (e.key === "Escape" && panel.classList.contains("on")) toggle(false); });
+  form.addEventListener("submit", e => { e.preventDefault(); const v = input.value.trim(); if (v) { input.value = ""; ask(v); } });
+})();
