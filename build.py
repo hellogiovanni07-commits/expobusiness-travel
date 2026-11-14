@@ -106,27 +106,26 @@ def header(cur):
 
 
 def footer():
-    badges = []
-    for code, name, num in (("DOT", "DOT Philippines accredited", DOT), ("IATA", "IATA accredited agent", IATA), ("PhilGEPS", "PhilGEPS registered", PHILGEPS)):
-        if num:
-            badges.append(f'<div class="badge"><span class="seal">{code}</span><span><b>{name}</b><small>No. {esc(num)}</small></span></div>')
-    if not badges:
-        badges.append('<p>Accreditation and business registration details are provided with every corporate proposal.</p>')
+    # compact: row 1 = logo + links, row 2 = powered-by / address / contact, row 3 = © + accreditation
+    badges = [f'<span class="badge"><b>{code}</b> No. {esc(num)}</span>' for code, num in (("DOT", DOT), ("IATA", IATA), ("PhilGEPS", PHILGEPS)) if num]
+    accred = " ".join(badges) if badges else "Accreditation and registration details come with every proposal."
     contact = []
-    if PHONE: contact.append(f'<li><a href="{tel(PHONE)}">{esc(PHONE)}</a></li>')
-    if MOBILE: contact.append(f'<li><a href="{tel(MOBILE)}">{esc(MOBILE)} (mobile)</a></li>')
-    if EMAIL: contact.append(f'<li><a href="mailto:{esc(EMAIL)}">{esc(EMAIL)}</a></li>')
-    if HOURS: contact.append(f'<li>{esc(HOURS)}</li>')
-    social = " · ".join(f'<a href="{esc(u)}" rel="noopener">{n}</a>' for n, u in (("Facebook", FB), ("LinkedIn", LI)) if u)
-    contact_html = f'<ul style="margin-top:12px">{"".join(contact)}</ul>' if contact else ""
+    if PHONE: contact.append(f'<a href="{tel(PHONE)}">{esc(PHONE)}</a>')
+    if MOBILE: contact.append(f'<a href="{tel(MOBILE)}">{esc(MOBILE)}</a>')
+    if EMAIL: contact.append(f'<a href="mailto:{esc(EMAIL)}">{esc(EMAIL)}</a>')
+    if HOURS: contact.append(esc(HOURS))
+    contact += [f'<a href="{esc(u)}" rel="noopener">{n}</a>' for n, u in (("Facebook", FB), ("LinkedIn", LI)) if u]
     reg = f" Reg. no. {esc(REG)}." if REG else ""
     year = datetime.date.today().year
-    return f'''<footer class="site-footer"><div class="wrap"><div class="f-grid">
-  <div>{LOGO}<p class="powered">Powered by <a href="https://www.immaculateconnectionsph.com/" rel="noopener" target="_blank">Immaculate Connections</a></p><p class="small" style="margin:-4px 0 12px"><a href="https://www.immaculateconnectionsph.com/" rel="noopener" target="_blank">immaculateconnectionsph.com</a></p><address>{esc(ADDRESS)}</address>{contact_html}</div>
-  <div><h4>Services</h4><ul><li><a href="services.html#corporate">Corporate travel</a></li><li><a href="services.html#missions">Trade missions &amp; expos</a></li><li><a href="services.html#mice">Delegations &amp; MICE</a></li><li><a href="visa.html">Business visas</a></li><li><a href="services.html#ground">Interpreters &amp; transport</a></li></ul></div>
-  <div><h4>Company</h4><ul><li><a href="about.html">About ExpoBusiness</a></li><li><a href="expos.html">2027 Expo Calendar</a></li><li><a href="proposal.html">Request Corporate Proposal</a></li><li><a href="about.html#faq">Questions</a></li></ul></div>
-  <div><h4>Accreditation</h4><div class="badges">{"".join(badges)}</div></div>
-</div><div class="f-bottom"><span>© {year} ExpoBusiness Travel Services, powered by <a href="https://www.immaculateconnectionsph.com/" rel="noopener" target="_blank">Immaculate Connections</a>.{reg}</span><span>{social}</span></div></div></footer>'''
+    links = (("services.html#corporate", "Corporate travel"), ("services.html#missions", "Trade missions"), ("services.html#mice", "Delegations &amp; MICE"),
+             ("visa.html", "Business visas"), ("expos.html", "2027 Expos"), ("about.html", "About"), ("about.html#faq", "FAQ"))
+    nav = "".join(f'<a href="{h}">{t}</a>' for h, t in links)
+    meta = "".join(f'<span>{c}</span>' for c in [f'Powered by <a class="ic-link" href="https://www.immaculateconnectionsph.com/" rel="noopener" target="_blank">Immaculate Connections</a>', esc(ADDRESS)] + contact)
+    return f'''<footer class="site-footer"><div class="wrap">
+<div class="f-top">{LOGO}<nav class="f-links" aria-label="Footer">{nav}</nav></div>
+<p class="f-meta">{meta}</p>
+<div class="f-bottom"><span>© {year} ExpoBusiness Travel Services.{reg}</span><span>{accred}</span></div>
+</div></footer>'''
 
 
 CHAT = f'''<button class="cc-fab" type="button" aria-controls="cc" aria-expanded="false"><span class="cc-ava">{icon("bell")}</span><span class="cc-label">Ask Expo</span></button>
@@ -176,6 +175,7 @@ def page(slug, meta, main):
 {FONTS}{preload}
 <link rel="stylesheet" href="assets/css/site.css?v={V}">
 <link rel="stylesheet" href="assets/css/motion.css?v={V}">
+<link rel="stylesheet" href="assets/css/buttons.css?v={V}">
 <script>document.documentElement.classList.replace("no-js","js")</script>
 {ld_html}
 </head>

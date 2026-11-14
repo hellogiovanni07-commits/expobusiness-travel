@@ -1,0 +1,78 @@
+/* Button motion, ported from technext.asia's buttons.css and recoloured to the ExpoBusiness orange.
+   Hover: spring lift + light sweep + arrow nudge. Press: quick squeeze. Click: ripple.
+   Ghost buttons: fill wipes in from the left. Main proposal CTAs: soft glow pulse at rest,
+   spinning light ring and arrow loop-out on hover. Buttons pop in when they scroll into view.
+   Transform / opacity only; everything off under reduced motion. */
+:root { --btn-ease: cubic-bezier(.2,.8,.2,1); --btn-spring: cubic-bezier(.34,1.56,.64,1); --or-050: #fff1e7; }
+
+.btn { position: relative; isolation: isolate; overflow: hidden; -webkit-tap-highlight-color: transparent; font-family: var(--h); font-weight: 700; letter-spacing: .005em;
+  transition: transform .32s var(--btn-spring), background-color .2s ease, border-color .2s ease, color .2s ease, box-shadow .3s ease; }
+.btn > :not(.ripple) { position: relative; z-index: 2; }
+.btn .icon { transition: transform .35s var(--btn-spring); }
+.btn:hover { transform: translateY(-2px); }
+.btn:hover .icon { transform: translateX(4px); }
+.btn:active { transform: translateY(0) scale(.965); transition-duration: .1s; }
+.btn:focus-visible { outline: 3px solid rgba(242,106,27,.55); outline-offset: 3px; }
+
+/* light sweep across the button on hover */
+.btn::after { content: ""; position: absolute; inset: -2px; z-index: 1; pointer-events: none;
+  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.5) 48%, rgba(255,255,255,.08) 56%, transparent 70%);
+  transform: translateX(-140%) skewX(-12deg); transition: transform .75s var(--btn-ease); }
+.btn:hover::after { transform: translateX(140%) skewX(-12deg); }
+
+/* solid buttons: deeper colour + layered shadow on hover */
+.btn:not(.btn-ghost):not(.btn-ghost-white) { box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 1px 2px rgba(168,58,8,.25), 0 8px 18px -10px rgba(201,70,11,.75); }
+.btn:not(.btn-ghost):not(.btn-ghost-white):hover { box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 2px 4px rgba(168,58,8,.25), 0 16px 30px -12px rgba(201,70,11,.8), 0 0 0 4px rgba(242,106,27,.14); }
+.btn-gold:hover { background: var(--gold-ink); border-color: var(--gold-ink); }
+.btn:not(.btn-ghost):not(.btn-ghost-white):not(.btn-gold):active { background: var(--gold-700); }
+
+/* ghost buttons: tint wipes in from the left instead of a flat colour swap */
+.btn-ghost::before, .btn-ghost-white::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: var(--or-050);
+  transform: scaleX(0); transform-origin: left center; transition: transform .38s var(--btn-ease); }
+.btn-ghost-white::before { background: rgba(255,255,255,.14); }
+.btn-ghost:hover::before, .btn-ghost-white:hover::before { transform: scaleX(1); }
+.btn-ghost:hover { background: transparent; border-color: var(--gold-ink); color: var(--gold-ink); box-shadow: 0 10px 22px -14px rgba(201,70,11,.55); }
+.btn-ghost-white:hover { background: transparent; border-color: #fff; color: #fff; }
+.btn-ghost::after { background: linear-gradient(110deg, transparent 30%, rgba(242,106,27,.14) 50%, transparent 70%); }
+.seg-on .btn-ghost:hover { color: #fff; background: var(--gold-700); border-color: var(--gold-700); }
+.seg-on .btn-ghost::before { display: none; }
+
+/* main proposal CTAs: soft glow at rest, light ring + arrow loop on hover */
+@property --btn-a { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+.btn-cta::before { content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none; border-radius: inherit; padding: 2px; opacity: 0;
+  background: conic-gradient(from var(--btn-a), transparent 0 58%, #ffb27d 74%, #fff 81%, transparent 92%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: btnSpin 2.2s linear infinite paused; transition: opacity .3s; }
+.btn-cta:hover::before { opacity: 1; animation-play-state: running; }
+.btn-cta { animation: btnGlow 3.6s ease-in-out infinite; }
+.btn-cta:hover { animation: none; }
+.btn-cta:hover .icon:last-child { animation: btnArrow .55s var(--btn-ease); }
+@keyframes btnSpin { to { --btn-a: 360deg; } }
+@keyframes btnGlow {
+  0%, 70%, 100% { box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 1px 2px rgba(168,58,8,.25), 0 8px 18px -10px rgba(201,70,11,.75), 0 0 0 0 rgba(242,106,27,0); }
+  82% { box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 1px 2px rgba(168,58,8,.25), 0 8px 18px -10px rgba(201,70,11,.75), 0 0 0 7px rgba(242,106,27,.16); } }
+@keyframes btnArrow { 0% { transform: translateX(0); } 45% { transform: translateX(14px); opacity: 0; } 46% { transform: translateX(-12px); opacity: 0; } 100% { transform: translateX(4px); opacity: 1; } }
+.paused .btn-cta, .paused.btn-cta { animation-play-state: paused; }
+
+/* click ripple (added by motion.js) */
+.btn .ripple { position: absolute; z-index: 1; border-radius: 50%; background: #fff; opacity: .35; transform: scale(0); animation: ripple .65s var(--btn-ease) forwards; pointer-events: none; }
+.btn-ghost .ripple { background: var(--gold-ink); opacity: .18; }
+@keyframes ripple { to { transform: scale(1); opacity: 0; } }
+
+/* pop in when scrolled into view (classes added by motion.js) */
+.btn-pre { opacity: 0; transform: translateY(10px) scale(.96); }
+.btn-in { animation: btnPop .55s var(--btn-spring) var(--btn-d, 0ms) backwards; }
+.btn-cta.btn-in { animation: btnPop .55s var(--btn-spring) var(--btn-d, 0ms) backwards, btnGlow 3.6s ease-in-out 1s infinite; }
+.btn-cta.btn-in:hover { animation: none; }
+@keyframes btnPop { from { opacity: 0; transform: translateY(10px) scale(.96); } to { opacity: 1; transform: none; } }
+
+/* the header button stays still so the bar never jitters */
+.site-header .btn:hover, .site-header .btn:active { transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn, .btn .icon, .btn::after, .btn::before { transition: none !important; animation: none !important; }
+  .btn:hover, .btn:active { transform: none; }
+  .btn-pre { opacity: 1; transform: none; }
+  .btn-in { animation: none; }
+}

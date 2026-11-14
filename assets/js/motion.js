@@ -123,6 +123,39 @@
     card.addEventListener("pointerleave", () => { rect = null; cancelAnimationFrame(raf); raf = 0; card.classList.remove("tilting"); card.classList.add("untilt"); card.style.transform = ""; });
   });
 
+  /* ---------- buttons (same feel as technext.asia) ---------- */
+  // main proposal CTAs get the glow + light ring
+  $$('a.btn[href^="proposal.html"]:not(.btn-ghost):not(.btn-sm), .btn[data-submit]').forEach(b => { if (!b.closest(".site-header")) b.classList.add("btn-cta"); });
+  // ripple from the click point
+  document.addEventListener("pointerdown", e => {
+    const b = e.target.closest && e.target.closest(".btn"); if (!b || reduce || e.button !== 0) return;
+    const r = b.getBoundingClientRect(), d = Math.max(r.width, r.height) * 2.2, s = document.createElement("span");
+    s.className = "ripple"; s.style.cssText = `width:${d}px;height:${d}px;left:${e.clientX - r.left - d / 2}px;top:${e.clientY - r.top - d / 2}px`;
+    b.appendChild(s); setTimeout(() => s.remove(), 700);
+  }, { passive: true });
+  // buttons below the fold pop in when they scroll into view, staggered per group
+  if (!reduce && "IntersectionObserver" in window) {
+    const pending = new Set();
+    const show = b => {
+      if (!pending.delete(b)) return; pio.unobserve(b);
+      b.classList.remove("btn-pre"); b.classList.add("btn-in");
+      setTimeout(() => { b.classList.remove("btn-in"); b.style.removeProperty("--btn-d"); }, 1200 + (parseInt(b.style.getPropertyValue("--btn-d")) || 0));
+    };
+    const pio = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && show(e.target)), { rootMargin: "0px 0px -8% 0px" });
+    // safety net: if the observer is throttled (background tab, fast jump), anything on or above the screen shows anyway
+    let lastSweep = 0, trail = 0;
+    const sweep = () => { lastSweep = Date.now(); pending.forEach(b => { if (b.getBoundingClientRect().top < innerHeight) show(b); }); if (!pending.size) removeEventListener("scroll", onSweep); };
+    const onSweep = () => { clearTimeout(trail); if (Date.now() - lastSweep > 150) sweep(); else trail = setTimeout(sweep, 160); };
+    addEventListener("scroll", onSweep, { passive: true });
+    $$("main .btn").forEach(b => {
+      if (b.hidden || b.closest(".hero, .page-hero, .cc-panel, form")) return;
+      if (b.getBoundingClientRect().top < innerHeight) return; // already on screen: leave it
+      const sib = b.parentElement ? [...b.parentElement.querySelectorAll(":scope > .btn")] : [];
+      b.style.setProperty("--btn-d", Math.max(0, sib.indexOf(b)) * 80 + "ms");
+      b.classList.add("btn-pre"); pending.add(b); pio.observe(b);
+    });
+  }
+
   /* ---------- headcount slider -> highlights the right setup ---------- */
   const range = $("#pax-range");
   if (range) {

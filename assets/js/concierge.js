@@ -45,19 +45,50 @@
     });
     return best || { a: "<p>I don't have a ready answer for that.</p>" + COORD, q: ["China M visa timeline", "Canton Fair 2027 dates"] };
   }
+  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let typing = null; // { finish } while a reply is being typed
+  const toBottom = () => { log.scrollTop = log.scrollHeight; };
+  function chipsRow(chips) {
+    if (!chips || !chips.length) return;
+    const c = document.createElement("div"); c.className = "cc-chips";
+    chips.forEach(q => { const b = document.createElement("button"); b.type = "button"; b.textContent = q; b.onclick = () => ask(q); c.appendChild(b); });
+    log.appendChild(c); toBottom();
+  }
   function add(html, who, chips) {
     const m = document.createElement("div");
     m.className = "cc-msg " + (who === "me" ? "cc-me" : "cc-bot");
-    if (who === "me") m.textContent = html; else m.innerHTML = html;
-    log.appendChild(m);
-    if (chips && chips.length) {
-      const c = document.createElement("div"); c.className = "cc-chips";
-      chips.forEach(q => { const b = document.createElement("button"); b.type = "button"; b.textContent = q; b.onclick = () => ask(q); c.appendChild(b); });
-      log.appendChild(c);
-    }
-    log.scrollTop = log.scrollHeight;
+    if (who === "me") { m.textContent = html; log.appendChild(m); toBottom(); chipsRow(chips); return; }
+    m.innerHTML = html;
+    if (reduceMotion) { log.appendChild(m); toBottom(); chipsRow(chips); return; }
+    // bot reply: "typing" dots first, then the text types out letter by letter (links and bold kept)
+    const dots = document.createElement("div"); dots.className = "cc-msg cc-bot cc-typing"; dots.setAttribute("aria-label", "Ask Expo is typing");
+    dots.innerHTML = "<i></i><i></i><i></i>"; log.appendChild(dots); toBottom();
+    const texts = [], walker = document.createTreeWalker(m, NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) texts.push([walker.currentNode, walker.currentNode.textContent]);
+    const total = texts.reduce((n, t) => n + t[1].length, 0);
+    texts.forEach(t => { t[0].textContent = ""; });
+    const perTick = Math.max(1, Math.ceil(total / 260)); // ~22 ms a letter, long answers capped near 6 s
+    let ti = 0, ci = 0, timer = 0, done = false;
+    const finish = () => {
+      if (done) return; done = true; clearTimeout(timer); if (dots.isConnected) dots.replaceWith(m);
+      texts.forEach(t => { t[0].textContent = t[1]; });
+      m.classList.remove("cc-typing-on"); log.removeAttribute("aria-busy"); typing = null; toBottom(); chipsRow(chips);
+    };
+    const tick = () => {
+      let n = perTick;
+      while (n > 0 && ti < texts.length) {
+        const [node, full] = texts[ti], take = Math.min(n, full.length - ci);
+        ci += take; n -= take; node.textContent = full.slice(0, ci);
+        if (ci >= full.length) { ti++; ci = 0; }
+      }
+      toBottom();
+      if (ti >= texts.length) finish(); else timer = setTimeout(tick, 22);
+    };
+    typing = { finish };
+    log.setAttribute("aria-busy", "true"); // screen readers hear the whole reply once, not letter by letter
+    timer = setTimeout(() => { dots.replaceWith(m); m.classList.add("cc-typing-on"); tick(); }, 550 + Math.min(500, total * 2));
   }
-  function ask(q) { add(q, "me"); const r = answer(q); setTimeout(() => add(r.a, "bot", r.q), 250); }
+  function ask(q) { if (typing) typing.finish(); add(q, "me"); const r = answer(q); add(r.a, "bot", r.q); }
   let started = false;
   function toggle(open) {
     panel.classList.toggle("on", open); fab.setAttribute("aria-expanded", open);
