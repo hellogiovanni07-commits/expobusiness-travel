@@ -3,7 +3,6 @@
   <img src="https://images.unsplash.com/photo-1694253988732-816ab6e60caa?w=1600&q=60&auto=format&fit=crop" alt="" fetchpriority="high">
   <div class="wrap">
     <p class="crumbs"><a href="index.html">Home</a> / Request Corporate Proposal</p>
-    <p class="eyebrow">Corporate proposal</p>
     <h1>Request a corporate travel proposal</h1>
     <p>Three short steps. A coordinator replies with an itemised proposal, usually within one working day.</p>
   </div>
@@ -53,7 +52,7 @@
             <label class="field full" id="p-expo-wrap" hidden><span>Which expo?</span><select name="Expo" id="p-expo"><option value="">Choose from the calendar</option>{{EXPO_OPTIONS}}<option value="other">Not listed (name it in the notes)</option></select></label>
             <label class="field"><span>Destination city</span><input type="text" name="Destination" placeholder="e.g. Guangzhou"></label>
             <label class="field"><span>Departing from</span><select name="Departure"><option>Cebu</option><option>Manila</option><option>Clark</option><option>Davao</option><option>Other</option></select></label>
-            <label class="field"><span>Estimated headcount <i>*</i></span><select name="Headcount" id="p-pax" required><option value="">Choose</option><option value="1-2">1–2</option><option value="3-5">3–5</option><option value="6-10">6–10</option><option value="11+">11+</option></select><small class="msg"></small></label>
+            <label class="field"><span>Estimated headcount <i>*</i></span><select name="Headcount" id="p-pax" required><option value="">Choose</option><option value="1-3">1–3</option><option value="4-9">4–9</option><option value="10-24">10–24</option><option value="25+">25+</option></select><small class="msg"></small></label>
             <label class="field"><span>Preferred travel dates</span><input type="text" name="Dates" placeholder="e.g. 14–19 April 2027"></label>
           </div>
         </fieldset>
@@ -77,13 +76,13 @@
         <div class="form-nav">
           <button type="button" class="btn btn-ghost" data-back hidden>Back</button>
           <button type="button" class="btn" data-next>Continue {{ICON_ARROW}}</button>
-          <button type="submit" class="btn" data-submit hidden>Send request {{ICON_SEND}}</button>
+          <button type="submit" class="btn" data-submit hidden>Open in my email to send {{ICON_SEND}}</button>
         </div>
         <p class="form-error" id="p-error" role="alert"></p>
       </form>
 
       <div class="success" id="p-success" tabindex="-1">
-        <h3>{{ICON_OK}} Your request is ready</h3>
+        <h2 class="success-h">{{ICON_OK}} Your brief is ready to send</h2>
         <p>Reference <span class="ref" id="p-ref"></span>. Your email app has opened with the brief filled in: press <b>Send</b> there to reach our coordinators.</p>
         <p>Email app did not open? Copy the brief and send it to <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>.</p>
         <div class="actions" style="margin-top:12px"><a class="btn" id="p-mail" href="#">Open email again</a><button class="btn btn-ghost" type="button" id="p-copy">Copy brief</button></div>
@@ -100,7 +99,7 @@
         </ul>
       </div>
       <div class="aside-card">
-        <h3>Prefer to talk first?</h3>
+        <h3>Other ways to reach us</h3>
         <ul class="ticks" style="margin:0">{{CONTACT_LINES}}</ul>
       </div>
     </aside>

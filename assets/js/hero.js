@@ -8,7 +8,7 @@
   const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
   const slides = $$(".hx-slide"), tabs = $$(".hx-tabs [role=tab]"), bgs = $$(".hx-bg");
   const playBtn = $(".hx-play"), DUR = 9000;
-  let cur = 0, timer = 0, startAt = 0, remain = DUR, userPaused = reduce;
+  let settleT = 0, cur = 0, timer = 0, startAt = 0, remain = DUR, userPaused = reduce;
   const holds = new Set();
   hx.style.setProperty("--dur", DUR + "ms");
 
@@ -35,7 +35,9 @@
     prev.classList.remove("is-on"); prev.setAttribute("aria-hidden", "true"); prev.inert = true;
     if (!reduce) { next.classList.add("is-pre"); void next.offsetWidth; next.classList.remove("is-pre"); }
     next.classList.add("is-on"); next.removeAttribute("aria-hidden"); next.inert = false;
-    bgs.forEach((b, i) => { if (i === n) { b.classList.remove("on"); void b.offsetWidth; b.classList.add("on"); } else b.classList.remove("on"); });
+    bgs.forEach((b, i) => { if (i === n) { b.classList.remove("on", "out"); void b.offsetWidth; b.classList.add("on"); } else if (i === cur) { b.classList.remove("on"); b.classList.add("out"); } else b.classList.remove("on", "out"); });
+    // pointer tilt only takes over once the new panel has finished entering
+    slides.forEach(s => s.classList.remove("settled")); clearTimeout(settleT); settleT = setTimeout(() => next.classList.add("settled"), reduce ? 0 : 1150);
     tabs.forEach((t, i) => { const on = i === n; t.setAttribute("aria-selected", on); t.tabIndex = on ? 0 : -1; });
     if (fromUser !== "auto") tabs[n].scrollIntoView({ block: "nearest", inline: "nearest", behavior: reduce ? "auto" : "smooth" });
     cur = n;
@@ -155,7 +157,8 @@
     const van = n <= 12, veh = van ? 1 : Math.ceil(n / 45);
     setNum(out("veh"), veh); out("vehk").textContent = van ? "Van" : veh === 1 ? "Coach" : "Coaches";
   }
-  pax.addEventListener("input", () => setPax(+pax.value));
+  const delegCta = document.getElementById("hx-deleg-cta");
+  pax.addEventListener("input", () => { setPax(+pax.value); if (delegCta) delegCta.href = "proposal.html?pax=" + (+pax.value <= 24 ? "10-24" : "25%2B") + "&target=mice"; });
   setPax(+pax.value);
 
   /* ---------- 04 Calendar: month detail ---------- */
@@ -174,10 +177,11 @@
   const replayIG = el => { if (!el || reduce || !window.IG) return; el.classList.remove("ig-on", "ig-done"); el.classList.add("ig-anim"); void el.offsetWidth; window.IG.play(el); };
   const onShow = [
     null,
-    () => { if (reduce) return; lines.forEach(l => l.classList.remove("on")); setTimeout(() => syncInv(true), 450); },
-    () => { if (reduce) return; const v = +pax.value; setPax(+pax.min); setTimeout(() => setPax(v), 420); },
+    () => { if (reduce) return; lines.forEach(l => l.classList.remove("on")); setTimeout(() => syncInv(true), 900); },
+    () => { if (reduce) return; const v = +pax.value; setPax(+pax.min); setTimeout(() => setPax(v), 900); },
     () => replayIG($(".hx-p-cal")),
   ];
 
+  setTimeout(() => slides[cur].classList.add("settled"), reduce ? 0 : 1500);
   restart();
 })();

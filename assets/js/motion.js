@@ -15,8 +15,8 @@
     const y = scrollY, max = document.documentElement.scrollHeight - innerHeight;
     if (bar) bar.style.transform = `scaleX(${max > 0 ? Math.min(1, y / max) : 0})`;
     if (header && !reduce && !header.classList.contains("open")) {
-      if (y > 420 && y > lastY + 4) header.classList.add("away");
-      else if (y < lastY - 4 || y < 420) header.classList.remove("away");
+      if (y > 420 && y > lastY + 10) header.classList.add("away");
+      else if (y < lastY - 10 || y < 420) header.classList.remove("away");
     }
     lastY = y;
   }
@@ -83,7 +83,9 @@
     const sb = svg.getBoundingClientRect(), rb = route.getBoundingClientRect(); // read once
     const sx = sb.width / 200, sy = sb.height / 50, ox = sb.left - rb.left, oy = sb.top - rb.top;
     const pt = l => { const p = path.getPointAtLength(l); return [ox + p.x * sx, oy + p.y * sy]; };
+    let flights = 0;
     const run = () => {
+      if (++flights > 3) return;
       const t0 = performance.now(), dur = 2400;
       plane.style.opacity = 1;
       const frame = now => {
@@ -104,7 +106,7 @@
   /* ---------- pause loops that are off-screen ---------- */
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle("paused", !e.isIntersecting)));
-    $$(".hero, .page-hero, .marquee, .cc-fab").forEach(el => io.observe(el));
+    $$(".hero, .page-hero, .marquee, .cc-fab, .btn-cta").forEach(el => io.observe(el));
   }
   document.addEventListener("visibilitychange", () => document.documentElement.classList.toggle("paused", document.hidden));
 
@@ -173,6 +175,9 @@
       segs.forEach(s => { const on = v >= +s.dataset.min && v <= +s.dataset.max; s.classList.toggle("seg-on", on); s.classList.toggle("seg-dim", !on); });
       dots.forEach((d, i) => d.classList.toggle("on", i < v));
     };
-    range.addEventListener("input", set); set();
+    // phones: the team-size cards are a swipe row, so bring the matching card into view
+    let st = 0;
+    const follow = () => { clearTimeout(st); st = setTimeout(() => { const row = segs[0] && segs[0].parentElement, on = segs.find(s => s.classList.contains("seg-on")); if (row && on && row.scrollWidth > row.clientWidth + 4) row.scrollTo({ left: on.offsetLeft - row.offsetLeft - (row.clientWidth - on.offsetWidth) / 2, behavior: reduce ? "auto" : "smooth" }); }, 120); };
+    range.addEventListener("input", () => { set(); follow(); }); set();
   }
 })();

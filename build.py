@@ -174,6 +174,7 @@ def page(slug, meta, main):
 <meta name="theme-color" content="#c9460b">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 {FONTS}{preload}
+<script>try{{if(sessionStorage.getItem("eb-logo"))document.documentElement.classList.add("logo-seen");sessionStorage.setItem("eb-logo","1")}}catch(e){{}}</script>
 <link rel="stylesheet" href="assets/css/site.css?v={V}">
 <link rel="stylesheet" href="assets/css/motion.css?v={V}">
 <link rel="stylesheet" href="assets/css/buttons.css?v={V}">
@@ -182,6 +183,7 @@ def page(slug, meta, main):
 <link rel="stylesheet" href="assets/css/header.css?v={V}">
 <link rel="stylesheet" href="assets/css/page-expos.css?v={V}">
 <link rel="stylesheet" href="assets/css/page-inner.css?v={V}">
+<link rel="stylesheet" href="assets/css/compact.css?v={V}">
 <script>document.documentElement.classList.replace("no-js","js")</script>
 {ld_html}
 </head>
@@ -196,7 +198,7 @@ def page(slug, meta, main):
 </main>
 {footer()}
 {CHAT}
-<script src="assets/js/data/site-config.js?v={V}"></script>
+<script src="assets/js/data/site-config.js?v={V}" defer></script>
 <script src="assets/js/site.js?v={V}" defer></script>
 <script src="assets/js/motion.js?v={V}" defer></script>
 <script src="assets/js/infographic.js?v={V}" defer></script>
@@ -244,7 +246,7 @@ def expo_row(e):
     q = (e["name"] + " " + e["city"] + " " + e["country"] + " " + e["sectors"]).lower()
     return (f'<li class="expo-row" data-region="{esc(e["region"])}" data-month="{m}" data-q="{esc(q)}">'
             f'<div class="date">{esc(e["dates_2027"])}<small>{tag}</small></div>'
-            f'<div><h3>{esc(e["name"])}</h3><div class="meta">{esc(e["city"])}, {esc(e["country"])} · {esc(e["sectors"])}</div></div>'
+            f'<div class="er-main">{expo_logo(e, "er-logo")}<div><h3>{esc(e["name"])}</h3><div class="meta">{esc(e["city"])}, {esc(e["country"])} · {esc(e["sectors"])}</div></div></div>'
             f'<div class="acts">{link}<a class="btn btn-sm btn-ghost" href="proposal.html?expo={e["slug"]}">Plan this trip</a></div></li>')
 
 
@@ -281,6 +283,25 @@ def date_parts(s):
     return "2027", s
 
 
+
+def expo_logo(e, cls="xc-logo"):
+    """Event logo box (assets/img/expos/<slug>.png) or a lettered tile with the show's short name."""
+    f = ROOT / "assets" / "img" / "expos" / f"{e['slug']}.png"
+    if f.exists():
+        try:
+            from PIL import Image
+            with Image.open(f) as im:
+                w, h = im.size
+                # white-only logos (light ink on transparent) need a navy box to be seen
+                px = [p for p in im.convert("RGBA").resize((48, 48)).getdata() if p[3] > 128]
+                light = bool(px) and sum((r * 299 + g * 587 + b * 114) / 1000 for r, g, b, _ in px) / len(px) > 215
+        except Exception:
+            w, h, light = 240, 120, False
+        return (f'<span class="{cls}{" dark" if light else ""}"><img src="assets/img/expos/{e["slug"]}.png" alt="{esc(e["short"])} logo" '
+                f'width="{w}" height="{h}" loading="lazy" decoding="async"></span>')
+    short = e["short"] if len(e["short"]) <= 14 else e["short"].split()[0]
+    return f'<span class="{cls} mono" aria-hidden="true"><b>{esc(short)}</b></span>'
+
 def expo_card(e, i):
     m = int(e["month"][5:7])
     big, small = date_parts(e["dates_2027"])
@@ -294,8 +315,8 @@ def expo_card(e, i):
     venue = f' · {esc(e["venue"])}' if e.get("venue") else ""
     return (f'<li class="xc" data-i="{i}" data-region="{esc(e["region"])}" data-country="{esc(e["country"])}" data-month="{m}" '
             f'data-ind="{" ".join(inds)}" data-ok="{int(ok)}" data-name="{esc(e["name"].lower())}" data-q="{esc(q)}">'
-            f'<div class="xc-date{"" if ok else " exp"}"><b>{esc(big)}</b><span>{esc(small)}</span>{tag}</div>'
-            f'<div class="xc-body"><h3>{esc(e["name"])}</h3>'
+            f'{expo_logo(e)}'
+            f'<div class="xc-body"><p class="xc-when"><span class="xc-date{"" if ok else " exp"}"><b>{esc(big)}</b> {esc(small)}</span>{tag}</p><h3>{esc(e["name"])}</h3>'
             f'<p class="xc-why">{esc(e.get("why") or e["sectors"])}</p>'
             f'<p class="xc-loc">{icon("pin")}<span><b>{esc(e["city"])}, {esc(e["country"])}</b>{venue}</span></p>'
             f'<p class="xc-sec"><b>Sectors:</b> {esc(e["sectors"])}</p>'
@@ -350,7 +371,7 @@ TOKENS = {
     "EXPO_REGION_BARS": "".join(f'<li style="--v:{d["n"]}"><span>{esc(d["region"])}</span><i></i><b>{d["n"]}</b></li>' for d in EXPO_REGION_DATA),
     "EXPO_MONTH_MAX": str(max(d["n"] for d in EXPO_MONTH_DATA)),
     "EXPO_REGION_MAX": str(max(d["n"] for d in EXPO_REGION_DATA)),
-    "EXPO_NEXT": expo_rows(sorted(world[:3] + [e for e in EXPOS if e["region"] == "East Asia" and e["month"] >= "2027-03"][:1], key=sort_key)),
+    "EXPO_NEXT": expo_rows(EXPOS[:4]),  # the next four shows, in date order
     "REGION_OPTIONS": "".join(f'<option>{r}</option>' for r in sorted({e["region"] for e in EXPOS})),
     "EXPO_OPTIONS": "".join(f'<option value="{e["slug"]}">{esc(e["short"])} · {esc(e["city"])}</option>' for e in EXPOS),
     "EMAIL": esc(EMAIL), "ADDRESS": esc(ADDRESS),

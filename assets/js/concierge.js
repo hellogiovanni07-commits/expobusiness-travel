@@ -67,7 +67,7 @@
     while (walker.nextNode()) texts.push([walker.currentNode, walker.currentNode.textContent]);
     const total = texts.reduce((n, t) => n + t[1].length, 0);
     texts.forEach(t => { t[0].textContent = ""; });
-    const perTick = Math.max(1, Math.ceil(total / 260)); // ~22 ms a letter, long answers capped near 6 s
+    const perTick = Math.max(1, Math.ceil(total / 140)); // still letter by letter, long answers capped near 3 s
     let ti = 0, ci = 0, timer = 0, done = false;
     const finish = () => {
       if (done) return; done = true; clearTimeout(timer); if (dots.isConnected) dots.replaceWith(m);
@@ -86,7 +86,8 @@
     };
     typing = { finish };
     log.setAttribute("aria-busy", "true"); // screen readers hear the whole reply once, not letter by letter
-    timer = setTimeout(() => { dots.replaceWith(m); m.classList.add("cc-typing-on"); tick(); }, 550 + Math.min(500, total * 2));
+    timer = setTimeout(() => { dots.replaceWith(m); m.classList.add("cc-typing-on"); tick(); }, 450);
+    m.addEventListener("click", finish, { once: true }); // tap the bubble to show the whole reply
   }
   function ask(q) { if (typing) typing.finish(); add(q, "me"); const r = answer(q); add(r.a, "bot", r.q); }
   let started = false;

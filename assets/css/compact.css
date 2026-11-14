@@ -1,0 +1,235 @@
+/* Compact layer (loaded last): tighter sections, smaller and shorter description text, plus audit fixes
+   (tap targets, tiny text, long lines, tables on phones). One place to tune overall density. */
+body { line-height: 1.55; }
+p { margin-bottom: .8em; }
+h2 { font-size: clamp(1.45rem, 2.5vw, 2rem); }
+h3 { font-size: 1.1rem; }
+
+/* sections and headings */
+.section { padding: clamp(40px, 5.5vw, 72px) 0; }
+.head { max-width: 640px; margin-bottom: 26px; }
+.head-row { margin-bottom: 26px; }
+.head h2, .head-row h2 { margin-bottom: .35em; }
+.head p, .section-navy .head p { font-size: .98rem; line-height: 1.55; max-width: 58ch; }
+.eyebrow { margin-bottom: 10px; }
+
+/* page heroes: shorter, smaller intro */
+.page-hero .wrap { padding-top: calc(var(--hdr, 106px) + clamp(22px, 3.5vw, 44px)); padding-bottom: clamp(28px, 4vw, 52px); }
+.page-hero h1 { font-size: clamp(1.75rem, 3.4vw, 2.6rem); margin-bottom: .3em; }
+.page-hero p:not(.crumbs):not(.eyebrow) { font-size: 1rem; line-height: 1.5; max-width: 56ch; }
+.page-hero .crumbs { margin-bottom: 8px; }
+
+/* home hero */
+.hx .hx-stage { padding-top: calc(var(--hdr, 106px) + clamp(18px, 3.2vw, 44px)); padding-bottom: clamp(18px, 2.4vw, 28px); }
+.hx-h { font-size: clamp(1.8rem, 3.9vw, 3.05rem); margin-bottom: 14px; }
+.hx-lead { font-size: clamp(.97rem, 1.25vw, 1.07rem); line-height: 1.5; max-width: 32em; margin-bottom: 22px; }
+.hx-chip { margin-bottom: 16px; }
+.hx-panel { padding: clamp(16px, 2vw, 22px); }
+.hx-nav { padding-bottom: clamp(18px, 2.4vw, 28px); }
+
+/* cards, lists, stats */
+.grid { gap: 20px; }
+.card { padding: 22px; }
+.card-img { padding: 0; }
+.card p, .seg p { font-size: .94rem; line-height: 1.5; }
+.card-img img { aspect-ratio: 16 / 9; }
+.card-img .card-body { padding: 18px 20px 20px; }
+.card-img .card-body p { margin-bottom: 12px; }
+.card-n { font-size: 2.1rem; margin: -2px 0 4px; }
+.seg .pax { font-size: 1.6rem; margin: 2px 0 6px; }
+.ticks li { font-size: .93rem; }
+.adv li { padding: 14px 0; }
+.adv p { font-size: .93rem; line-height: 1.5; }
+.trust .wrap { padding-top: 22px; padding-bottom: 22px; }
+.ig-stat { padding-top: 16px; padding-bottom: 14px; }
+.ig-stat b { font-size: clamp(1.7rem, 3.2vw, 2.4rem); }
+.ig-stat span { font-size: .84rem; margin-top: 6px; }
+.ig-flow p { font-size: .88rem; line-height: 1.5; }
+.ig-flow > li::before { width: 40px; height: 40px; margin-bottom: 10px; }
+.ig-flow > li:not(:last-child)::after { top: 19px; left: 46px; }
+.note-box { padding: 14px 16px; font-size: .9rem; }
+.note-box p, p.small { max-width: 80ch; }
+.cta-band .wrap { padding-top: 36px; padding-bottom: 36px; gap: 20px; }
+.cta-band h2 { font-size: clamp(1.35rem, 2.4vw, 1.75rem); margin-bottom: 4px; }
+.cta-band p { font-size: .95rem; }
+.split { gap: clamp(28px, 4vw, 56px); }
+.pax-pick { margin-bottom: 22px; }
+
+/* expo directory and lists */
+.expos-ig .ig-stats, .expos-ig .glance { margin-bottom: 26px; }
+.xc { padding: 18px 0; gap: 20px; }
+.xc-body h3 { font-size: 1.15rem; margin-bottom: 4px; }
+.xc-why { font-size: .92rem; line-height: 1.5; margin-bottom: 8px; }
+.xc-loc { font-size: .88rem; margin-bottom: 4px; }
+.xc-sec { font-size: .82rem; margin-bottom: 10px; }
+.xc-date b { font-size: 1.4rem; }
+.xd-card { padding: 18px; }
+.xd-filters { gap: 12px; }
+
+/* inner pages (services / visa / about) */
+.sv-page .sv-block + .sv-block { margin-top: clamp(32px, 4.5vw, 56px); padding-top: clamp(28px, 4vw, 48px); }
+.sv-top { margin: 18px 0 20px; }
+.sv-top .ig-num { font-size: clamp(2.6rem, 6vw, 4.2rem); }
+.sv-top p { font-size: .96rem; line-height: 1.5; }
+.ab-actions, .ab-stats { margin-bottom: 28px; }
+
+/* ---------- audit fixes ---------- */
+/* tap targets: inline arrow links and small buttons get a 40px hit area without changing the layout */
+.link { padding-block: 10px; margin-block: -10px; }
+.xd-reset, .xd-chip-clear { padding: 10px 8px; }
+.ab-node h3 a { display: inline-block; padding-block: 8px; margin-block: -8px; }
+#pax-range { height: 32px; }
+/* tiny text */
+.logo-text small { font-size: .7rem; }
+.hx-ph span { font-size: .72rem; }
+.hx-tl-axis { font-size: .72rem; }
+.tag, .xc-date .tag { font-size: .7rem; }
+@media (max-width: 720px) { .expos-ig .ig-mbar span, .hx-p-cal .ig-mbar span { font-size: .66rem; } }
+
+/* ---------- phones: denser still ---------- */
+@media (max-width: 600px) {
+  .section { padding: 34px 0; }
+  .head, .head-row { margin-bottom: 20px; }
+  .card { padding: 18px; }
+  .card-img { padding: 0; }
+  .hx-chip { font-size: .78rem; margin-bottom: 12px; }
+  .hx-h { font-size: 1.72rem; }
+  .hx-lead { font-size: .95rem; margin-bottom: 18px; }
+  .hx-slide { gap: 20px; }
+  .hx-fine { display: none; }
+  .hx-p-deleg .hx-fine { display: block; }
+  .hx-ph-detail, .hx-cal-detail { margin-top: 8px; }
+  .hx-cal-detail { margin-top: 28px; margin-bottom: 10px; }
+  .hx-regions li:nth-child(n+4) { display: none; }
+  .ig-stat b { font-size: 1.6rem; }
+  .cta-band .wrap { padding-top: 28px; padding-bottom: 28px; }
+  .trust .wrap { padding-top: 18px; padding-bottom: 18px; }
+  .sv-img img { height: 110px; }
+  .seg .ticks { margin-bottom: 14px; }
+}
+
+/* phones: service cards become compact rows, team-size cards a swipeable row */
+@media (max-width: 600px) {
+  .svc-cards { gap: 12px; }
+  .svc-cards .card-img { display: grid; grid-template-columns: 112px minmax(0, 1fr); }
+  .svc-cards .card-img img { height: 100%; aspect-ratio: auto; min-height: 100%; }
+  .svc-cards .card-body { padding: 12px 14px 14px; }
+  .svc-cards .card-n { font-size: 1.5rem; margin: 0 0 2px; }
+  .svc-cards h3 { font-size: 1rem; margin-bottom: 4px; }
+  .svc-cards .card-body p { font-size: .86rem; margin-bottom: 8px; }
+  .seg-row { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; margin: 0 calc(var(--gutter) * -1); padding: 4px var(--gutter) 10px; scrollbar-width: none; }
+  .seg-row::-webkit-scrollbar { display: none; }
+  .seg-row > .seg { flex: 0 0 84%; scroll-snap-align: center; }
+  .section-navy .split-img img { aspect-ratio: 16 / 9; }
+  .expo-row { grid-template-columns: 1fr; gap: 6px; padding: 14px 2px; }
+  .expo-row .acts { justify-content: flex-start; }
+}
+
+/* home "coming up" rows: small event logo before the name */
+.er-main { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.er-logo { flex: none; width: 76px; aspect-ratio: 4 / 3; display: grid; place-items: center; padding: 6px; background: #fff; border: 1px solid var(--line); border-radius: 10px; }
+.er-logo img { width: 100%; height: 100%; object-fit: contain; }
+.er-logo.mono b { font: 800 .72rem/1.1 var(--h); color: var(--navy); text-align: center; }
+@media (max-width: 600px) { .er-logo { width: 60px; } }
+.er-logo.dark { background: var(--navy); border-color: var(--navy); }
+
+/* =================== Impeccable audit + motion review fixes (15 Nov) =================== */
+/* contrast: white on orange fails (3.06:1) -> button and chip fills use the deep orange (4.81:1) */
+.btn-gold, .btn-gold:not(.btn-ghost):not(.btn-ghost-white) { background: var(--gold-ink); border-color: var(--gold-ink); }
+.btn-gold:hover { background: var(--gold-700); border-color: var(--gold-700); }
+.hx-chip b, .promo-chip b { background: var(--gold-ink); }
+input::placeholder, textarea::placeholder { color: #6b6b85; }
+.hx-tl-axis { color: var(--ink-2); }
+.eyebrow, .ig-label { color: var(--gold-ink); }
+.section-navy .ig-label, .cta-band .ig-label { color: #ffb27d; }
+/* focus: one opaque ring on light surfaces, light ring on dark ones */
+:where(a, button, input, select, textarea, summary, [role=button], [tabindex]):focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 2px; }
+.btn:focus-visible, .hx-ph:focus-visible, .hx-p-deleg input[type=range]:focus-visible, .xd-filters :focus-visible { outline: 2px solid var(--gold-ink) !important; outline-offset: 2px; }
+:where(.hx, .section-navy, .cta-band, .site-footer, .page-hero) :focus-visible, .hx-tabs button:focus-visible, .hx-ctrl button:focus-visible { outline: 2px solid #ffb27d !important; outline-offset: 3px; }
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--gold-ink); outline-offset: 0; }
+/* text floor: nothing functional below 12px */
+.tag, .xc-date .tag, .hx-chip b, .promo-chip b { font-size: .75rem; }
+.ig-label, .hx-plabel, .route-pt, .sv-sub, .vz-sub, .logo-text small, .xd-filters label, .xd-sort { font-size: .76rem; }
+.ig-mbar span { font-size: .72rem; }
+.hx-ph span, .hx-tl-axis { font-size: .75rem; }
+/* touch targets: 44px on secondary controls */
+.btn-sm { min-height: 44px; }
+.site-header .logo { min-height: 44px; }
+.header-cta { min-height: 44px; }
+.f-links a { padding-block: 12px; margin-block: -12px; }
+.xd-reset, .xd-chip-clear { min-height: 44px; }
+.xd-pages button { min-width: 44px; height: 44px; }
+.xd-inds button, .xc-tags button { min-height: 40px; }
+@media (max-width: 960px) { .xd-inds button { min-height: 44px; } }
+/* craft floor: no thick coloured side borders on callouts */
+.note-box { border-left: 1px solid #f3c4a6; border: 1px solid #f3c4a6; border-radius: var(--radius); background: #fff8f2; }
+/* services "what's included": a list, not a sequence -> bare check marks, no numbers */
+.ig-flow.ig-list > li::before { content: ""; width: 26px; height: 26px; border: 0; border-radius: 0; background: no-repeat center / 24px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9460b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E"); margin-bottom: 8px; }
+.ig-flow.ig-list > li:not(:last-child)::after { display: none; }
+@media (max-width: 760px) { .ig-flow.ig-list > li { padding-left: 38px; } }
+/* expos: section heading must out-rank card titles */
+.glance-h { font-size: 1.2rem; }
+.success-h { font-size: 1.3rem; display: flex; align-items: center; gap: 8px; }
+
+/* ---------- motion system: fewer loops, one easing per job ---------- */
+/* hero: outgoing photo freezes mid-push instead of popping back in scale */
+.hx-bg.out { animation: hxPush 16s ease-out forwards paused; }
+.hx-bg.on { animation-duration: calc(var(--dur, 9s) + 1.2s); }
+/* hero: headline leaves with its block instead of vanishing first */
+.hx-slide:not(.is-on):not(.is-pre) .hx-h .w { opacity: 1; transform: none; transition: none; }
+/* hero: faster, consistent entrance whether autoplay or a click */
+.hx-slide.is-on .hx-copy > * { transition: opacity .55s ease, transform .7s var(--ease); }
+.hx-slide.is-on .hx-h .w { transition: opacity .45s ease, transform .55s var(--ease); transition-delay: calc(var(--i) * 28ms + .08s); }
+.hx-slide.is-on .hx-copy > :nth-child(3) { transition-delay: .22s; }
+.hx-slide.is-on .hx-copy > :nth-child(4) { transition-delay: .32s; }
+.hx-slide.is-on .hx-panel { transition: opacity .6s ease .1s, transform .8s var(--ease) .1s; }
+/* pointer tilt only after the panel has landed */
+.hx.tilting .hx-slide.is-on .hx-panel { transition: opacity .6s ease .1s, transform .8s var(--ease) .1s; }
+.hx.tilting .hx-slide.is-on.settled .hx-panel { transition: opacity .3s ease, transform .45s var(--ease); }
+.hx-bgs, .hx-glow { transition-duration: .45s; }
+/* loops: nothing animates on hidden slides; attention loops stop after a few runs */
+.hx-slide:not(.is-on) *, .hx-slide:not(.is-on) *::after, .hx-slide:not(.is-on) *::before { animation-play-state: paused !important; }
+.btn-cta, .btn-cta.btn-in { animation-iteration-count: 3 !important; }
+.btn-cta.btn-in { animation: btnPop .5s var(--btn-ease) var(--btn-d, 0ms) backwards, btnGlow 3.6s ease-in-out 1s 3 !important; }
+.cc-fab::before { animation-iteration-count: 3 !important; }
+.hx-chip b::after, .promo-chip b::after { animation-iteration-count: 2 !important; }
+/* springs only for hover lift and press release; entrances use the calm ease */
+.xd-chip, .cc-chips button, .month-bar button[aria-pressed="true"] { animation-timing-function: var(--btn-ease) !important; }
+/* expo filter: short capped stagger */
+.xc.pop { animation: xcIn .32s var(--ease) backwards; animation-delay: calc(min(var(--d, 0), 6) * 28ms); }
+@keyframes xcIn { from { opacity: 0; transform: translateY(8px); } }
+/* header: hiding accelerates out, showing eases in */
+.site-header.away { transition: transform .22s cubic-bezier(.4, 0, 1, 1); }
+/* touch screens: no hover lifts that stick after a tap */
+@media (hover: none) {
+  .btn:hover, .hx-tabs button:hover, .hx-ctrl button:hover, .xc-tags button:hover, .xd-inds button:hover, .f-links a:hover, a.card:hover, .card-img:hover img, .hx-items button:hover { transform: none !important; }
+  .btn:hover::after { transform: translateX(-140%) skewX(-12deg); }
+}
+/* logo plays once per visit; later pages show it settled */
+.logo-seen .bm-bar, .logo-seen .bm-arc, .logo-seen .bm-dot { animation: none; }
+.logo-seen .logo:hover .bm-bar { animation: bmBounce .7s var(--ease); }
+.logo-seen .logo:hover .bm-arc { animation: bmDraw2 1.1s var(--ease); }
+.logo-seen .logo:hover .bm-dot { animation: bmFly2 1.1s var(--ease); }
+@media (prefers-reduced-motion: reduce) { .card-img:hover img, .seg { transition: none !important; } }
+
+/* ---------- phones: what matters first ---------- */
+@media (max-width: 600px) {
+  /* hero: audience tabs sit at the top of the first screen, the caveat stays visible */
+  .hx { display: flex; flex-direction: column; }
+  .hx-nav { order: -1; padding-top: calc(var(--hdr, 104px) + 10px); padding-bottom: 0; }
+  .hx .hx-stage { padding-top: 16px; }
+  .hx-ctrl { justify-content: flex-end; margin-top: -2px; } .hx-ctrl button { width: 44px; height: 44px; }
+  .hx-p-canton .hx-fine { display: block; font-size: .75rem; margin-top: 8px; }
+  .hx-p-canton .route { display: none; }
+  /* expos: results first, stats and charts after */
+  .expos-ig .wrap { display: flex; flex-direction: column; }
+  .expos-ig .xd { order: -1; }
+  .expos-ig .wrap > .ig-anim:first-child { display: none; }
+  .expos-ig .glance { margin-top: 28px; }
+  .cc-fab { bottom: 14px; right: 14px; }
+}
+@media (max-width: 720px) { .expos-ig .ig-mbar span, .hx-p-cal .ig-mbar span { font-size: .7rem !important; letter-spacing: -.01em; } .expos-ig .ig-mbar b, .hx-p-cal .ig-mbar b { font-size: .72rem !important; } }
+.glance-h { font-size: 1.3rem; }
+.xc-body h3 { font-size: 1.08rem; }
+.xc-logo, .er-logo { box-shadow: none; }
+.hx-chip b, .promo-chip b { white-space: nowrap; }

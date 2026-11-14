@@ -39,7 +39,7 @@
   const syncExpo = () => { expoWrap.hidden = target.value !== "expo"; };
   target.addEventListener("change", syncExpo);
 
-  // prefill: ?target=<option value>  ?expo=<calendar slug>  ?pax=1-2|6-10|11+  ?need=visa
+  // prefill: ?target=<option value>  ?expo=<calendar slug>  ?pax=1-3|4-9|10-24|25+  ?need=visa
   const p = new URLSearchParams(location.search);
   const e = p.get("expo");
   if (e) {
