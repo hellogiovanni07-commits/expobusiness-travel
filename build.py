@@ -176,6 +176,11 @@ def page(slug, meta, main):
 <link rel="stylesheet" href="assets/css/site.css?v={V}">
 <link rel="stylesheet" href="assets/css/motion.css?v={V}">
 <link rel="stylesheet" href="assets/css/buttons.css?v={V}">
+<link rel="stylesheet" href="assets/css/infographic.css?v={V}">
+<link rel="stylesheet" href="assets/css/hero.css?v={V}">
+<link rel="stylesheet" href="assets/css/header.css?v={V}">
+<link rel="stylesheet" href="assets/css/page-expos.css?v={V}">
+<link rel="stylesheet" href="assets/css/page-inner.css?v={V}">
 <script>document.documentElement.classList.replace("no-js","js")</script>
 {ld_html}
 </head>
@@ -193,6 +198,7 @@ def page(slug, meta, main):
 <script src="assets/js/data/site-config.js?v={V}"></script>
 <script src="assets/js/site.js?v={V}" defer></script>
 <script src="assets/js/motion.js?v={V}" defer></script>
+<script src="assets/js/infographic.js?v={V}" defer></script>
 <script src="assets/js/concierge.js?v={V}" defer></script>
 {scripts}
 </body>
@@ -253,12 +259,39 @@ def fmt_range(a, b):
 spring = SITE["canton"]["sessions"][0]
 PHASE_WHAT = ["Electronics, machinery, lighting, hardware", "Home goods, furniture, gifts, building materials", "Textiles, fashion, toys, health, food"]
 world = [e for e in EXPOS if e["region"] != "East Asia" and e["month"] >= "2027-02"]
+def canton_timeline():
+    ph = [(datetime.date.fromisoformat(a), datetime.date.fromisoformat(b)) for a, b in spring["phases"]]
+    t0, t1 = ph[0][0], ph[-1][1]; span = (t1 - t0).days + 1
+    out = []
+    for i, (a, b) in enumerate(ph):
+        l = (a - t0).days / span * 100; w = ((b - a).days + 1) / span * 100
+        out.append(f'<button type="button" class="hx-ph" style="--l:{l:.2f}%;--w:{w:.2f}%" aria-pressed="{str(i == 0).lower()}" '
+                   f'data-when="{fmt_range(a.isoformat(), b.isoformat())}" data-what="{esc(PHASE_WHAT[i])}"><b>Phase {i+1}</b><span>{fmt_range(a.isoformat(), b.isoformat())}</span></button>')
+    return ('<div class="hx-tl" role="group" aria-label="Canton Fair spring 2027 phases">' + "".join(out) +
+            f'</div><div class="hx-tl-axis"><span>{t0.day} {MONTHS[t0.month-1]}</span><span>{t1.day} {MONTHS[t1.month-1]}</span></div>')
+
+
+import collections as _c
+_by_m = _c.defaultdict(list)
+for _e in EXPOS: _by_m[int(_e["month"][5:7])].append(_e)
+EXPO_MONTH_DATA = [{"m": i, "label": MONTHS[i-1], "n": len(_by_m[i]), "top": (_by_m[i][0]["short"] if _by_m[i] else "")} for i in range(1, 13)]
+EXPO_REGION_DATA = sorted(({"region": r, "n": n} for r, n in _c.Counter(e["region"] for e in EXPOS).items()), key=lambda x: -x["n"])
 TOKENS = {
     "PHASES": "".join(f'<li><span class="ph">Phase {i+1}</span><span class="what">{PHASE_WHAT[i]}</span><span class="when">{fmt_range(*p)}</span></li>'
                       for i, p in enumerate(spring["phases"])),
     "CANTON_START": spring["phases"][0][0],
+    "CANTON_TIMELINE": canton_timeline(),
     "EXPO_ROWS": expo_rows(EXPOS),
     "EXPO_COUNT": str(len(EXPOS)),
+    "EXPO_MONTH_JSON": esc(json.dumps(EXPO_MONTH_DATA)),
+    "EXPO_REGION_JSON": esc(json.dumps(EXPO_REGION_DATA)),
+    "EXPO_REGION_COUNT": str(len(EXPO_REGION_DATA)),
+    "EXPO_CITY_COUNT": str(len({e["city"] for e in EXPOS})),
+    "EXPO_COUNTRY_COUNT": str(len({e["country"] for e in EXPOS})),
+    "EXPO_MONTH_BARS": "".join(f'<a class="ig-mbar" href="expos.html?month={d["m"]}" style="--v:{d["n"]}" title="{d["label"]} 2027: {d["n"]} expos"><i></i><b>{d["n"]}</b><span>{d["label"]}</span></a>' for d in EXPO_MONTH_DATA),
+    "EXPO_REGION_BARS": "".join(f'<li style="--v:{d["n"]}"><span>{esc(d["region"])}</span><i></i><b>{d["n"]}</b></li>' for d in EXPO_REGION_DATA),
+    "EXPO_MONTH_MAX": str(max(d["n"] for d in EXPO_MONTH_DATA)),
+    "EXPO_REGION_MAX": str(max(d["n"] for d in EXPO_REGION_DATA)),
     "EXPO_NEXT": expo_rows(sorted(world[:3] + [e for e in EXPOS if e["region"] == "East Asia" and e["month"] >= "2027-03"][:1], key=sort_key)),
     "REGION_OPTIONS": "".join(f'<option>{r}</option>' for r in sorted({e["region"] for e in EXPOS})),
     "EXPO_OPTIONS": "".join(f'<option value="{e["slug"]}">{esc(e["short"])} · {esc(e["city"])}</option>' for e in EXPOS),

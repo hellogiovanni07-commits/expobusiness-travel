@@ -39,7 +39,7 @@
   const syncExpo = () => { expoWrap.hidden = target.value !== "expo"; };
   target.addEventListener("change", syncExpo);
 
-  // prefill: ?expo=<calendar slug>  ?pax=1-2|6-10|11+  ?need=visa
+  // prefill: ?target=<option value>  ?expo=<calendar slug>  ?pax=1-2|6-10|11+  ?need=visa
   const p = new URLSearchParams(location.search);
   const e = p.get("expo");
   if (e) {
@@ -47,6 +47,7 @@
     else if (e === "ciff-guangzhou") target.value = "ciff";
     else if ([...expo.options].some(o => o.value === e)) { target.value = "expo"; expo.value = e; }
   }
+  const tg = p.get("target"); if (tg && [...target.options].some(o => o.value === tg)) target.value = tg;
   if (p.get("pax")) document.getElementById("p-pax").value = p.get("pax");
   if (p.get("need") === "visa") document.getElementById("need-visa").checked = true;
   syncExpo();

@@ -1,0 +1,92 @@
+/* Infographic kit: big numbers, bar charts, flows, dot matrices, timelines.
+   Anything with .ig-anim animates in once when it scrolls into view (infographic.js adds .ig-on).
+   Only transform / opacity animate; reduced motion shows the final state. Shared by every page. */
+:root { --ig-or: var(--gold); --ig-ink: var(--gold-ink); --ig-navy: var(--navy); --ig-mute: #b9b7c9; --ig-grid: #ecebf1; --ig-dur: 1s; }
+
+/* small uppercase label with a leading rule */
+.ig-label { display: inline-flex; align-items: center; gap: 10px; font: 700 .72rem/1.2 var(--h); letter-spacing: .14em; text-transform: uppercase; color: var(--ig-ink); margin: 0 0 10px; }
+.ig-label::before { content: ""; width: 22px; height: 2px; background: currentColor; }
+.on-navy .ig-label, .section-navy .ig-label { color: #ffb27d; }
+
+/* big outline step number: 01, 02 ... */
+.ig-num { font: 800 clamp(2.4rem, 5vw, 3.6rem)/.9 var(--h); color: transparent; -webkit-text-stroke: 1.5px var(--ig-or); letter-spacing: -.02em; display: block; }
+.ig-num.solid { color: var(--ig-or); -webkit-text-stroke: 0; }
+
+/* stat row: big number + unit + label, thin orange rule on top */
+.ig-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 0; list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ig-grid); }
+.ig-stat { position: relative; padding: 22px 22px 20px 0; }
+.ig-stat + .ig-stat { padding-left: 22px; border-left: 1px solid var(--ig-grid); }
+.ig-stat::before { content: ""; position: absolute; top: -1px; left: 0; width: 44px; height: 3px; background: var(--ig-or); transform-origin: left; }
+.ig-stat + .ig-stat::before { left: 22px; }
+.ig-stat b { display: block; font: 800 clamp(2rem, 4vw, 2.9rem)/1 var(--h); color: var(--ig-navy); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.ig-stat b small { font-size: .45em; font-weight: 700; color: var(--ig-ink); margin-left: 3px; letter-spacing: 0; }
+.ig-stat span { display: block; margin-top: 8px; font-size: .9rem; line-height: 1.4; color: var(--ink-2); max-width: 22ch; }
+@media (max-width: 640px) { .ig-stats { grid-template-columns: 1fr 1fr; } .ig-stat:nth-child(odd) { padding-left: 0; border-left: 0; } .ig-stat:nth-child(odd)::before { left: 0; } .ig-stat { border-bottom: 1px solid var(--ig-grid); } }
+.section-navy .ig-stats, .on-navy .ig-stats { border-color: rgba(255,255,255,.14); }
+.section-navy .ig-stat + .ig-stat, .on-navy .ig-stat + .ig-stat { border-color: rgba(255,255,255,.14); }
+.section-navy .ig-stat b, .on-navy .ig-stat b { color: #fff; }
+.section-navy .ig-stat span, .on-navy .ig-stat span { color: #c9c8db; }
+
+/* month column chart: <div class="ig-mchart" style="--max:N"> + .ig-mbar (--v) */
+.ig-mchart { --max: 10; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(4px, 1vw, 10px); align-items: end; height: 180px; padding-top: 22px; border-bottom: 1.5px solid var(--ig-navy); position: relative; }
+.ig-mbar { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; text-decoration: none; color: inherit; }
+.ig-mbar i { display: block; width: 100%; max-width: 34px; height: calc(var(--v) / var(--max) * 100%); min-height: 3px; background: linear-gradient(180deg, var(--ig-or), var(--ig-ink)); border-radius: 6px 6px 0 0; transform-origin: bottom; transition: transform .35s var(--btn-spring, ease), filter .2s; }
+.ig-mbar b { position: absolute; bottom: calc(var(--v) / var(--max) * 100% + 4px); font: 800 .8rem/1 var(--h); color: var(--ig-navy); }
+.ig-mbar span { position: absolute; bottom: -22px; font: 600 .72rem/1 var(--h); color: var(--ink-2); text-transform: uppercase; letter-spacing: .04em; }
+.ig-mbar:hover i, .ig-mbar:focus-visible i, .ig-mbar.on i { transform: scaleY(1.06); filter: brightness(1.08); }
+.ig-mbar:hover b, .ig-mbar.on b { color: var(--ig-ink); }
+.ig-mchart + .ig-axis-pad { height: 26px; }
+.ig-mchart.dark { border-color: rgba(255,255,255,.5); }
+.ig-mchart.dark .ig-mbar b { color: #fff; } .ig-mchart.dark .ig-mbar span { color: #c9c8db; }
+
+/* horizontal bars: <ul class="ig-hbars" style="--max:N"><li style="--v:n"><span>Label</span><i></i><b>n</b></li> */
+.ig-hbars { --max: 10; list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.ig-hbars li { display: grid; grid-template-columns: minmax(90px, 9.5em) 1fr 2.6em; gap: 12px; align-items: center; font-size: .9rem; color: var(--ink); }
+.ig-hbars i { display: block; height: 12px; border-radius: 999px; background: linear-gradient(90deg, var(--ig-ink), var(--ig-or)); width: calc(var(--v) / var(--max) * 100%); min-width: 6px; transform-origin: left; }
+.ig-hbars b { font: 800 .95rem/1 var(--h); color: var(--ig-navy); text-align: right; font-variant-numeric: tabular-nums; }
+.ig-hbars li:nth-child(n+2) i { opacity: .82; } .ig-hbars li:nth-child(n+4) i { opacity: .64; }
+
+/* flow: nodes joined by a dashed connector with a moving dot */
+.ig-flow { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 0; list-style: none; margin: 0; padding: 0; counter-reset: igf; }
+.ig-flow > li { position: relative; padding: 0 18px 0 0; }
+.ig-flow > li::before { counter-increment: igf; content: counter(igf, decimal-leading-zero); display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--ig-or); color: var(--ig-ink); font: 800 .95rem/1 var(--h); background: #fff; position: relative; z-index: 1; margin-bottom: 14px; }
+.ig-flow > li:not(:last-child)::after { content: ""; position: absolute; top: 21px; left: 50px; right: 6px; border-top: 2px dashed #f3c4a6; }
+.ig-flow h3 { font-size: 1.02rem; margin: 0 0 6px; }
+.ig-flow p { font-size: .9rem; color: var(--ink-2); margin: 0; }
+@media (max-width: 760px) { .ig-flow { grid-auto-flow: row; gap: 18px; } .ig-flow > li { padding: 0 0 0 60px; } .ig-flow > li::before { position: absolute; left: 0; top: 0; margin: 0; } .ig-flow > li:not(:last-child)::after { top: 48px; bottom: -14px; left: 21px; right: auto; border-top: 0; border-left: 2px dashed #f3c4a6; } }
+
+/* dot matrix: <div class="ig-dots" style="--n:on"> filled by JS or markup (span.on) */
+.ig-dots { display: grid; grid-template-columns: repeat(20, 1fr); gap: 5px; max-width: 420px; }
+.ig-dots span { aspect-ratio: 1; border-radius: 50%; background: var(--ig-grid); transition: background-color .25s, transform .3s var(--btn-spring, ease); }
+.ig-dots span.on { background: var(--ig-or); transform: scale(1.08); }
+
+/* meter: thin track with a filled part (--p 0..100) */
+.ig-meter { height: 8px; border-radius: 999px; background: var(--ig-grid); overflow: hidden; }
+.ig-meter i { display: block; height: 100%; width: calc(var(--p, 50) * 1%); background: linear-gradient(90deg, var(--ig-ink), var(--ig-or)); border-radius: inherit; transform-origin: left; }
+
+/* annotated legend */
+.ig-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; list-style: none; margin: 12px 0 0; padding: 0; font-size: .82rem; color: var(--ink-2); }
+.ig-legend li { display: inline-flex; align-items: center; gap: 8px; }
+.ig-legend li::before { content: ""; width: 10px; height: 10px; border-radius: 3px; background: var(--c, var(--ig-or)); }
+
+/* ---------- reveal animation (.ig-anim -> .ig-on) ---------- */
+.js .ig-anim .ig-mbar i, .js .ig-anim.ig-mbar i { transform: scaleY(0); }
+.js .ig-anim .ig-hbars i, .js .ig-anim.ig-hbars i { transform: scaleX(0); }
+.js .ig-anim .ig-meter i { transform: scaleX(0); }
+.js .ig-anim .ig-stat::before { transform: scaleX(0); }
+.js .ig-anim .ig-flow > li, .js .ig-anim.ig-flow > li { opacity: 0; transform: translateY(14px); }
+.js .ig-anim .ig-mbar b, .js .ig-anim .ig-hbars b { opacity: 0; }
+.js .ig-on .ig-mbar i, .js .ig-on.ig-mbar i { transform: none; transition: transform .9s var(--ease); transition-delay: calc(var(--k, 0) * 45ms); }
+.js .ig-on .ig-hbars i, .js .ig-on.ig-hbars i { transform: none; transition: transform 1s var(--ease); transition-delay: calc(var(--k, 0) * 90ms); }
+.js .ig-on .ig-meter i { transform: none; transition: transform 1.1s var(--ease); }
+.js .ig-on .ig-stat::before { transform: none; transition: transform .8s var(--ease); transition-delay: calc(var(--k, 0) * 110ms + .1s); }
+.js .ig-on .ig-flow > li, .js .ig-on.ig-flow > li { opacity: 1; transform: none; transition: opacity .6s var(--ease), transform .6s var(--ease); transition-delay: calc(var(--k, 0) * 140ms); }
+.js .ig-on .ig-mbar b, .js .ig-on .ig-hbars b { opacity: 1; transition: opacity .4s ease; transition-delay: calc(var(--k, 0) * 60ms + .6s); }
+/* after the entrance, restore the hover springs */
+.js .ig-done .ig-mbar i { transition: transform .35s var(--btn-spring, ease), filter .2s; transition-delay: 0s; }
+.js .ig-done .ig-mbar:hover i, .js .ig-done .ig-mbar.on i { transform: scaleY(1.06); }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .ig-anim .ig-mbar i, .js .ig-anim .ig-hbars i, .js .ig-anim .ig-meter i, .js .ig-anim .ig-stat::before, .js .ig-anim .ig-flow > li, .js .ig-anim .ig-mbar b, .js .ig-anim .ig-hbars b { transform: none !important; opacity: 1 !important; transition: none !important; }
+  .ig-dots span { transition: none; }
+}

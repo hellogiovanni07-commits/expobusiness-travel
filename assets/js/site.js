@@ -2,11 +2,14 @@
 (() => {
   const header = document.querySelector(".site-header");
   const burger = document.querySelector(".burger");
-  const onScroll = () => header && header.classList.toggle("scrolled", scrollY > 8);
+  const topbar = document.querySelector(".topbar");
+  // transparent header over the hero; frosted once scrolled, and the top bar tucks away
+  const onScroll = () => { const s = scrollY > 8; if (header) header.classList.toggle("scrolled", s); if (topbar) topbar.classList.toggle("tucked", s || (header && header.classList.contains("open"))); };
   addEventListener("scroll", onScroll, { passive: true }); onScroll();
 
   if (burger) burger.addEventListener("click", () => {
     const open = header.classList.toggle("open");
+    if (topbar) topbar.classList.toggle("tucked", open || scrollY > 8);
     burger.setAttribute("aria-expanded", open);
     burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
   });

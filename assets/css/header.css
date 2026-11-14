@@ -1,0 +1,41 @@
+/* Transparent header: the top bar and header float over each page's dark hero.
+   Once you scroll, the header turns frosted white and the top bar slides away.
+   Every page opens with .hx or .page-hero, so their top padding makes room for --hdr. */
+:root { --tb: 33px; --hh: 73px; --hdr: calc(var(--tb) + var(--hh)); }
+.topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 52; background: transparent; border-bottom: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.72); transition: transform .45s var(--ease), opacity .3s; }
+.topbar a { color: rgba(255,255,255,.85); }
+.topbar a:hover { color: #fff; }
+.site-header { position: fixed; top: var(--tb); left: 0; right: 0; z-index: 51; background: transparent; border-bottom: 1px solid rgba(255,255,255,.12);
+  transition: transform .45s var(--ease), background-color .35s ease, border-color .35s ease, box-shadow .35s ease; }
+/* soft shade behind the transparent bars so text stays readable on any photo */
+.site-header::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: calc(100% + var(--tb) + 30px); z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(22,22,58,.55), rgba(22,22,58,0)); transition: opacity .35s ease; }
+.site-header .logo, .site-header .logo-text b { color: #fff; }
+.site-header .logo-text small { color: rgba(255,255,255,.65); }
+.site-header .nav a { color: rgba(255,255,255,.88); }
+.site-header .nav a:hover { color: #fff; background: rgba(255,255,255,.1); }
+.site-header .nav a[aria-current="page"] { color: #fff; }
+.site-header .burger { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.3); color: #fff; }
+
+/* scrolled or menu open: frosted white, top bar tucked away */
+.site-header.scrolled, .site-header.open { transform: translateY(calc(var(--tb) * -1)); background: rgba(255,255,255,.9); -webkit-backdrop-filter: saturate(1.4) blur(14px); backdrop-filter: saturate(1.4) blur(14px); border-bottom-color: var(--line); box-shadow: 0 6px 24px -12px rgba(22,22,58,.25); }
+.site-header.open { background: #fff; }
+.site-header.scrolled::before, .site-header.open::before { opacity: 0; }
+.site-header.scrolled .logo, .site-header.scrolled .logo-text b, .site-header.open .logo, .site-header.open .logo-text b { color: var(--navy); }
+.site-header.scrolled .logo-text small, .site-header.open .logo-text small { color: var(--ink-2); }
+.site-header.scrolled .nav a, .site-header.open .nav a { color: var(--ink); }
+.site-header.scrolled .nav a:hover, .site-header.open .nav a:hover { color: var(--navy); background: var(--cloud); }
+.site-header.scrolled .nav a[aria-current="page"], .site-header.open .nav a[aria-current="page"] { color: var(--navy); }
+.site-header.scrolled .burger, .site-header.open .burger { background: #fff; border-color: var(--line); color: var(--navy); }
+
+.topbar.tucked { transform: translateY(-100%); opacity: 0; pointer-events: none; }
+/* hide on scroll down (motion.js .away) */
+.site-header.away { transform: translateY(calc(-100% - var(--tb) - 8px)); }
+
+/* make room under the floating bars */
+.hx .hx-stage { padding-top: calc(var(--hdr) + clamp(28px, 5vw, 64px)); }
+.page-hero .wrap { padding-top: calc(var(--hdr) + clamp(36px, 6vw, 72px)); }
+:target, [id] { scroll-margin-top: calc(var(--hh) + 16px); }
+
+@media (max-width: 720px) { :root { --tb: 32px; --hh: 72px; } }
+@media (prefers-reduced-motion: reduce) { .topbar, .site-header { transition: none; } }

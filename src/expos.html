@@ -9,16 +9,40 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section expos-ig">
   <div class="wrap">
+    <div class="ig-anim">
+      <ul class="ig-stats">
+        <li class="ig-stat"><b data-count="{{EXPO_COUNT}}">{{EXPO_COUNT}}</b><span>expos tracked</span></li>
+        <li class="ig-stat"><b data-count="{{EXPO_COUNTRY_COUNT}}">{{EXPO_COUNTRY_COUNT}}</b><span>countries</span></li>
+        <li class="ig-stat"><b data-count="{{EXPO_CITY_COUNT}}">{{EXPO_CITY_COUNT}}</b><span>cities</span></li>
+        <li class="ig-stat"><b data-count="{{EXPO_REGION_COUNT}}">{{EXPO_REGION_COUNT}}</b><span>regions</span></li>
+      </ul>
+    </div>
+
+    <div class="ig-anim glance">
+      <p class="ig-label">2027 at a glance</p>
+      <div class="glance-grid">
+        <div class="glance-months">
+          <h2 class="glance-h">Expos by month</h2>
+          <div class="ig-mchart" id="mchart" style="--max:{{EXPO_MONTH_MAX}}">{{EXPO_MONTH_BARS}}</div>
+          <div class="ig-axis-pad"></div>
+        </div>
+        <div class="glance-regions">
+          <h2 class="glance-h">Expos by region</h2>
+          <ul class="ig-hbars" id="rchart" style="--max:{{EXPO_REGION_MAX}}">{{EXPO_REGION_BARS}}</ul>
+        </div>
+      </div>
+      <ul class="ig-legend"><li>Bar length: all 2027</li><li>Number: matches now</li><li>Tap a bar to filter</li></ul>
+    </div>
+
     <form class="filters" role="search" aria-label="Filter expos" onsubmit="return false">
       <label>Search<input type="search" id="f-q" placeholder="Product, city or show name"></label>
       <label>Region<select id="f-region"><option value="">All regions</option>{{REGION_OPTIONS}}</select></label>
       <label>Month<select id="f-month"><option value="">All of 2027</option><option value="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option></select></label>
     </form>
-    <div class="month-bar" id="month-bar" role="group" aria-label="Filter by month"></div>
     <p class="result-count" id="f-count" aria-live="polite">{{EXPO_COUNT}} expos</p>
-    <ul class="expo-list" id="expo-list">
+    <ul class="expo-list expo-tl" id="expo-list">
 {{EXPO_ROWS}}
     </ul>
     <p class="empty" id="f-empty" hidden>No expos match. Clear a filter, or <a href="proposal.html">tell us the show</a> and we will plan it.</p>

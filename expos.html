@@ -12,9 +12,14 @@
 <meta name="theme-color" content="#c9460b">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=202611142249">
-<link rel="stylesheet" href="assets/css/motion.css?v=202611142249">
-<link rel="stylesheet" href="assets/css/buttons.css?v=202611142249">
+<link rel="stylesheet" href="assets/css/site.css?v=202611150016">
+<link rel="stylesheet" href="assets/css/motion.css?v=202611150016">
+<link rel="stylesheet" href="assets/css/buttons.css?v=202611150016">
+<link rel="stylesheet" href="assets/css/infographic.css?v=202611150016">
+<link rel="stylesheet" href="assets/css/hero.css?v=202611150016">
+<link rel="stylesheet" href="assets/css/header.css?v=202611150016">
+<link rel="stylesheet" href="assets/css/page-expos.css?v=202611150016">
+<link rel="stylesheet" href="assets/css/page-inner.css?v=202611150016">
 <script>document.documentElement.classList.replace("no-js","js")</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://hellogiovanni07-commits.github.io/expobusiness-travel/"}, {"@type": "ListItem", "position": 2, "name": "2027 Expos", "item": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html"}]}</script>
 </head>
@@ -35,16 +40,40 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section expos-ig">
   <div class="wrap">
+    <div class="ig-anim">
+      <ul class="ig-stats">
+        <li class="ig-stat"><b data-count="102">102</b><span>expos tracked</span></li>
+        <li class="ig-stat"><b data-count="22">22</b><span>countries</span></li>
+        <li class="ig-stat"><b data-count="46">46</b><span>cities</span></li>
+        <li class="ig-stat"><b data-count="6">6</b><span>regions</span></li>
+      </ul>
+    </div>
+
+    <div class="ig-anim glance">
+      <p class="ig-label">2027 at a glance</p>
+      <div class="glance-grid">
+        <div class="glance-months">
+          <h2 class="glance-h">Expos by month</h2>
+          <div class="ig-mchart" id="mchart" style="--max:21"><a class="ig-mbar" href="expos.html?month=1" style="--v:10" title="Jan 2027: 10 expos"><i></i><b>10</b><span>Jan</span></a><a class="ig-mbar" href="expos.html?month=2" style="--v:1" title="Feb 2027: 1 expos"><i></i><b>1</b><span>Feb</span></a><a class="ig-mbar" href="expos.html?month=3" style="--v:21" title="Mar 2027: 21 expos"><i></i><b>21</b><span>Mar</span></a><a class="ig-mbar" href="expos.html?month=4" style="--v:18" title="Apr 2027: 18 expos"><i></i><b>18</b><span>Apr</span></a><a class="ig-mbar" href="expos.html?month=5" style="--v:12" title="May 2027: 12 expos"><i></i><b>12</b><span>May</span></a><a class="ig-mbar" href="expos.html?month=6" style="--v:3" title="Jun 2027: 3 expos"><i></i><b>3</b><span>Jun</span></a><a class="ig-mbar" href="expos.html?month=7" style="--v:2" title="Jul 2027: 2 expos"><i></i><b>2</b><span>Jul</span></a><a class="ig-mbar" href="expos.html?month=8" style="--v:1" title="Aug 2027: 1 expos"><i></i><b>1</b><span>Aug</span></a><a class="ig-mbar" href="expos.html?month=9" style="--v:12" title="Sep 2027: 12 expos"><i></i><b>12</b><span>Sep</span></a><a class="ig-mbar" href="expos.html?month=10" style="--v:10" title="Oct 2027: 10 expos"><i></i><b>10</b><span>Oct</span></a><a class="ig-mbar" href="expos.html?month=11" style="--v:12" title="Nov 2027: 12 expos"><i></i><b>12</b><span>Nov</span></a><a class="ig-mbar" href="expos.html?month=12" style="--v:0" title="Dec 2027: 0 expos"><i></i><b>0</b><span>Dec</span></a></div>
+          <div class="ig-axis-pad"></div>
+        </div>
+        <div class="glance-regions">
+          <h2 class="glance-h">Expos by region</h2>
+          <ul class="ig-hbars" id="rchart" style="--max:58"><li style="--v:58"><span>East Asia</span><i></i><b>58</b></li><li style="--v:20"><span>Europe</span><i></i><b>20</b></li><li style="--v:10"><span>Southeast Asia</span><i></i><b>10</b></li><li style="--v:6"><span>North America</span><i></i><b>6</b></li><li style="--v:6"><span>Middle East</span><i></i><b>6</b></li><li style="--v:2"><span>South Asia</span><i></i><b>2</b></li></ul>
+        </div>
+      </div>
+      <ul class="ig-legend"><li>Bar length: all 2027</li><li>Number: matches now</li><li>Tap a bar to filter</li></ul>
+    </div>
+
     <form class="filters" role="search" aria-label="Filter expos" onsubmit="return false">
       <label>Search<input type="search" id="f-q" placeholder="Product, city or show name"></label>
       <label>Region<select id="f-region"><option value="">All regions</option><option>East Asia</option><option>Europe</option><option>Middle East</option><option>North America</option><option>South Asia</option><option>Southeast Asia</option></select></label>
       <label>Month<select id="f-month"><option value="">All of 2027</option><option value="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option></select></label>
     </form>
-    <div class="month-bar" id="month-bar" role="group" aria-label="Filter by month"></div>
     <p class="result-count" id="f-count" aria-live="polite">102 expos</p>
-    <ul class="expo-list" id="expo-list">
+    <ul class="expo-list expo-tl" id="expo-list">
 <li class="expo-row" data-region="North America" data-month="1" data-q="ces 2027 las vegas usa consumer electronics, smart home, iot, automotive tech"><div class="date">6–9 Jan 2027<small><span class="tag tag-ok">Dates confirmed</span></small></div><div><h3>CES 2027</h3><div class="meta">Las Vegas, USA · Consumer electronics, smart home, IoT, automotive tech</div></div><div class="acts"><a class="link small" href="https://www.ces.tech" rel="noopener" target="_blank">Organiser <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg><span class="sr-only"> (opens in a new tab)</span></a><a class="btn btn-sm btn-ghost" href="proposal.html?expo=ces">Plan this trip</a></div></li>
 <li class="expo-row" data-region="North America" data-month="1" data-q="nrf 2027: retail&#x27;s big show new york usa retail technology, pos, store design, e-commerce"><div class="date">10–12 Jan 2027<small><span class="tag tag-ok">Dates confirmed</span></small></div><div><h3>NRF 2027: Retail&#x27;s Big Show</h3><div class="meta">New York, USA · Retail technology, POS, store design, e-commerce</div></div><div class="acts"><a class="link small" href="https://nrfbigshow.nrf.com" rel="noopener" target="_blank">Organiser <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg><span class="sr-only"> (opens in a new tab)</span></a><a class="btn btn-sm btn-ghost" href="proposal.html?expo=nrf">Plan this trip</a></div></li>
 <li class="expo-row" data-region="East Asia" data-month="1" data-q="hktdc hong kong toys &amp; games fair hong kong hong kong toys, games, hobby, educational and licensed products"><div class="date">11–14 Jan 2027<small><span class="tag tag-ok">Dates confirmed</span></small></div><div><h3>HKTDC Hong Kong Toys &amp; Games Fair</h3><div class="meta">Hong Kong, Hong Kong · Toys, games, hobby, educational and licensed products</div></div><div class="acts"><a class="link small" href="https://www.hktdc.com/event/hktoyfair/en" rel="noopener" target="_blank">Organiser <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg><span class="sr-only"> (opens in a new tab)</span></a><a class="btn btn-sm btn-ghost" href="proposal.html?expo=hk-toys-fair">Plan this trip</a></div></li>
@@ -170,10 +199,11 @@
 <button class="cc-fab" type="button" aria-controls="cc" aria-expanded="false"><span class="cc-ava"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span><span class="cc-label">Ask Expo</span></button>
 <section class="cc-panel" id="cc" role="dialog" aria-label="Ask Expo, ExpoBusiness concierge"><div class="cc-head"><span class="cc-ava"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span><span><b>Ask Expo</b><small>ExpoBusiness travel concierge</small></span><button class="cc-x" type="button" aria-label="Close chat"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button></div>
 <div class="cc-log" aria-live="polite"></div><form class="cc-form"><label class="sr-only" for="cc-in">Your question</label><input id="cc-in" type="text" autocomplete="off" placeholder="Ask about visas, dates or delegations"><button class="btn" type="submit" aria-label="Send"><svg class="icon" aria-hidden="true"><use href="#i-send"/></svg></button></form></section>
-<script src="assets/js/data/site-config.js?v=202611142249"></script>
-<script src="assets/js/site.js?v=202611142249" defer></script>
-<script src="assets/js/motion.js?v=202611142249" defer></script>
-<script src="assets/js/concierge.js?v=202611142249" defer></script>
-<script src="assets/js/expos.js?v=202611142249" defer></script>
+<script src="assets/js/data/site-config.js?v=202611150016"></script>
+<script src="assets/js/site.js?v=202611150016" defer></script>
+<script src="assets/js/motion.js?v=202611150016" defer></script>
+<script src="assets/js/infographic.js?v=202611150016" defer></script>
+<script src="assets/js/concierge.js?v=202611150016" defer></script>
+<script src="assets/js/expos.js?v=202611150016" defer></script>
 </body>
 </html>

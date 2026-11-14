@@ -160,6 +160,7 @@
   const range = $("#pax-range");
   if (range) {
     const out = $("#pax-out"), unit = $("#pax-unit"), tip = $("#pax-tip"), segs = $$(".seg[data-min]");
+    const dotsEl = $(".pax-dots"), dots = dotsEl ? Array.from({ length: 40 }, () => dotsEl.appendChild(document.createElement("span"))) : [];
     const TIPS = [
       [3, "A lean sourcing trip: quick bookings and a shared interpreter by the half day."],
       [9, "A corporate group: private van, a dedicated bilingual coordinator and a hall map per buyer."],
@@ -170,6 +171,7 @@
       range.style.setProperty("--p", ((v - 1) / 39 * 100) + "%");
       tip.textContent = TIPS.find(t => v <= t[0])[1];
       segs.forEach(s => { const on = v >= +s.dataset.min && v <= +s.dataset.max; s.classList.toggle("seg-on", on); s.classList.toggle("seg-dim", !on); });
+      dots.forEach((d, i) => d.classList.toggle("on", i < v));
     };
     range.addEventListener("input", set); set();
   }
