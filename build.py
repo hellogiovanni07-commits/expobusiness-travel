@@ -256,6 +256,62 @@ def fmt_range(a, b):
     return f"{da.day}–{db.day} {MONTHS[db.month-1]}" if da.month == db.month else f"{da.day} {MONTHS[da.month-1]} – {db.day} {MONTHS[db.month-1]}"
 
 
+
+# ---------------------------------------------------------------- expo directory (expos page)
+INDUSTRY = {"electronics": "Electronics & tech", "machinery": "Machinery & industrial", "furniture": "Furniture & home",
+            "retail": "Retail & consumer goods", "food": "Food & beverage", "horeca": "Hotels, restaurants & catering",
+            "fashion": "Fashion & textiles", "beauty": "Beauty & personal care", "construction": "Building & construction",
+            "lighting": "Lighting", "auto": "Automotive", "medical": "Medical & healthcare"}
+for _e in EXPOS:
+    if _e["country"] == "Hong Kong SAR": _e["country"] = "Hong Kong"
+    _e["industries"] = [k for k in (_e.get("industries") or []) if k in INDUSTRY]
+_IND_COUNT = {k: sum(k in e["industries"] for e in EXPOS) for k in INDUSTRY}
+_IND_ORDER = sorted(INDUSTRY, key=lambda k: -_IND_COUNT[k])
+
+
+def date_parts(s):
+    m = re.match(r"^(\d+)–(\d+) ([A-Z][a-z]{2}) (\d{4})$", s)
+    if m: return f"{m[1]}–{m[2]}", f"{m[3]} {m[4]}"
+    m = re.match(r"^(\d+) ([A-Z][a-z]{2}) – (\d+) ([A-Z][a-z]{2}) (\d{4})$", s)
+    if m: return f"{m[1]}–{m[3]}", f"{m[2]}–{m[4]} {m[5]}"
+    m = re.match(r"^(\d+) ([A-Z][a-z]{2}) (\d{4})$", s)
+    if m: return m[1], f"{m[2]} {m[3]}"
+    m = re.match(r"^([A-Z][a-z]+) (\d{4}), dates TBC$", s)
+    if m: return m[1][:3], "dates TBC"
+    return "2027", s
+
+
+def expo_card(e, i):
+    m = int(e["month"][5:7])
+    big, small = date_parts(e["dates_2027"])
+    ok = e.get("dates_status") == "confirmed"
+    tag = '<span class="tag tag-ok">Dates confirmed</span>' if ok else '<span class="tag tag-exp">Dates expected</span>'
+    inds = e["industries"]
+    q = " ".join([e["name"], e["short"], e["city"], e["country"], e["sectors"], e.get("venue", "")] + [INDUSTRY[k] for k in inds]).lower()
+    tags = "".join(f'<button type="button" data-ind="{k}">{esc(INDUSTRY[k])}</button>' for k in inds)
+    org = (f'<a class="btn btn-sm btn-ghost" href="{esc(e["url"])}" rel="noopener" target="_blank">Organiser site {icon("ext")}'
+           '<span class="sr-only"> (opens in a new tab)</span></a>') if e.get("url") else ""
+    venue = f' · {esc(e["venue"])}' if e.get("venue") else ""
+    return (f'<li class="xc" data-i="{i}" data-region="{esc(e["region"])}" data-country="{esc(e["country"])}" data-month="{m}" '
+            f'data-ind="{" ".join(inds)}" data-ok="{int(ok)}" data-name="{esc(e["name"].lower())}" data-q="{esc(q)}">'
+            f'<div class="xc-date{"" if ok else " exp"}"><b>{esc(big)}</b><span>{esc(small)}</span>{tag}</div>'
+            f'<div class="xc-body"><h3>{esc(e["name"])}</h3>'
+            f'<p class="xc-why">{esc(e.get("why") or e["sectors"])}</p>'
+            f'<p class="xc-loc">{icon("pin")}<span><b>{esc(e["city"])}, {esc(e["country"])}</b>{venue}</span></p>'
+            f'<p class="xc-sec"><b>Sectors:</b> {esc(e["sectors"])}</p>'
+            f'<div class="xc-foot"><div class="xc-tags">{tags}</div>'
+            f'<div class="xc-acts"><a class="btn btn-sm" href="proposal.html?expo={e["slug"]}">Plan this trip {icon("arrow")}</a>{org}</div></div>'
+            f'</div></li>')
+
+
+_countries = sorted({(e["country"], e["region"]) for e in EXPOS})
+DIR_TOKENS = {
+    "EXPO_CARDS": "\n".join(expo_card(e, i) for i, e in enumerate(EXPOS)),
+    "INDUSTRY_OPTIONS": "".join(f'<option value="{k}">{esc(INDUSTRY[k])}</option>' for k in _IND_ORDER),
+    "INDUSTRY_LIST": "".join(f'<li><button type="button" data-ind="{k}"><span>{esc(INDUSTRY[k])}</span><b>{_IND_COUNT[k]}</b></button></li>' for k in _IND_ORDER),
+    "COUNTRY_OPTIONS": "".join(f'<option value="{esc(c)}" data-region="{esc(r)}">{esc(c)}</option>' for c, r in _countries),
+}
+
 # ---------------------------------------------------------------- tokens available to src pages
 spring = SITE["canton"]["sessions"][0]
 PHASE_WHAT = ["Electronics, machinery, lighting, hardware", "Home goods, furniture, gifts, building materials", "Textiles, fashion, toys, health, food"]
@@ -283,6 +339,7 @@ TOKENS = {
     "CANTON_START": spring["phases"][0][0],
     "CANTON_TIMELINE": canton_timeline(),
     "EXPO_ROWS": expo_rows(EXPOS),
+    **DIR_TOKENS,
     "EXPO_COUNT": str(len(EXPOS)),
     "EXPO_MONTH_JSON": esc(json.dumps(EXPO_MONTH_DATA)),
     "EXPO_REGION_JSON": esc(json.dumps(EXPO_REGION_DATA)),
@@ -325,14 +382,14 @@ for f in sorted(SRC.glob("*.html")):
 # retired pages: keep the old URLs working
 REDIRECTS = {
     "inquiry": "proposal.html", "itineraries": "expos.html", "china-expos": "expos.html", "world-expos": "expos.html",
-    "event": "expos.html", "industries": "expos.html", **{f"industry-{k}": "expos.html" for k in
+    "event": "expos.html", "industries": "expos.html", **{f"industry-{k}": f"expos.html?industry={k}" for k in
     ("construction", "electronics", "fashion", "furniture", "horeca", "lighting", "machinery", "retail")},
 }
 for old, new in REDIRECTS.items():
     (ROOT / f"{old}.html").write_text(
         f'<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Moved · ExpoBusiness</title>'
         f'<meta name="robots" content="noindex"><link rel="canonical" href="{BASE}{new}">'
-        f'<meta http-equiv="refresh" content="0; url={new}"><script>location.replace("{new}"+location.search)</script></head>'
+        f'<meta http-equiv="refresh" content="0; url={new}"><script>location.replace("{new}"+(location.search?("{new}".includes("?")?"&":"?")+location.search.slice(1):""))</script></head>'
         f'<body><p>This page has moved to <a href="{new}">{new}</a>.</p></body></html>\n', encoding="utf8")
 
 today = datetime.date.today().isoformat()

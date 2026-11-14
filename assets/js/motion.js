@@ -148,7 +148,7 @@
     const onSweep = () => { clearTimeout(trail); if (Date.now() - lastSweep > 150) sweep(); else trail = setTimeout(sweep, 160); };
     addEventListener("scroll", onSweep, { passive: true });
     $$("main .btn").forEach(b => {
-      if (b.hidden || b.closest(".hero, .page-hero, .cc-panel, form")) return;
+      if (b.hidden || b.closest(".hero, .page-hero, .cc-panel, form, .xd-list, .hx")) return;
       if (b.getBoundingClientRect().top < innerHeight) return; // already on screen: leave it
       const sib = b.parentElement ? [...b.parentElement.querySelectorAll(":scope > .btn")] : [];
       b.style.setProperty("--btn-d", Math.max(0, sib.indexOf(b)) * 80 + "ms");
