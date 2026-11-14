@@ -56,8 +56,8 @@
 .paused .btn-cta, .paused.btn-cta { animation-play-state: paused; }
 
 /* click ripple (added by motion.js) */
-.btn .ripple { position: absolute; z-index: 1; border-radius: 50%; background: #fff; opacity: .35; transform: scale(0); animation: ripple .65s var(--btn-ease) forwards; pointer-events: none; }
-.btn-ghost .ripple { background: var(--gold-ink); opacity: .18; }
+.btn .ripple, .cc-chips .ripple, .month-bar .ripple, .burger .ripple { position: absolute; z-index: 1; border-radius: 50%; background: #fff; opacity: .35; transform: scale(0); animation: ripple .65s var(--btn-ease) forwards; pointer-events: none; }
+.btn-ghost .ripple, .month-bar .ripple, .burger .ripple { background: var(--gold-ink); opacity: .18; }
 @keyframes ripple { to { transform: scale(1); opacity: 0; } }
 
 /* pop in when scrolled into view (classes added by motion.js) */
@@ -67,12 +67,81 @@
 .btn-cta.btn-in:hover { animation: none; }
 @keyframes btnPop { from { opacity: 0; transform: translateY(10px) scale(.96); } to { opacity: 1; transform: none; } }
 
-/* the header button stays still so the bar never jitters */
-.site-header .btn:hover, .site-header .btn:active { transform: none; }
+/* header button: smaller lift so the bar stays calm */
+.site-header .btn:hover { transform: translateY(-1px); }
+
+/* ---------- every other clickable thing ---------- */
+/* shared: spring + press squeeze */
+.nav a, .link, .burger, .cc-fab, .cc-x, .cc-chips button, .month-bar button, .check, .faq summary, .f-links a {
+  transition: transform .32s var(--btn-spring), color .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .3s ease; -webkit-tap-highlight-color: transparent; }
+.burger:active, .cc-fab:active, .cc-x:active, .cc-chips button:active, .month-bar button:not(:disabled):active, .check:active { transform: scale(.94); transition-duration: .1s; }
+
+/* main nav: underline grows from the left */
+.nav a::before { content: ""; position: absolute; left: 14px; right: 14px; bottom: 4px; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .38s var(--btn-ease); }
+.nav a:hover::before { transform: scaleX(1); }
+.nav a:hover { transform: translateY(-1px); }
+.nav a[aria-current="page"]::before { display: none; }
+
+/* text links with an arrow: underline wipe + arrow nudge */
+.link { position: relative; }
+.link:hover { text-decoration: none; color: var(--gold-ink); }
+.link::after { content: ""; position: absolute; left: 0; right: 1.4em; bottom: -3px; height: 1.5px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .32s var(--btn-ease); }
+.link:hover::after { transform: scaleX(1); }
+.link .icon { transition: transform .35s var(--btn-spring); }
+.link:hover .icon { transform: translateX(4px); }
+.link.small:hover .icon { transform: translate(2px, -2px); }
+
+/* footer links: lift + colour */
+.f-links a { display: inline-block; }
+.f-links a:hover { transform: translateY(-2px); }
+
+/* burger: lift + icon turn */
+.burger { position: relative; overflow: hidden; }
+.burger:hover { border-color: var(--gold); transform: translateY(-1px); }
+.burger .icon { transition: transform .4s var(--btn-spring); }
+.burger:hover .icon { transform: rotate(-8deg) scale(1.08); }
+.burger[aria-expanded="true"] .icon { transform: rotate(90deg); }
+
+/* chat button: spring lift, bell rings on hover */
+.cc-fab { overflow: visible; }
+.cc-fab:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -10px rgba(22,22,58,.5), 0 0 0 4px rgba(242,106,27,.16); }
+.cc-fab:hover .cc-ava svg { animation: bellRing .7s var(--btn-ease); transform-origin: 50% 20%; }
+@keyframes bellRing { 0%, 100% { transform: rotate(0); } 20% { transform: rotate(16deg); } 40% { transform: rotate(-12deg); } 60% { transform: rotate(8deg); } 80% { transform: rotate(-4deg); } }
+.cc-x .icon, .cc-x svg { transition: transform .35s var(--btn-spring); }
+.cc-x:hover svg { transform: rotate(90deg); }
+
+/* chat chips: lift, fill wipe, pop in one after another */
+.cc-chips button { position: relative; overflow: hidden; isolation: isolate; }
+.cc-chips button::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--navy); transform: scaleX(0); transform-origin: left; transition: transform .35s var(--btn-ease); }
+.cc-chips button:hover { background: #fff; color: #fff; transform: translateY(-2px); }
+.cc-chips button:hover::before { transform: scaleX(1); }
+.cc-chips button { animation: btnPop .45s var(--btn-spring) backwards; }
+.cc-chips button:nth-child(2) { animation-delay: .07s; } .cc-chips button:nth-child(3) { animation-delay: .14s; } .cc-chips button:nth-child(4) { animation-delay: .21s; }
+.cc-form .btn:hover .icon, .cc-form .btn:hover svg { transform: translate(3px, -3px) rotate(-6deg); }
+.cc-form .btn svg { transition: transform .35s var(--btn-spring); }
+
+/* month filter: spring lift, pressed one bounces */
+.month-bar button { position: relative; overflow: hidden; }
+.month-bar button:not(:disabled):hover { transform: translateY(-3px); box-shadow: 0 10px 20px -14px rgba(201,70,11,.6); }
+.month-bar button[aria-pressed="true"] { animation: btnPop .4s var(--btn-spring); box-shadow: 0 8px 18px -10px rgba(201,70,11,.75); }
+
+/* FAQ questions: nudge + springy plus */
+.faq summary:hover { color: var(--gold-ink); transform: translateX(4px); }
+.faq summary::after { transition: transform .4s var(--btn-spring); }
+.faq summary:hover::after { transform: scale(1.2); }
+.faq details[open] summary:hover::after { transform: rotate(45deg) scale(1.2); }
+
+/* proposal checklist: lift + tick pop */
+.check:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -16px rgba(22,22,58,.5); border-color: var(--gold); }
+.check input:checked { animation: btnPop .35s var(--btn-spring); }
+.check:has(input:checked) { border-color: var(--gold-ink); background: var(--or-050); }
+.check input { accent-color: var(--gold-ink); }
 
 @media (prefers-reduced-motion: reduce) {
-  .btn, .btn .icon, .btn::after, .btn::before { transition: none !important; animation: none !important; }
-  .btn:hover, .btn:active { transform: none; }
+  .btn, .btn .icon, .btn::after, .btn::before, .nav a, .nav a::before, .link, .link::after, .link .icon, .burger, .burger .icon, .cc-fab, .cc-fab svg, .cc-x svg,
+  .cc-chips button, .cc-chips button::before, .month-bar button, .faq summary, .faq summary::after, .check, .check input, .f-links a { transition: none !important; animation: none !important; }
+  .btn:hover, .btn:active, .nav a:hover, .f-links a:hover, .burger:hover, .burger:active, .cc-fab:hover, .cc-fab:active, .cc-chips button:hover, .cc-chips button:active,
+  .month-bar button:hover, .month-bar button:active, .faq summary:hover, .check:hover, .check:active { transform: none !important; }
   .btn-pre { opacity: 1; transform: none; }
   .btn-in { animation: none; }
 }

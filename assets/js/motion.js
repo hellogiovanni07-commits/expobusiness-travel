@@ -128,7 +128,7 @@
   $$('a.btn[href^="proposal.html"]:not(.btn-ghost):not(.btn-sm), .btn[data-submit]').forEach(b => { if (!b.closest(".site-header")) b.classList.add("btn-cta"); });
   // ripple from the click point
   document.addEventListener("pointerdown", e => {
-    const b = e.target.closest && e.target.closest(".btn"); if (!b || reduce || e.button !== 0) return;
+    const b = e.target.closest && e.target.closest(".btn, .cc-chips button, .month-bar button:not(:disabled), .burger"); if (!b || reduce || e.button !== 0) return;
     const r = b.getBoundingClientRect(), d = Math.max(r.width, r.height) * 2.2, s = document.createElement("span");
     s.className = "ripple"; s.style.cssText = `width:${d}px;height:${d}px;left:${e.clientX - r.left - d / 2}px;top:${e.clientY - r.top - d / 2}px`;
     b.appendChild(s); setTimeout(() => s.remove(), 700);
