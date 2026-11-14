@@ -373,3 +373,11 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--n
 .muted { color: var(--ink-2); }
 .small { font-size: .88rem; }
 .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+
+/* dropdowns: same padding and type as text inputs, custom orange chevron (native arrows indent the text unevenly) */
+select { -webkit-appearance: none; -moz-appearance: none; appearance: none; padding-right: 42px; cursor: pointer; text-overflow: ellipsis;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9460b' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center; background-size: 16px; }
+select::-ms-expand { display: none; }
+input::placeholder, textarea::placeholder { color: #8a8aa0; opacity: 1; }
+select:hover, input[type=search]:hover { border-color: #b4b2c6; }
