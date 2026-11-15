@@ -1,0 +1,500 @@
+[
+  {
+    "id": "letterhead",
+    "title": "Letterhead",
+    "category": "documents",
+    "size": "A4 210x297mm",
+    "preview": "collateral/letterhead.png",
+    "files": [
+      {
+        "label": "PDF",
+        "href": "collateral/letterhead.pdf"
+      },
+      {
+        "label": "HTML",
+        "href": "collateral/letterhead.html"
+      }
+    ],
+    "notes": "Office-printable A4, no bleed. Partnership lockup in header, details in footer."
+  },
+  {
+    "id": "business-card",
+    "title": "Business card (front + back)",
+    "category": "documents",
+    "size": "90x54mm + 3mm bleed",
+    "preview": "collateral/business-card.png",
+    "files": [
+      {
+        "label": "PDF",
+        "href": "collateral/business-card.pdf"
+      },
+      {
+        "label": "PNG page 1",
+        "href": "collateral/business-card-p1.png"
+      },
+      {
+        "label": "PNG page 2",
+        "href": "collateral/business-card-p2.png"
+      },
+      {
+        "label": "HTML",
+        "href": "collateral/business-card.html"
+      }
+    ],
+    "notes": "PDF pages are 96x60mm incl. 3mm bleed; trim to 90x54mm. Name, title and phone are placeholders."
+  },
+  {
+    "id": "compliment-slip",
+    "title": "Compliment slip",
+    "category": "documents",
+    "size": "DL 210x99mm + 3mm bleed",
+    "preview": "collateral/compliment-slip.png",
+    "files": [
+      {
+        "label": "PDF",
+        "href": "collateral/compliment-slip.pdf"
+      },
+      {
+        "label": "HTML",
+        "href": "collateral/compliment-slip.html"
+      }
+    ],
+    "notes": "One-third A4. Trim to 210x99mm."
+  },
+  {
+    "id": "envelope-dl",
+    "title": "Envelope DL (front)",
+    "category": "documents",
+    "size": "DL 220x110mm",
+    "preview": "collateral/envelope-dl.png",
+    "files": [
+      {
+        "label": "PDF",
+        "href": "collateral/envelope-dl.pdf"
+      },
+      {
+        "label": "HTML",
+        "href": "collateral/envelope-dl.html"
+      }
+    ],
+    "notes": "Front face artwork for a window-less DL envelope; return details top left."
+  },
+  {
+    "id": "email-signature",
+    "title": "Email signature",
+    "category": "documents",
+    "size": "HTML, 600px max",
+    "preview": "collateral/email-signature.png",
+    "files": [
+      {
+        "label": "HTML",
+        "href": "collateral/email-signature.html"
+      }
+    ],
+    "notes": "Table-based, inline styles. Swap image src for hosted PNG URLs before pasting into Gmail/Outlook."
+  },
+  {
+    "id": "proposal",
+    "title": "Corporate proposal / quotation (cover + inside page)",
+    "category": "documents",
+    "size": "A4 210x297mm, 2 pages",
+    "preview": "collateral/proposal.png",
+    "files": [
+      {
+        "label": "PDF",
+        "href": "collateral/proposal.pdf"
+      },
+      {
+        "label": "PNG page 1",
+        "href": "collateral/proposal-p1.png"
+      },
+      {
+        "label": "PNG page 2",
+        "href": "collateral/proposal-p2.png"
+      },
+      {
+        "label": "HTML",
+        "href": "collateral/proposal.html"
+      }
+    ],
+    "notes": "Cover + itemised quotation page. Every value is a [placeholder]; no prices are pre-filled."
+  },
+  {
+    "id": "itinerary",
+    "title": "Travel itinerary",
+    "category": "documents",
+    "size": "A4 210x297mm",
+    "preview": "collateral/itinerary.png",
+    "files": [
+      {
+        "label": "PDF",
+        "href": "collateral/itinerary.pdf"
+      },
+      {
+        "label": "HTML",
+        "href": "collateral/itinerary.html"
+      }
+    ],
+    "notes": "Day-by-day trip itinerary with flights, hotel and coordinator blocks; example uses a real 2027 show."
+  },
+  {
+    "id": "pre-departure-checklist",
+    "title": "Pre-departure checklist",
+    "category": "documents",
+    "size": "A4 210x297mm",
+    "preview": "collateral/pre-departure-checklist.png",
+    "files": [
+      {
+        "label": "PDF",
+        "href": "collateral/pre-departure-checklist.pdf"
+      },
+      {
+        "label": "HTML",
+        "href": "collateral/pre-departure-checklist.html"
+      }
+    ],
+    "notes": "Tick-box checklist issued with the itinerary at the pre-departure briefing."
+  },
+  {
+    "id": "trip-request-form",
+    "title": "Trip brief / rate-request form",
+    "category": "documents",
+    "size": "A4 210x297mm",
+    "preview": "collateral/trip-request-form.png",
+    "files": [
+      {
+        "label": "PDF",
+        "href": "collateral/trip-request-form.pdf"
+      },
+      {
+        "label": "HTML",
+        "href": "collateral/trip-request-form.html"
+      }
+    ],
+    "notes": "Fill-in brief a client completes so we can prepare an itemised proposal."
+  },
+  {
+    "id": "invoice",
+    "title": "Invoice / official receipt layout",
+    "category": "documents",
+    "size": "A4 210x297mm",
+    "preview": "collateral/invoice.png",
+    "files": [
+      {
+        "label": "PDF",
+        "href": "collateral/invoice.pdf"
+      },
+      {
+        "label": "HTML",
+        "href": "collateral/invoice.html"
+      }
+    ],
+    "notes": "Design layout only, blank fields. BIR-required details (TIN, ATP, serial) to be printed by an accredited printer."
+  },
+  {
+    "id": "company-profile",
+    "title": "Company profile / capability one-pager",
+    "category": "print",
+    "size": "A4 210x297mm + 3mm bleed",
+    "preview": "collateral/company-profile.png",
+    "files": [
+      {
+        "label": "PDF",
+        "href": "collateral/company-profile.pdf"
+      },
+      {
+        "label": "HTML",
+        "href": "collateral/company-profile.html"
+      }
+    ],
+    "notes": "Capability statement: who we serve, services, how it works, facts from site data."
+  },
+  {
+    "id": "trifold",
+    "title": "Trifold brochure (outside + inside)",
+    "category": "print",
+    "size": "A4 landscape 297x210mm + 3mm bleed, roll fold",
+    "preview": "collateral/trifold.png",
+    "files": [
+      {
+        "label": "PDF",
+        "href": "collateral/trifold.pdf"
+      },
+      {
+        "label": "PNG page 1",
+        "href": "collateral/trifold-p1.png"
+      },
+      {
+        "label": "PNG page 2",
+        "href": "collateral/trifold-p2.png"
+      },
+      {
+        "label": "HTML",
+        "href": "collateral/trifold.html"
+      }
+    ],
+    "notes": "Panels 100/100/97mm; inside right panel folds in. Page 1 = outside, page 2 = inside."
+  },
+  {
+    "id": "expo-flyer",
+    "title": "2027 expo calendar flyer (front + back)",
+    "category": "print",
+    "size": "A5 148x210mm + 3mm bleed",
+    "preview": "collateral/expo-flyer.png",
+    "files": [
+      {
+        "label": "PDF",
+        "href": "collateral/expo-flyer.pdf"
+      },
+      {
+        "label": "PNG page 1",
+        "href": "collateral/expo-flyer-p1.png"
+      },
+      {
+        "label": "PNG page 2",
+        "href": "collateral/expo-flyer-p2.png"
+      },
+      {
+        "label": "HTML",
+        "href": "collateral/expo-flyer.html"
+      }
+    ],
+    "notes": "Trade-mission leave-behind: expos per month chart (site data) and a selection of real 2027 shows."
+  },
+  {
+    "id": "poster-a3",
+    "title": "Poster A3",
+    "category": "print",
+    "size": "A3 297x420mm + 3mm bleed",
+    "preview": "collateral/poster-a3.png",
+    "files": [
+      {
+        "label": "PDF",
+        "href": "collateral/poster-a3.pdf"
+      },
+      {
+        "label": "HTML",
+        "href": "collateral/poster-a3.html"
+      }
+    ],
+    "notes": "Event / office poster built on the expo-hall photo used on the website."
+  },
+  {
+    "id": "rollup-banner",
+    "title": "Roll-up banner",
+    "category": "print",
+    "size": "850x2000mm + 5mm bleed",
+    "preview": "collateral/rollup-banner.png",
+    "files": [
+      {
+        "label": "PDF",
+        "href": "collateral/rollup-banner.pdf"
+      },
+      {
+        "label": "HTML",
+        "href": "collateral/rollup-banner.html"
+      }
+    ],
+    "notes": "Full-size vector PDF. Keep the bottom 150mm free of key content (it sits in the cassette)."
+  },
+  {
+    "id": "booth-backdrop",
+    "title": "Trade-booth backdrop",
+    "category": "print",
+    "size": "3000x2400mm + 10mm bleed",
+    "preview": "collateral/booth-backdrop.png",
+    "files": [
+      {
+        "label": "PDF",
+        "href": "collateral/booth-backdrop.pdf"
+      },
+      {
+        "label": "HTML",
+        "href": "collateral/booth-backdrop.html"
+      }
+    ],
+    "notes": "Full-size PDF for a 3x2.4m pop-up wall. Logo and message sit above table height (1000mm)."
+  },
+  {
+    "id": "postcard",
+    "title": "Postcard (front + back)",
+    "category": "print",
+    "size": "A6 148x105mm + 3mm bleed",
+    "preview": "collateral/postcard.png",
+    "files": [
+      {
+        "label": "PDF",
+        "href": "collateral/postcard.pdf"
+      },
+      {
+        "label": "PNG page 1",
+        "href": "collateral/postcard-p1.png"
+      },
+      {
+        "label": "PNG page 2",
+        "href": "collateral/postcard-p2.png"
+      },
+      {
+        "label": "HTML",
+        "href": "collateral/postcard.html"
+      }
+    ],
+    "notes": "Mailer / handout. Back has message area and address lines."
+  },
+  {
+    "id": "name-badge",
+    "title": "Delegation name badge",
+    "category": "print",
+    "size": "90x120mm + 3mm bleed",
+    "preview": "collateral/name-badge.png",
+    "files": [
+      {
+        "label": "PDF",
+        "href": "collateral/name-badge.pdf"
+      },
+      {
+        "label": "HTML",
+        "href": "collateral/name-badge.html"
+      }
+    ],
+    "notes": "Fits a standard 90x120mm lanyard sleeve. Name, company and trip are placeholders."
+  },
+  {
+    "id": "luggage-tag",
+    "title": "Luggage tag (front + back)",
+    "category": "print",
+    "size": "55x110mm + 3mm bleed",
+    "preview": "collateral/luggage-tag.png",
+    "files": [
+      {
+        "label": "PDF",
+        "href": "collateral/luggage-tag.pdf"
+      },
+      {
+        "label": "PNG page 1",
+        "href": "collateral/luggage-tag-p1.png"
+      },
+      {
+        "label": "PNG page 2",
+        "href": "collateral/luggage-tag-p2.png"
+      },
+      {
+        "label": "HTML",
+        "href": "collateral/luggage-tag.html"
+      }
+    ],
+    "notes": "Delegation bag tag; punch hole marked. Back carries owner and trip fields."
+  },
+  {
+    "id": "newsletter",
+    "title": "Email newsletter template",
+    "category": "digital",
+    "size": "600px wide HTML",
+    "preview": "collateral/newsletter.png",
+    "files": [
+      {
+        "label": "HTML",
+        "href": "collateral/newsletter.html"
+      }
+    ],
+    "notes": "Table-based 600px email. Replace relative image paths with hosted URLs before sending."
+  },
+  {
+    "id": "banner-300x250",
+    "title": "Web banner, medium rectangle",
+    "category": "digital",
+    "size": "300x250px",
+    "preview": "collateral/banner-300x250.png",
+    "files": [
+      {
+        "label": "PNG",
+        "href": "collateral/banner-300x250.png"
+      },
+      {
+        "label": "HTML",
+        "href": "collateral/banner-300x250.html"
+      }
+    ],
+    "notes": "Display ad / partner site banner."
+  },
+  {
+    "id": "banner-728x90",
+    "title": "Web banner, leaderboard",
+    "category": "digital",
+    "size": "728x90px",
+    "preview": "collateral/banner-728x90.png",
+    "files": [
+      {
+        "label": "PNG",
+        "href": "collateral/banner-728x90.png"
+      },
+      {
+        "label": "HTML",
+        "href": "collateral/banner-728x90.html"
+      }
+    ],
+    "notes": "Display ad leaderboard."
+  },
+  {
+    "id": "banner-1200x628",
+    "title": "Link / social share banner",
+    "category": "digital",
+    "size": "1200x628px",
+    "preview": "collateral/banner-1200x628.png",
+    "files": [
+      {
+        "label": "PNG",
+        "href": "collateral/banner-1200x628.png"
+      },
+      {
+        "label": "HTML",
+        "href": "collateral/banner-1200x628.html"
+      }
+    ],
+    "notes": "Link-share and LinkedIn/Facebook single-image post size."
+  },
+  {
+    "id": "linkedin-banner",
+    "title": "LinkedIn company page banner",
+    "category": "digital",
+    "size": "1128x191px",
+    "preview": "collateral/linkedin-banner.png",
+    "files": [
+      {
+        "label": "PNG",
+        "href": "collateral/linkedin-banner.png"
+      },
+      {
+        "label": "HTML",
+        "href": "collateral/linkedin-banner.html"
+      }
+    ],
+    "notes": "Left 300px kept quiet: the page logo overlaps it on mobile."
+  },
+  {
+    "id": "presentation",
+    "title": "Presentation title + content slide",
+    "category": "digital",
+    "size": "1920x1080px, 2 slides",
+    "preview": "collateral/presentation.png",
+    "files": [
+      {
+        "label": "PDF",
+        "href": "collateral/presentation.pdf"
+      },
+      {
+        "label": "PNG page 1",
+        "href": "collateral/presentation-p1.png"
+      },
+      {
+        "label": "PNG page 2",
+        "href": "collateral/presentation-p2.png"
+      },
+      {
+        "label": "HTML",
+        "href": "collateral/presentation.html"
+      }
+    ],
+    "notes": "16:9 master slides; PDF has both slides at 1920x1080."
+  }
+]

@@ -6,14 +6,15 @@ window.SITE = {
   "brand": {
     "name": "ExpoBusiness",
     "descriptor": "Travel Services",
-    "parent": "Immaculate Connections",
-    "short": "Business travel, trade missions and delegations for Philippine companies."
+    "partner": "Immaculate Connections",
+    "partner_url": "https://www.immaculateconnectionsph.com/",
+    "short": "Business travel, trade missions and delegations for Philippine companies, from Metro Manila."
   },
   "contact": {
     "phone": "[phone number]",
     "mobile": "[mobile / Viber number]",
     "email": "inquiry@expobusinesstravel.ph",
-    "address": "Unit 4E, 4th Floor, JL Millennium Building, Don Jose Avila Street, Cebu City, Philippines",
+    "address": "Metro Manila, Philippines",
     "hours": "[Mon–Sat, 9:00–18:00]"
   },
   "social": {

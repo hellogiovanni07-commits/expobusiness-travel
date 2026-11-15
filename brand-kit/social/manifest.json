@@ -1,0 +1,1384 @@
+{
+  "generated": "2026-11-15",
+  "site": "https://hellogiovanni07-commits.github.io/expobusiness-travel/",
+  "categories": [
+    {
+      "id": "expo-spotlight",
+      "title": "Expo spotlight",
+      "description": "One 2027 trade expo per post: dates (confirmed or expected), city, venue, sectors and who should go. Drives visits to the expo calendar.",
+      "cadence": "weekly, Monday"
+    },
+    {
+      "id": "trade-calendar",
+      "title": "Trade-show calendar",
+      "description": "Month-by-month list of 2027 trade expos from the site calendar, plus the year at a glance. Saveable reference content.",
+      "cadence": "fortnightly, Wednesday (first week of each month)"
+    },
+    {
+      "id": "destination-guides",
+      "title": "Destination business guides",
+      "description": "Country cards for Philippine business travellers: expos on the calendar, host cities and the visa position from our visa page.",
+      "cadence": "fortnightly, Thursday"
+    },
+    {
+      "id": "visa-documents",
+      "title": "Visa & documents",
+      "description": "Plain-English visa pointers for Philippine passport holders on short business trips, with the standing disclaimer that embassies decide.",
+      "cadence": "fortnightly, Thursday (alternates with destination guides)"
+    },
+    {
+      "id": "how-we-work",
+      "title": "How we work",
+      "description": "Our services and working terms: one coordinator, itemised proposals, official invoices, nothing booked until the client approves.",
+      "cadence": "weekly, Tuesday"
+    },
+    {
+      "id": "planning-tips",
+      "title": "Planning checklists & tips",
+      "description": "Practical, general trade-show and business-trip checklists that buyers and admin teams can save and reuse.",
+      "cadence": "weekly, Friday"
+    },
+    {
+      "id": "delegations-mice",
+      "title": "Delegations & MICE",
+      "description": "For chambers, associations, LGUs and companies running group missions, conferences and incentive trips.",
+      "cadence": "fortnightly, Wednesday"
+    },
+    {
+      "id": "partnership-brand",
+      "title": "Partnership & brand",
+      "description": "Who we are, our promise and our partnership with Immaculate Connections. Every post carries the partner lockup.",
+      "cadence": "fortnightly, Friday (alternates with tips)"
+    }
+  ],
+  "posts": [
+    {
+      "id": "ex-01-gulfood",
+      "category": "expo-spotlight",
+      "title": "Expo spotlight: Gulfood 2027",
+      "format": "1080x1350",
+      "png": "social/ex-01-gulfood.png",
+      "caption": "Gulfood runs 15 to 19 March 2027 in Dubai, across Dubai World Trade Centre and Expo City Dubai.\nFor food and halal exporters looking at GCC buyers, it is the date to plan around.\nUAE business visas are usually arranged before travel. Full 2027 calendar on our site.",
+      "hashtags": [
+        "#Gulfood",
+        "#FoodExport",
+        "#Halal",
+        "#Dubai",
+        "#TradeShow",
+        "#BusinessTravel"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "ex-02-hannover",
+      "category": "expo-spotlight",
+      "title": "Expo spotlight: HANNOVER MESSE 2027",
+      "format": "1080x1350",
+      "png": "social/ex-02-hannover.png",
+      "caption": "Hannover Messe 2027: 5 to 8 April, Hannover Exhibition Grounds.\nAutomation, robotics and energy tech for Philippine factories and economic zones.\nGermany is in the Schengen area, so book visa appointments early. Calendar link in bio.",
+      "hashtags": [
+        "#HannoverMesse",
+        "#Manufacturing",
+        "#Automation",
+        "#Germany",
+        "#TradeShow"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "ex-03-canton",
+      "category": "expo-spotlight",
+      "title": "Expo spotlight: 141st China Import and Export Fair (Spring Canton Fair)",
+      "format": "1080x1350",
+      "png": "social/ex-03-canton.png",
+      "caption": "The Spring Canton Fair is expected in three phases from mid-April to early May 2027. Dates are the usual pattern, not yet published.\nPick the phase that matches your product category.\nThe China business (M) visa needs four to six weeks. Start early.",
+      "hashtags": [
+        "#CantonFair",
+        "#Sourcing",
+        "#Guangzhou",
+        "#Importers",
+        "#TradeShow",
+        "#BusinessTravel"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "ex-04-foodex",
+      "category": "expo-spotlight",
+      "title": "Expo spotlight: FOODEX JAPAN 2027",
+      "format": "1080x1350",
+      "png": "social/ex-04-foodex.png",
+      "caption": "FOODEX Japan 2027: 9 to 12 March at Tokyo Big Sight.\nA route to Japanese importers for Philippine food exporters, and a place for food buyers to source Japanese products.\nJapan needs a short-term business visa through accredited agencies.",
+      "hashtags": [
+        "#FOODEX",
+        "#FoodExport",
+        "#Japan",
+        "#Tokyo",
+        "#TradeShow"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "ex-05-salone",
+      "category": "expo-spotlight",
+      "title": "Expo spotlight: Salone del Mobile.Milano 2027 (with Euroluce)",
+      "format": "1080x1350",
+      "png": "social/ex-05-salone.png",
+      "caption": "Salone del Mobile.Milano runs 13 to 18 April 2027 at Fiera Milano Rho, with Euroluce for lighting.\nUseful for furniture exporters, designers and hotel fit-out teams.\nItaly is Schengen: apply to the country of your main stay.",
+      "hashtags": [
+        "#SaloneDelMobile",
+        "#Furniture",
+        "#InteriorDesign",
+        "#Milan",
+        "#TradeShow"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "ex-06-ifex",
+      "category": "expo-spotlight",
+      "title": "Expo spotlight: IFEX Philippines 2027",
+      "format": "1080x1350",
+      "png": "social/ex-06-ifex.png",
+      "caption": "Closer to home: IFEX Philippines 2027, 20 to 22 May at the World Trade Center Metro Manila.\nLocal producers meet foreign buyers, and retailers find new suppliers.\nHosting overseas buyers or visitors? We can handle their hotels and transfers.",
+      "hashtags": [
+        "#IFEXPhilippines",
+        "#FoodExport",
+        "#MetroManila",
+        "#TradeShow",
+        "#PhilippineBusiness"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "tc-01-jan-feb",
+      "category": "trade-calendar",
+      "title": "2027 trade-show calendar: January & February",
+      "format": "1080x1350",
+      "png": "social/tc-01-jan-feb.png",
+      "caption": "January and February 2027 on one page: CES, NRF, Heimtextil, Ambiente, MAGIC and more.\nA filled dot means the organiser has published dates; an open dot means expected.\nSave this for planning. Full calendar on our site.",
+      "hashtags": [
+        "#TradeShow2027",
+        "#ExpoCalendar",
+        "#BusinessTravel",
+        "#Importers"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "tc-02-march",
+      "category": "trade-calendar",
+      "title": "2027 trade-show calendar: March",
+      "format": "1080x1350",
+      "png": "social/tc-02-march.png",
+      "caption": "March is the busiest month on our 2027 calendar, with 21 trade expos.\nHere are ten with confirmed dates, from Frankfurt to Tokyo and Dubai.\nSave it and check the rest on the site.",
+      "hashtags": [
+        "#TradeShow2027",
+        "#ExpoCalendar",
+        "#Gulfood",
+        "#ProWein",
+        "#BusinessTravel"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "tc-03-april",
+      "category": "trade-calendar",
+      "title": "2027 trade-show calendar: April",
+      "format": "1080x1350",
+      "png": "social/tc-03-april.png",
+      "caption": "April 2027: Hannover Messe, Salone del Mobile, the Hong Kong spring fairs and the first phase of the Canton Fair.\nNine highlights here; the full list is on our calendar.\nVisas for April trips should start in February.",
+      "hashtags": [
+        "#TradeShow2027",
+        "#CantonFair",
+        "#HannoverMesse",
+        "#ExpoCalendar"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "tc-04-may",
+      "category": "trade-calendar",
+      "title": "2027 trade-show calendar: May",
+      "format": "1080x1350",
+      "png": "social/tc-04-may.png",
+      "caption": "May 2027: food shows in Singapore, Bangkok, Chicago and Amsterdam, and IFEX here in Metro Manila.\nSave this list for the food and hospitality team.\nFull calendar on our site.",
+      "hashtags": [
+        "#TradeShow2027",
+        "#FoodShow",
+        "#IFEXPhilippines",
+        "#ExpoCalendar"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "tc-05-jun-aug",
+      "category": "trade-calendar",
+      "title": "2027 trade-show calendar: June to August",
+      "format": "1080x1350",
+      "png": "social/tc-05-jun-aug.png",
+      "caption": "Mid-year 2027 is quieter: Computex, Seoul Food, GILE, the Summer Fancy Food Show and Hong Kong's Food Expo.\nA good window to plan the busy autumn season.\nFull calendar on our site.",
+      "hashtags": [
+        "#TradeShow2027",
+        "#Computex",
+        "#ExpoCalendar",
+        "#BusinessTravel"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "tc-06-september",
+      "category": "trade-calendar",
+      "title": "2027 trade-show calendar: September",
+      "format": "1080x1350",
+      "png": "social/tc-06-september.png",
+      "caption": "September 2027: IFA Berlin, IAA Mobility, Big 5 Saudi and a run of Shanghai and Shenzhen fairs.\nSeveral China dates are expected rather than confirmed; we check them before booking.\nSave this list.",
+      "hashtags": [
+        "#TradeShow2027",
+        "#IFA",
+        "#ExpoCalendar",
+        "#BusinessTravel"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "tc-07-year-glance",
+      "category": "trade-calendar",
+      "title": "2027 trade expos at a glance",
+      "format": "1200x627",
+      "png": "social/tc-07-year-glance.png",
+      "caption": "Our 2027 calendar lists 102 trade expos in 21 countries, with dates marked confirmed or expected.\nMarch and April are the busiest months; mid-year is quieter.\nFilter it by sector and month on our site.",
+      "hashtags": [
+        "#TradeShow2027",
+        "#ExpoCalendar",
+        "#B2B",
+        "#BusinessTravel"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook"
+      ]
+    },
+    {
+      "id": "tc-08-autumn-carousel",
+      "category": "trade-calendar",
+      "title": "Carousel: autumn 2027 trade-show calendar",
+      "format": "1080x1350",
+      "png": "social/tc-08-autumn-carousel-1.png",
+      "slides": [
+        "social/tc-08-autumn-carousel-1.png",
+        "social/tc-08-autumn-carousel-2.png",
+        "social/tc-08-autumn-carousel-3.png",
+        "social/tc-08-autumn-carousel-4.png",
+        "social/tc-08-autumn-carousel-5.png"
+      ],
+      "caption": "Autumn 2027 in five slides: October and November trade expos, and what to do while dates are still expected.\nSave it for your planning meeting.\nFull calendar on our site.",
+      "hashtags": [
+        "#TradeShow2027",
+        "#CantonFair",
+        "#ExpoCalendar",
+        "#BusinessTravel",
+        "#Importers"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "dg-01-germany",
+      "category": "destination-guides",
+      "title": "Destination guide: Germany",
+      "format": "1080x1080",
+      "png": "social/dg-01-germany.png",
+      "caption": "Germany has 12 trade expos on our 2027 calendar, in Frankfurt, Cologne, Düsseldorf, Hannover, Berlin and Munich.\nPhilippine passport holders need a Schengen visa for business visits.\nBook the appointment early in peak season.",
+      "hashtags": [
+        "#Germany",
+        "#Messe",
+        "#BusinessTravel",
+        "#SchengenVisa",
+        "#TradeShow"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "dg-02-uae",
+      "category": "destination-guides",
+      "title": "Destination guide: UAE",
+      "format": "1080x1080",
+      "png": "social/dg-02-uae.png",
+      "caption": "Dubai on the 2027 calendar: Intersec, WHX, Gulfood, Big 5 Global and Automechanika.\nThe UAE business visa is usually arranged before travel, often through the host or hotel.\nWe confirm each case when we prepare your proposal.",
+      "hashtags": [
+        "#Dubai",
+        "#UAE",
+        "#BusinessTravel",
+        "#TradeShow",
+        "#Gulfood"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "dg-03-japan",
+      "category": "destination-guides",
+      "title": "Destination guide: Japan",
+      "format": "1080x1080",
+      "png": "social/dg-03-japan.png",
+      "caption": "Japan on our 2027 calendar: FOODEX, GREEN×EXPO, CEATEC and the Japan Mobility Show.\nPhilippine passport holders apply for a short-term business visa through accredited agencies.\nAllow time for the paperwork.",
+      "hashtags": [
+        "#Japan",
+        "#Tokyo",
+        "#BusinessTravel",
+        "#FOODEX",
+        "#TradeShow"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "dg-04-usa",
+      "category": "destination-guides",
+      "title": "Destination guide: USA",
+      "format": "1080x1080",
+      "png": "social/dg-04-usa.png",
+      "caption": "The USA on our 2027 calendar: CES, NRF, MAGIC, High Point, the NRA Show and the Summer Fancy Food Show.\nA B-1 business visa needs an embassy interview, and waiting times can be long.\nPlan well ahead.",
+      "hashtags": [
+        "#USA",
+        "#CES2027",
+        "#BusinessTravel",
+        "#B1Visa",
+        "#TradeShow"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "dg-05-hongkong",
+      "category": "destination-guides",
+      "title": "Destination guide: Hong Kong",
+      "format": "1080x1080",
+      "png": "social/dg-05-hongkong.png",
+      "caption": "Hong Kong hosts the HKTDC fairs through the year: toys, jewellery, electronics, lighting, gifts and food.\nPhilippine passport holders can visit visa-free for 14 days.\nCrossing to Shenzhen or Guangzhou still needs a mainland China visa.",
+      "hashtags": [
+        "#HongKong",
+        "#HKTDC",
+        "#BusinessTravel",
+        "#Sourcing",
+        "#TradeShow"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "dg-06-vietnam",
+      "category": "destination-guides",
+      "title": "Destination guide: Vietnam",
+      "format": "1080x1080",
+      "png": "social/dg-06-vietnam.png",
+      "caption": "Vietnam on our 2027 calendar: VIFA EXPO in Ho Chi Minh City and Vietnam Expo in Hanoi.\nShort business visits are visa-free for Philippine passport holders, as across ASEAN.\nLength of stay differs by country, so we confirm before you fly.",
+      "hashtags": [
+        "#Vietnam",
+        "#ASEAN",
+        "#BusinessTravel",
+        "#VIFA",
+        "#TradeShow"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "vd-01-overview",
+      "category": "visa-documents",
+      "title": "Visa required or visa-free: 10 destinations",
+      "format": "1080x1350",
+      "png": "social/vd-01-overview.png",
+      "caption": "Ten common business destinations for Philippine ordinary passport holders, at a glance.\nRules change, so we confirm each case when we prepare your proposal.\nFull table on our visa page.",
+      "hashtags": [
+        "#BusinessVisa",
+        "#PhilippinePassport",
+        "#BusinessTravel",
+        "#VisaTips"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/visa.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "vd-02-hk-macao",
+      "category": "visa-documents",
+      "title": "Hong Kong 14 days, Macao 30 days visa-free",
+      "format": "1080x1350",
+      "png": "social/vd-02-hk-macao.png",
+      "caption": "Hong Kong: visa-free for 14 days. Macao: 30 days.\nThe catch: a day trip to Shenzhen or Guangzhou still needs a mainland China visa.\nPlanning a fair-and-factory trip? We sort both.",
+      "hashtags": [
+        "#HongKong",
+        "#Macao",
+        "#BusinessVisa",
+        "#BusinessTravel",
+        "#VisaTips"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/visa.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "vd-03-schengen",
+      "category": "visa-documents",
+      "title": "Schengen visa for European trade fairs",
+      "format": "1080x1350",
+      "png": "social/vd-03-schengen.png",
+      "caption": "Frankfurt, Milan, Paris, Cologne: most European fairs sit inside the Schengen area.\nApply to the country of the fair or your main stay, and book the appointment early in peak season.\nWe prepare and file; the embassy decides.",
+      "hashtags": [
+        "#SchengenVisa",
+        "#Messe",
+        "#BusinessTravel",
+        "#VisaTips",
+        "#Europe"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/visa.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "vd-04-us-b1",
+      "category": "visa-documents",
+      "title": "US B-1 business visa: start early",
+      "format": "1080x1350",
+      "png": "social/vd-04-us-b1.png",
+      "caption": "Heading to a US trade show? Philippine passport holders need a B-1 business visa, with an embassy interview.\nWaiting times can be long, so start well ahead of the show.\nWe check documents and track the application.",
+      "hashtags": [
+        "#B1Visa",
+        "#USA",
+        "#BusinessVisa",
+        "#BusinessTravel",
+        "#TradeShow"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/visa.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "vd-05-uk",
+      "category": "visa-documents",
+      "title": "UK Standard Visitor visa for business",
+      "format": "1080x1350",
+      "png": "social/vd-05-uk.png",
+      "caption": "The UK Standard Visitor visa covers business meetings and trade fairs.\nWe check the documents first, prepare the forms with each traveller and track the application.\nDetails on our visa page.",
+      "hashtags": [
+        "#UKVisa",
+        "#IFELondon",
+        "#BusinessVisa",
+        "#BusinessTravel"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/visa.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook"
+      ]
+    },
+    {
+      "id": "vd-06-what-we-handle",
+      "category": "visa-documents",
+      "title": "Visa paperwork, off your desk",
+      "format": "1080x1080",
+      "png": "social/vd-06-what-we-handle.png",
+      "caption": "Four steps we take on every business visa: document check, forms and filing, the appointment, and tracking until the passport is back.\nThe embassy decides; we make sure the file is complete.\nMore on our visa page.",
+      "hashtags": [
+        "#BusinessVisa",
+        "#CorporateTravel",
+        "#VisaTips",
+        "#BusinessTravel"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/visa.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "vd-07-china-visa-carousel",
+      "category": "visa-documents",
+      "title": "Carousel: China business (M) visa documents",
+      "format": "1080x1350",
+      "png": "social/vd-07-china-visa-carousel-1.png",
+      "slides": [
+        "social/vd-07-china-visa-carousel-1.png",
+        "social/vd-07-china-visa-carousel-2.png",
+        "social/vd-07-china-visa-carousel-3.png",
+        "social/vd-07-china-visa-carousel-4.png",
+        "social/vd-07-china-visa-carousel-5.png",
+        "social/vd-07-china-visa-carousel-6.png"
+      ],
+      "caption": "Going to the Canton Fair or visiting factories in China? The business (M) visa needs five things, set out in this carousel.\nAllow four to six weeks.\nSave it and share it with your travel admin.",
+      "hashtags": [
+        "#ChinaVisa",
+        "#CantonFair",
+        "#BusinessVisa",
+        "#Sourcing",
+        "#BusinessTravel"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/visa.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "vd-08-story-visafree",
+      "category": "visa-documents",
+      "title": "Story: visa-free business destinations",
+      "format": "1080x1920",
+      "png": "social/vd-08-story-visafree.png",
+      "caption": "Visa-free for short business visits: Hong Kong 14 days, Macao 30 days, ASEAN short visits.\nTap through to the full table.",
+      "hashtags": [
+        "#BusinessVisa",
+        "#VisaTips",
+        "#BusinessTravel"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/visa.html",
+      "platforms": [
+        "Instagram",
+        "Facebook"
+      ]
+    },
+    {
+      "id": "hw-01-flights-hotels",
+      "category": "how-we-work",
+      "title": "Flights and hotels, booked to your policy",
+      "format": "1080x1080",
+      "png": "social/hw-01-flights-hotels.png",
+      "caption": "Sending people abroad for audits, training or sales calls?\nWe compare fares across airlines, spell out the baggage and change rules, and book hotels near where your team works.\nChanges are handled for you.",
+      "hashtags": [
+        "#CorporateTravel",
+        "#BusinessTravel",
+        "#TravelManagement",
+        "#PhilippineBusiness"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/services.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "hw-02-trade-show-trips",
+      "category": "how-we-work",
+      "title": "Trade show trips that end in orders",
+      "format": "1080x1080",
+      "png": "social/hw-02-trade-show-trips.png",
+      "caption": "A trade show trip is more than a flight and a badge.\nWe handle buyer registration and invitation letters, hotels near the venue, hall planning by product category, and supplier meetings around fair days.\nSee the 2027 calendar on our site.",
+      "hashtags": [
+        "#TradeShow",
+        "#Procurement",
+        "#Sourcing",
+        "#BusinessTravel",
+        "#Expo2027"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/services.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "hw-03-on-the-ground",
+      "category": "how-we-work",
+      "title": "On the ground: interpreters, transfers, factory routing",
+      "format": "1080x1080",
+      "png": "social/hw-03-on-the-ground.png",
+      "caption": "The trip is decided on the ground.\nBilingual interpreters by the half or full day, airport transfers and drivers, factory visit routing, and introductions to forwarders for samples and cargo.\nAll arranged with the rest of the trip.",
+      "hashtags": [
+        "#BusinessTravel",
+        "#Sourcing",
+        "#FactoryVisit",
+        "#Interpreter",
+        "#Logistics"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/services.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "hw-04-finance-ready",
+      "category": "how-we-work",
+      "title": "Finance-ready from the first quote",
+      "format": "1200x627",
+      "png": "social/hw-04-finance-ready.png",
+      "caption": "For finance and admin teams: every proposal is itemised, so you can approve line by line.\nRepeat travellers, groups and annual programmes are quoted on corporate terms.\nInvoices and official receipts are issued in your company's name.",
+      "hashtags": [
+        "#CorporateTravel",
+        "#Finance",
+        "#TravelManagement",
+        "#B2B"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/services.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook"
+      ]
+    },
+    {
+      "id": "hw-05-nothing-booked",
+      "category": "how-we-work",
+      "title": "Nothing is booked or paid until you approve",
+      "format": "1080x1080",
+      "png": "social/hw-05-nothing-booked.png",
+      "caption": "One rule we work by: nothing is booked or paid until you approve.\nYou get an itemised proposal first and approve it line by line.\nRequest a corporate proposal on our site.",
+      "hashtags": [
+        "#CorporateTravel",
+        "#BusinessTravel",
+        "#PhilippineBusiness",
+        "#B2B"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/proposal.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "hw-06-one-coordinator",
+      "category": "how-we-work",
+      "title": "One coordinator per trip",
+      "format": "1080x1350",
+      "png": "social/hw-06-one-coordinator.png",
+      "caption": "Every trip gets one coordinator.\nVisas, flights, hotels, registration and ground transport are handled together, so nothing falls between suppliers.\nBased in Metro Manila.",
+      "hashtags": [
+        "#CorporateTravel",
+        "#BusinessTravel",
+        "#MetroManila",
+        "#TradeShow"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/about.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "hw-07-process-carousel",
+      "category": "how-we-work",
+      "title": "Carousel: how a trip runs with us",
+      "format": "1080x1350",
+      "png": "social/hw-07-process-carousel-1.png",
+      "slides": [
+        "social/hw-07-process-carousel-1.png",
+        "social/hw-07-process-carousel-2.png",
+        "social/hw-07-process-carousel-3.png",
+        "social/hw-07-process-carousel-4.png",
+        "social/hw-07-process-carousel-5.png",
+        "social/hw-07-process-carousel-6.png"
+      ],
+      "caption": "How a business trip runs with us, in five slides: brief, itemised proposal, your approval, booking and coordination, official invoices.\nNothing is booked or paid until you approve.\nRequest a proposal on our site.",
+      "hashtags": [
+        "#CorporateTravel",
+        "#BusinessTravel",
+        "#TravelManagement",
+        "#B2B",
+        "#PhilippineBusiness"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/proposal.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "hw-08-story-coordinator",
+      "category": "how-we-work",
+      "title": "Story: what one coordinator handles",
+      "format": "1080x1920",
+      "png": "social/hw-08-story-coordinator.png",
+      "caption": "Visas, flights, hotels, registration and ground transport. One coordinator.",
+      "hashtags": [
+        "#CorporateTravel",
+        "#BusinessTravel"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/services.html",
+      "platforms": [
+        "Instagram",
+        "Facebook"
+      ]
+    },
+    {
+      "id": "pt-01-packing",
+      "category": "planning-tips",
+      "title": "Trade fair packing checklist",
+      "format": "1080x1350",
+      "png": "social/pt-01-packing.png",
+      "caption": "A simple packing list for trade fair trips.\nThe one most people forget: printed copies of the visa and registration.\nSave it for your next fair.",
+      "hashtags": [
+        "#TradeShowTips",
+        "#BusinessTravel",
+        "#Sourcing",
+        "#Checklist"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "pt-02-supplier-questions",
+      "category": "planning-tips",
+      "title": "Six questions for every supplier meeting",
+      "format": "1080x1350",
+      "png": "social/pt-02-supplier-questions.png",
+      "caption": "Six questions worth asking at every supplier booth or factory visit.\nWrite the answers down the same day, so you can compare quotes like for like.\nSave this for your next sourcing trip.",
+      "hashtags": [
+        "#Sourcing",
+        "#Procurement",
+        "#SupplierMeeting",
+        "#TradeShowTips",
+        "#Importers"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/services.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "pt-03-hall-plan",
+      "category": "planning-tips",
+      "title": "Plan the halls before fair day",
+      "format": "1080x1350",
+      "png": "social/pt-03-hall-plan.png",
+      "caption": "Large fairs are too big to walk at random.\nMap the halls by product category, list must-see booths and group them by hall.\nWe include hall planning in every trade show trip.",
+      "hashtags": [
+        "#TradeShowTips",
+        "#CantonFair",
+        "#Sourcing",
+        "#BusinessTravel"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/services.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "pt-04-after-the-fair",
+      "category": "planning-tips",
+      "title": "After the fair: follow-up checklist",
+      "format": "1080x1350",
+      "png": "social/pt-04-after-the-fair.png",
+      "caption": "The orders come from what you do after the fair.\nSort contacts, follow up in the same week, request samples and compare quotes like for like.\nNeed a factory visit next? We route it.",
+      "hashtags": [
+        "#TradeShowTips",
+        "#Sourcing",
+        "#Procurement",
+        "#FactoryVisit"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/services.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "pt-05-budget-lines",
+      "category": "planning-tips",
+      "title": "Five lines every trip budget should show",
+      "format": "1080x1350",
+      "png": "social/pt-05-budget-lines.png",
+      "caption": "A trip quote with one total is hard to approve.\nAsk for airfare, hotel, visa, registration and ground services as separate lines.\nThat is how every ExpoBusiness proposal is laid out.",
+      "hashtags": [
+        "#CorporateTravel",
+        "#Finance",
+        "#TravelBudget",
+        "#B2B"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/proposal.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook"
+      ]
+    },
+    {
+      "id": "pt-06-timeline-carousel",
+      "category": "planning-tips",
+      "title": "Carousel: trade show trip timeline",
+      "format": "1080x1350",
+      "png": "social/pt-06-timeline-carousel-1.png",
+      "slides": [
+        "social/pt-06-timeline-carousel-1.png",
+        "social/pt-06-timeline-carousel-2.png",
+        "social/pt-06-timeline-carousel-3.png",
+        "social/pt-06-timeline-carousel-4.png",
+        "social/pt-06-timeline-carousel-5.png",
+        "social/pt-06-timeline-carousel-6.png"
+      ],
+      "caption": "A working timeline for a trade show trip: 12 weeks to register, 8 to start visas, 6 for hotels and flights, 2 for meetings and ground.\nIt is a guide, not a rule; visa lead times differ by country.\nSave it for your team.",
+      "hashtags": [
+        "#TradeShowTips",
+        "#BusinessTravel",
+        "#Checklist",
+        "#Expo2027",
+        "#Procurement"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "pt-07-story-before-you-fly",
+      "category": "planning-tips",
+      "title": "Story: five checks before you fly",
+      "format": "1080x1920",
+      "png": "social/pt-07-story-before-you-fly.png",
+      "caption": "Five checks before any business trip. Save it.",
+      "hashtags": [
+        "#BusinessTravel",
+        "#TravelTips"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/services.html",
+      "platforms": [
+        "Instagram",
+        "Facebook"
+      ]
+    },
+    {
+      "id": "dm-01-delegations",
+      "category": "delegations-mice",
+      "title": "Delegations that move as one programme",
+      "format": "1080x1350",
+      "png": "social/dm-01-delegations.png",
+      "caption": "Trade missions, conferences and incentive trips need the whole group moving as one.\nGroup airfare, rooming lists and coaches, group visa filing and a pre-departure briefing, and the events in between.\nFor chambers, associations, LGUs and companies.",
+      "hashtags": [
+        "#MICE",
+        "#TradeMission",
+        "#Delegation",
+        "#BusinessTravel",
+        "#PhilippineBusiness"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/proposal.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "dm-02-group-air",
+      "category": "delegations-mice",
+      "title": "Group airfare and seat blocks",
+      "format": "1080x1350",
+      "png": "social/dm-02-group-air.png",
+      "caption": "Moving a delegation starts with the flight.\nWe arrange group airfare and seat blocks, manage the name list as people confirm, and source charter flights on request.\nTell us the headcount and dates.",
+      "hashtags": [
+        "#GroupTravel",
+        "#MICE",
+        "#Delegation",
+        "#TradeMission"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/proposal.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "dm-03-on-the-ground",
+      "category": "delegations-mice",
+      "title": "Rooming lists, coaches and a delegation lead",
+      "format": "1080x1350",
+      "png": "social/dm-03-on-the-ground.png",
+      "caption": "Arrival day sets the tone for a delegation.\nRooming lists checked with the hotel, coaches between hotel, venue and visits, and a delegation lead on the ground.\nInterpreters by the half or full day.",
+      "hashtags": [
+        "#MICE",
+        "#Delegation",
+        "#GroupTravel",
+        "#BusinessEvents"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/proposal.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "dm-04-group-visa",
+      "category": "delegations-mice",
+      "title": "Group visa filing and pre-departure briefing",
+      "format": "1080x1350",
+      "png": "social/dm-04-group-visa.png",
+      "caption": "The hardest part of a delegation is often the paperwork.\nWe check every delegate's documents, file the group's visas and track them, then hold a pre-departure briefing.\nThe embassy decides; we make sure the files are complete.",
+      "hashtags": [
+        "#BusinessVisa",
+        "#Delegation",
+        "#TradeMission",
+        "#MICE"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/proposal.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "dm-05-events",
+      "category": "delegations-mice",
+      "title": "Meeting venues, business dinners and galas",
+      "format": "1080x1350",
+      "png": "social/dm-05-events.png",
+      "caption": "A trade mission is also its meetings and dinners.\nWe arrange meeting venues, business dinners and gala events around the trade programme, with interpreters where needed.\nTell us the group size and the city.",
+      "hashtags": [
+        "#MICE",
+        "#BusinessEvents",
+        "#IncentiveTravel",
+        "#Delegation"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/proposal.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "dm-06-brief",
+      "category": "delegations-mice",
+      "title": "Planning a delegation? Send us four things",
+      "format": "1200x627",
+      "png": "social/dm-06-brief.png",
+      "caption": "Planning a trade mission or delegation for 2027?\nSend us the destination, dates and headcount. We reply with an itemised proposal you can approve line by line.\nNothing is booked until you approve.",
+      "hashtags": [
+        "#TradeMission",
+        "#Delegation",
+        "#MICE",
+        "#Chamber",
+        "#LGU"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/proposal.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook"
+      ]
+    },
+    {
+      "id": "dm-07-story-delegations",
+      "category": "delegations-mice",
+      "title": "Story: delegations and MICE",
+      "format": "1080x1920",
+      "png": "social/dm-07-story-delegations.png",
+      "caption": "Delegations, trade missions and incentive trips, run as one programme.",
+      "hashtags": [
+        "#MICE",
+        "#Delegation"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/proposal.html",
+      "platforms": [
+        "Instagram",
+        "Facebook"
+      ]
+    },
+    {
+      "id": "pb-01-partnership",
+      "category": "partnership-brand",
+      "title": "In partnership with Immaculate Connections",
+      "format": "1080x1080",
+      "png": "social/pb-01-partnership.png",
+      "caption": "ExpoBusiness Travel Services works in partnership with Immaculate Connections, a Philippine travel and tour services company.\nWe plan corporate travel, trade show trips and delegations for Philippine companies.\nMore about us on our site.",
+      "hashtags": [
+        "#ImmaculateConnections",
+        "#BusinessTravel",
+        "#Partnership",
+        "#PhilippineBusiness"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/about.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "pb-02-who-we-are",
+      "category": "partnership-brand",
+      "title": "Who we are",
+      "format": "1080x1350",
+      "png": "social/pb-02-who-we-are.png",
+      "caption": "ExpoBusiness Travel Services plans business travel for Philippine companies from Metro Manila.\nCorporate travel, trade show trips, delegations and MICE, business visas, interpreters and ground logistics.\nIn partnership with Immaculate Connections.",
+      "hashtags": [
+        "#BusinessTravel",
+        "#CorporateTravel",
+        "#MetroManila",
+        "#PhilippineBusiness"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/about.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "pb-03-promise",
+      "category": "partnership-brand",
+      "title": "Our promise, in five lines",
+      "format": "1080x1350",
+      "png": "social/pb-03-promise.png",
+      "caption": "Five things you can hold us to: one coordinator per trip, itemised proposals, official invoices in your company's name, everything handled together, and nothing booked until you approve.\nNo fixed packages; every trip is quoted to the brief.",
+      "hashtags": [
+        "#CorporateTravel",
+        "#BusinessTravel",
+        "#B2B",
+        "#PhilippineBusiness"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/proposal.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "pb-04-who-we-help",
+      "category": "partnership-brand",
+      "title": "Who we work with",
+      "format": "1080x1350",
+      "png": "social/pb-04-who-we-help.png",
+      "caption": "Who we plan for: importers and sourcing teams; HR, admin and finance teams; chambers, associations and LGUs; and buyers and exhibitors going to trade shows worldwide.\nTell us about your next trip.",
+      "hashtags": [
+        "#BusinessTravel",
+        "#Importers",
+        "#HR",
+        "#TradeMission",
+        "#PhilippineBusiness"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/proposal.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "pb-05-numbers",
+      "category": "partnership-brand",
+      "title": "102 expos, 21 countries, 1 coordinator",
+      "format": "1080x1080",
+      "png": "social/pb-05-numbers.png",
+      "caption": "102 trade expos. 21 countries. One coordinator per trip.\nOur 2027 calendar marks every date as confirmed or expected, and we check before booking.\nBrowse it on our site.",
+      "hashtags": [
+        "#Expo2027",
+        "#TradeShow",
+        "#BusinessTravel",
+        "#ExpoCalendar"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook",
+        "Instagram"
+      ]
+    },
+    {
+      "id": "pb-06-partnership-li",
+      "category": "partnership-brand",
+      "title": "Partnership announcement (LinkedIn)",
+      "format": "1200x627",
+      "png": "social/pb-06-partnership-li.png",
+      "caption": "ExpoBusiness Travel Services plans business travel for Philippine companies, in partnership with Immaculate Connections, a Philippine travel and tour services company.\nCorporate travel, trade show trips, delegations and business visas.\nhttps://www.immaculateconnectionsph.com/",
+      "hashtags": [
+        "#Partnership",
+        "#BusinessTravel",
+        "#ImmaculateConnections",
+        "#PhilippineBusiness"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/about.html",
+      "platforms": [
+        "LinkedIn",
+        "Facebook"
+      ]
+    },
+    {
+      "id": "pb-07-story-partner",
+      "category": "partnership-brand",
+      "title": "Story: partnership lockup",
+      "format": "1080x1920",
+      "png": "social/pb-07-story-partner.png",
+      "caption": "ExpoBusiness Travel Services, in partnership with Immaculate Connections.",
+      "hashtags": [
+        "#Partnership",
+        "#BusinessTravel"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/about.html",
+      "platforms": [
+        "Instagram",
+        "Facebook"
+      ]
+    },
+    {
+      "id": "ex-07-story-january",
+      "category": "expo-spotlight",
+      "title": "Story: January 2027 expos",
+      "format": "1080x1920",
+      "png": "social/ex-07-story-january.png",
+      "caption": "January 2027 trade fairs from our calendar. Dates confirmed by the organisers.",
+      "hashtags": [
+        "#TradeShow2027",
+        "#ExpoCalendar"
+      ],
+      "link": "https://hellogiovanni07-commits.github.io/expobusiness-travel/expos.html",
+      "platforms": [
+        "Instagram",
+        "Facebook"
+      ]
+    }
+  ],
+  "calendar": [
+    {
+      "week": 1,
+      "day": "Mon",
+      "post": "ex-01-gulfood"
+    },
+    {
+      "week": 1,
+      "day": "Tue",
+      "post": "hw-01-flights-hotels"
+    },
+    {
+      "week": 1,
+      "day": "Wed",
+      "post": "tc-01-jan-feb"
+    },
+    {
+      "week": 1,
+      "day": "Thu",
+      "post": "dg-01-germany"
+    },
+    {
+      "week": 1,
+      "day": "Fri",
+      "post": "pt-01-packing"
+    },
+    {
+      "week": 1,
+      "day": "Sat",
+      "post": "ex-07-story-january"
+    },
+    {
+      "week": 1,
+      "day": "Wed (story)",
+      "post": "dm-07-story-delegations"
+    },
+    {
+      "week": 2,
+      "day": "Mon",
+      "post": "ex-02-hannover"
+    },
+    {
+      "week": 2,
+      "day": "Tue",
+      "post": "hw-02-trade-show-trips"
+    },
+    {
+      "week": 2,
+      "day": "Wed",
+      "post": "dm-01-delegations"
+    },
+    {
+      "week": 2,
+      "day": "Thu",
+      "post": "vd-01-overview"
+    },
+    {
+      "week": 2,
+      "day": "Fri",
+      "post": "pb-01-partnership"
+    },
+    {
+      "week": 2,
+      "day": "Sat",
+      "post": "vd-08-story-visafree"
+    },
+    {
+      "week": 2,
+      "day": "Wed (story)",
+      "post": "pb-07-story-partner"
+    },
+    {
+      "week": 3,
+      "day": "Mon",
+      "post": "ex-03-canton"
+    },
+    {
+      "week": 3,
+      "day": "Tue",
+      "post": "hw-03-on-the-ground"
+    },
+    {
+      "week": 3,
+      "day": "Wed",
+      "post": "tc-03-april"
+    },
+    {
+      "week": 3,
+      "day": "Thu",
+      "post": "dg-02-uae"
+    },
+    {
+      "week": 3,
+      "day": "Fri",
+      "post": "pt-02-supplier-questions"
+    },
+    {
+      "week": 3,
+      "day": "Sat",
+      "post": "hw-08-story-coordinator"
+    },
+    {
+      "week": 4,
+      "day": "Mon",
+      "post": "ex-04-foodex"
+    },
+    {
+      "week": 4,
+      "day": "Tue",
+      "post": "hw-04-finance-ready"
+    },
+    {
+      "week": 4,
+      "day": "Wed",
+      "post": "dm-02-group-air"
+    },
+    {
+      "week": 4,
+      "day": "Thu",
+      "post": "vd-02-hk-macao"
+    },
+    {
+      "week": 4,
+      "day": "Fri",
+      "post": "pb-02-who-we-are"
+    },
+    {
+      "week": 4,
+      "day": "Sat",
+      "post": "pt-07-story-before-you-fly"
+    }
+  ]
+}

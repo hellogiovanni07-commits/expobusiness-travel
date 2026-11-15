@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Letterhead · ExpoBusiness Travel Services</title>
+<link rel="stylesheet" href="collateral.css">
+<style>
+  :root { --w: 210mm; --h: 297mm; }
+  @page { size: A4; margin: 0; }
+  .doc { padding: 16mm 20mm 13mm 24mm; }
+  .side { position: absolute; left: 0; top: 16mm; width: 4mm; height: 30mm; }
+  .letter { margin-top: 16mm; font-size: 10pt; line-height: 1.6; color: var(--ink); }
+  .letter .to { display: grid; gap: .4mm; margin: 8mm 0 10mm; }
+  .letter p + p { margin-top: 4mm; }
+  .letter .ref { font: 700 10pt/1.4 var(--fh); color: var(--navy); margin-bottom: 6mm; }
+  .letter .sig { margin-top: 12mm; }
+  .letter .sig b { display: block; font: 700 10pt/1.4 var(--fh); color: var(--navy); margin-top: 14mm; }
+  .arc { position: absolute; right: -8mm; bottom: 20mm; width: 120mm; opacity: .5; }
+  .services { color: var(--ink-2); }
+</style>
+</head>
+<body class="solo">
+<section class="page">
+  <svg class="arc" viewBox="0 0 240 120" fill="none" aria-hidden="true"><path d="M4 116 C 60 20, 160 0, 236 14" stroke="#f26a1b" stroke-opacity=".35" stroke-width="1" stroke-dasharray="1.5 4" stroke-linecap="round"/></svg>
+  <div class="doc">
+    <header class="doc-head">
+      <div class="lockup" style="--lk-h:11.5mm">
+        <img class="eb" src="../img/logo/expobusiness-horizontal-colour.svg" alt="ExpoBusiness Travel Services">
+        <span class="rule"></span>
+        <div class="partner"><small>In partnership<br>with</small><img src="img/immaculate-connections.png" alt="Immaculate Connections Tour Services"></div>
+      </div>
+      <div class="meta"><b>ExpoBusiness Travel Services</b><br>Metro Manila, Philippines<br>inquiry@expobusinesstravel.ph</div>
+    </header>
+
+    <div class="letter">
+      <p class="ph">[Date]</p>
+      <div class="to">
+        <span class="ph">[Recipient name]</span>
+        <span class="ph">[Position]</span>
+        <span class="ph">[Client company]</span>
+        <span class="ph">[Address]</span>
+      </div>
+      <p class="ref">Re: <span class="ph">[Subject of the letter]</span></p>
+      <p>Dear <span class="ph">[Name]</span>,</p>
+      <p style="color:var(--ink-2)">[Body text. Set in Inter 10pt, 1.6 line spacing, left aligned. Keep paragraphs short. This area runs from below the header to the footer rule.]</p>
+      <div class="sig">
+        <p>Yours sincerely,</p>
+        <b class="ph">[Name]</b>
+        <span class="ph" style="font-weight:400">[Job title], ExpoBusiness Travel Services</span>
+      </div>
+    </div>
+
+    <footer class="doc-foot">
+      <div>
+        <b>ExpoBusiness Travel Services</b> · Metro Manila, Philippines · inquiry@expobusinesstravel.ph<br>
+        <span class="services">Corporate travel · Trade-show and expo trips · Trade missions · Delegations and MICE · Business visas</span>
+      </div>
+      <div class="bars fbars"><i></i><i></i><i></i></div>
+    </footer>
+  </div>
+</section>
+<script src="collateral.js"></script>
+</body>
+</html>

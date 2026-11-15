@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Envelope DL · ExpoBusiness Travel Services</title>
+<link rel="stylesheet" href="collateral.css">
+<style>
+  :root { --w: 220mm; --h: 110mm; }
+  @page { size: 220mm 110mm; margin: 0; }
+  .ret { position: absolute; left: 12mm; top: 11mm; }
+  .ret p { margin-top: 3mm; font-size: 7pt; line-height: 1.5; color: var(--ink-2); }
+  .ret p b { color: var(--navy); font-weight: 600; }
+  .to { position: absolute; left: 110mm; top: 52mm; width: 90mm; display: grid; gap: 1mm; font-size: 10pt; line-height: 1.4; }
+  .to .lbl { font: 700 6.4pt/1 var(--fh); letter-spacing: .14em; text-transform: uppercase; color: var(--mute); margin-bottom: 2mm; }
+  .foot { position: absolute; left: 12mm; bottom: 10mm; display: flex; align-items: flex-end; gap: 4mm; }
+  .foot .bars { width: 8mm; height: 8mm; gap: 1mm; }
+  .foot span { font: 600 7pt/1.3 var(--fh); color: var(--or-ink); letter-spacing: .04em; }
+  .stamp { position: absolute; right: 12mm; top: 11mm; width: 22mm; height: 26mm; border: 1px dashed #dcdae6; display: flex; align-items: center; justify-content: center; font: 600 6pt/1 var(--fh); color: var(--mute); letter-spacing: .12em; text-transform: uppercase; }
+  .arc { position: absolute; left: 22mm; top: 26mm; width: 150mm; }
+</style>
+</head>
+<body>
+<section class="page">
+  <svg class="arc" viewBox="0 0 280 80" fill="none" aria-hidden="true"><path d="M4 76 C 70 10, 190 -2, 276 12" stroke="#f26a1b" stroke-opacity=".28" stroke-width="1" stroke-dasharray="1.5 4" stroke-linecap="round"/></svg>
+  <div class="ret">
+    <div class="lockup" style="--lk-h:8.5mm;--lk-gap:4mm">
+      <img class="eb" src="../img/logo/expobusiness-horizontal-colour.svg" alt="ExpoBusiness Travel Services">
+      <span class="rule"></span>
+      <div class="partner"><small>In partnership<br>with</small><img src="img/immaculate-connections.png" alt="Immaculate Connections Tour Services"></div>
+    </div>
+    <p><b>ExpoBusiness Travel Services</b><br>Metro Manila, Philippines</p>
+  </div>
+  <div class="stamp">Postage</div>
+  <div class="to">
+    <span class="lbl">To</span>
+    <span class="ph">[Recipient name]</span>
+    <span class="ph">[Client company]</span>
+    <span class="ph">[Street address]</span>
+    <span class="ph">[City, postcode]</span>
+  </div>
+  <div class="foot"><div class="bars"><i></i><i></i><i></i></div><span>Business travel, planned end to end.</span></div>
+</section>
+<script src="collateral.js"></script>
+</body>
+</html>

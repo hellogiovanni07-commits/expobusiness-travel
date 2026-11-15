@@ -88,11 +88,17 @@ NAV = [("index.html", "home", "Home"), ("expos.html", "expos", "2027 Expos"),
        ("services.html", "services", "Corporate Services"), ("visa.html", "visa", "Visa"), ("about.html", "about", "About")]
 
 
+IC_URL = "https://www.immaculateconnectionsph.com/"
+PARTNER = (f'<div class="partner-lockup"><span>In partnership with</span><a href="{IC_URL}" rel="noopener" target="_blank">'
+           '<img src="assets/img/partner/immaculate-connections.png" alt="Immaculate Connections" width="240" height="249" loading="lazy" decoding="async">'
+           '<span class="sr-only"> (opens in a new tab)</span></a></div>')
+
+
 def topbar():
     bits = []
     if PHONE: bits.append(f'<a href="{tel(PHONE)}">{icon("phone")}{esc(PHONE)}</a>')
     if EMAIL: bits.append(f'<a href="mailto:{esc(EMAIL)}">{icon("mail")}{esc(EMAIL)}</a>')
-    sub = 'Powered by <a href="https://www.immaculateconnectionsph.com/" rel="noopener" target="_blank">Immaculate Connections</a>' + (" (DOT Accredited)" if DOT else "")
+    sub = f'In partnership with <a href="{IC_URL}" rel="noopener" target="_blank">Immaculate Connections</a>'
     return f'<div class="topbar"><div class="wrap"><div class="tb-contact">{"".join(bits)}</div><div class="tb-sub">{sub}</div></div></div>'
 
 
@@ -107,9 +113,9 @@ def header(cur):
 
 
 def footer():
-    # compact: row 1 = logo + links, row 2 = powered-by / address / contact, row 3 = © + accreditation
+    # compact: row 1 = logo + links, row 2 = partner lockup + address / contact, row 3 = © + accreditation
     badges = [f'<span class="badge"><b>{code}</b> No. {esc(num)}</span>' for code, num in (("DOT", DOT), ("IATA", IATA), ("PhilGEPS", PHILGEPS)) if num]
-    accred = " ".join(badges) if badges else "Accreditation and registration details come with every proposal."
+    accred = " ".join(badges)
     contact = []
     if PHONE: contact.append(f'<a href="{tel(PHONE)}">{esc(PHONE)}</a>')
     if MOBILE: contact.append(f'<a href="{tel(MOBILE)}">{esc(MOBILE)}</a>')
@@ -121,27 +127,26 @@ def footer():
     links = (("services.html#corporate", "Corporate travel"), ("services.html#missions", "Trade missions"), ("services.html#mice", "Delegations &amp; MICE"),
              ("visa.html", "Business visas"), ("expos.html", "2027 Expos"), ("about.html", "About"), ("about.html#faq", "FAQ"))
     nav = "".join(f'<a href="{h}">{t}</a>' for h, t in links)
-    meta = "".join(f'<span>{c}</span>' for c in [f'Powered by <a class="ic-link" href="https://www.immaculateconnectionsph.com/" rel="noopener" target="_blank">Immaculate Connections</a>', esc(ADDRESS)] + contact)
+    meta = "".join(f'<span>{c}</span>' for c in [esc(ADDRESS)] + contact if c)
     return f'''<footer class="site-footer"><div class="wrap">
 <div class="f-top">{LOGO}<nav class="f-links" aria-label="Footer">{nav}</nav></div>
-<p class="f-meta">{meta}</p>
-<div class="f-bottom"><span>© {year} ExpoBusiness Travel Services.{reg}</span><span>{accred}</span></div>
+<div class="f-mid">{PARTNER}<p class="f-meta">{meta}</p></div>
+<div class="f-bottom"><span>© {year} ExpoBusiness Travel Services, Metro Manila.{reg}</span>{f"<span>{accred}</span>" if accred else ""}</div>
 </div></footer>'''
 
 
 CHAT = f'''<button class="cc-fab" type="button" aria-controls="cc" aria-expanded="false"><span class="cc-ava">{icon("bell")}</span><span class="cc-label">Ask Expo</span></button>
-<section class="cc-panel" id="cc" role="dialog" aria-label="Ask Expo, ExpoBusiness concierge"><div class="cc-head"><span class="cc-ava">{icon("bell")}</span><span><b>Ask Expo</b><small>ExpoBusiness travel concierge</small></span><button class="cc-x" type="button" aria-label="Close chat">{icon("x")}</button></div>
-<div class="cc-log" aria-live="polite"></div><form class="cc-form"><label class="sr-only" for="cc-in">Your question</label><input id="cc-in" type="text" autocomplete="off" placeholder="Ask about visas, dates or delegations"><button class="btn" type="submit" aria-label="Send">{icon("send")}</button></form></section>'''
+<section class="cc-panel" id="cc" role="dialog" aria-label="Ask Expo, ExpoBusiness concierge"><div class="cc-head"><span class="cc-ava">{icon("bell")}</span><span><b>Ask Expo</b><small>ExpoBusiness travel desk</small></span><button class="cc-x" type="button" aria-label="Close chat">{icon("x")}</button></div>
+<div class="cc-log" aria-live="polite"></div><form class="cc-form"><label class="sr-only" for="cc-in">Your question</label><input id="cc-in" type="text" autocomplete="off" placeholder="Ask about visas, expos or group travel"><button class="btn" type="submit" aria-label="Send">{icon("send")}</button></form></section>'''
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
          '<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">')
 
 ORG = {
     "@context": "https://schema.org", "@type": "TravelAgency", "name": "ExpoBusiness Travel Services",
-    "url": BASE, "description": SITE["brand"]["short"], "areaServed": "PH",
-    "parentOrganization": {"@type": "TravelAgency", "name": "Immaculate Connections", "url": "https://www.immaculateconnectionsph.com/"},
-    "address": {"@type": "PostalAddress", "streetAddress": "Unit 4E, 4th Floor, JL Millennium Building, Don Jose Avila Street",
-                "addressLocality": "Cebu City", "addressRegion": "Cebu", "addressCountry": "PH"},
+    "url": BASE, "areaServed": "PH",
+    "description": SITE["brand"]["short"] + " In partnership with Immaculate Connections.",
+    "address": {"@type": "PostalAddress", "addressLocality": "Metro Manila", "addressRegion": "NCR", "addressCountry": "PH"},
 }
 if EMAIL: ORG["email"] = EMAIL
 if PHONE: ORG["telephone"] = PHONE
@@ -377,7 +382,7 @@ TOKENS = {
     "EMAIL": esc(EMAIL), "ADDRESS": esc(ADDRESS),
     "ICON_CHECK": icon("check"), "ICON_ARROW": icon("arrow"), "ICON_OK": icon("check-circle"),
     "ICON_RECEIPT": icon("receipt"), "ICON_USERS": icon("users"), "ICON_SHIELD": icon("shield"),
-    "ICON_PIN": icon("pin"), "ICON_HEADSET": icon("headset"), "ICON_SEND": icon("send"), "ICON_PLANE": icon("plane"), "IC_URL": "https://www.immaculateconnectionsph.com/",
+    "ICON_PIN": icon("pin"), "ICON_HEADSET": icon("headset"), "ICON_SEND": icon("send"), "ICON_PLANE": icon("plane"), "IC_URL": IC_URL, "PARTNER_LOCKUP": PARTNER,
     "CONTACT_LINES": "".join(x for x in (
         f'<li>{icon("mail")} <a href="mailto:{esc(EMAIL)}">{esc(EMAIL)}</a></li>' if EMAIL else "",
         f'<li>{icon("phone")} <a href="{tel(PHONE)}">{esc(PHONE)}</a></li>' if PHONE else "",
@@ -399,6 +404,11 @@ for f in sorted(SRC.glob("*.html")):
     main = fill(t[m.end():].strip())
     (ROOT / f.name).write_text(page(f.stem, meta, main), encoding="utf8")
     written.append(f.stem)
+
+# official expo numbers for other pages (brand kit, materials) so every count matches the site
+(ROOT / "assets" / "js" / "data" / "expo-stats.js").write_text(
+    "// generated by build.py - do not edit" + chr(10) + "window.EXPO_STATS = " + json.dumps({"expos": len(EXPOS), "countries": len({e["country"] for e in EXPOS}),
+    "cities": len({e["city"] for e in EXPOS})}) + ";" + chr(10), encoding="utf8")
 
 # retired pages: keep the old URLs working
 REDIRECTS = {

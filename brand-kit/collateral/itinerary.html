@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Travel itinerary · ExpoBusiness Travel Services</title>
+<link rel="stylesheet" href="collateral.css">
+<style>
+  :root { --w: 210mm; --h: 297mm; }
+  @page { size: A4; margin: 0; }
+  .doc-head .lockup { --lk-h: 9mm; --lk-gap: 4.5mm; }
+  .trip { margin-top: 5mm; background: var(--navy); color: #fff; border-radius: 2mm; padding: 5mm 6mm; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 5mm; position: relative; overflow: hidden; }
+  .trip::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1.2mm; background: linear-gradient(90deg, var(--or-hot), var(--or), var(--or-ink), var(--red)); }
+  .trip .label { color: #ffb27d; display: block; margin-bottom: 1.2mm; }
+  .trip b { font: 700 10.5pt/1.25 var(--fh); display: block; }
+  .trip span.v { font-size: 8.6pt; color: var(--navy-soft); }
+  .trip .ph { color: #ffb27d; }
+  .cols { display: grid; grid-template-columns: 1fr 56mm; gap: 8mm; margin-top: 2mm; }
+  .tl { position: relative; }
+  .day { display: grid; grid-template-columns: 17mm 1fr; gap: 4mm; padding: 3.2mm 0; border-bottom: 1px solid var(--line); }
+  .day .d { font: 800 7pt/1.2 var(--fh); letter-spacing: .1em; text-transform: uppercase; color: var(--or-ink); }
+  .day .d strong { display: block; font-size: 17pt; color: var(--navy); letter-spacing: -.03em; margin-top: 1mm; }
+  .day h3 { font-size: 9.8pt; margin-bottom: 1.4mm; }
+  .day ul { list-style: none; display: grid; gap: 1.1mm; font-size: 8pt; }
+  .day li { display: grid; grid-template-columns: 13mm 4.5mm 1fr; align-items: start; gap: 1mm; }
+  .day li time { font: 600 7.6pt/1.5 var(--fb); color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .day li .ic { color: var(--or); width: 3.6mm; height: 3.6mm; margin-top: .4mm; }
+  .day.show .d strong { color: var(--or); }
+  .side { display: grid; gap: 4mm; align-content: start; }
+  .card { border: 1px solid var(--line); border-radius: 2mm; padding: 3.8mm 4mm; font-size: 7.8pt; line-height: 1.5; }
+  .card h4 { font: 700 6.8pt/1.2 var(--fh); letter-spacing: .12em; text-transform: uppercase; color: var(--or-ink); display: flex; align-items: center; gap: 1.8mm; margin-bottom: 2mm; }
+  .card h4 .ic { width: 3.8mm; height: 3.8mm; }
+  .card p + p { margin-top: 1mm; }
+  .card.hot { background: var(--cloud); border-color: #f7d9c6; }
+  .card .big { font: 700 9.5pt/1.3 var(--fh); color: var(--navy); }
+  .carry { margin-top: 6mm; display: flex; align-items: center; gap: 6mm; padding: 3.2mm 4.5mm; background: var(--cloud); border-radius: 2mm; font-size: 8pt; color: var(--navy); }
+  .carry span:not(.label) { display: inline-flex; align-items: center; gap: 1.6mm; }
+  .carry .ic { color: var(--or); width: 4mm; height: 4mm; }
+</style>
+</head>
+<body>
+<section class="page">
+  <div class="doc">
+    <header class="doc-head">
+      <div class="lockup">
+        <img class="eb" src="../img/logo/expobusiness-horizontal-colour.svg" alt="ExpoBusiness Travel Services">
+        <span class="rule"></span>
+        <div class="partner"><small>In partnership<br>with</small><img src="img/immaculate-connections.png" alt="Immaculate Connections Tour Services"></div>
+      </div>
+      <div class="meta"><b>Itinerary <span class="ph">[EB-0000]</span></b><br>Issued <span class="ph">[date]</span> · Version <span class="ph">[1]</span></div>
+    </header>
+
+    <div class="doc-title" style="margin-top:6mm">
+      <span class="eyebrow">Travel itinerary</span>
+      <h1 style="font-size:19pt">Trip plan for <span class="ph" style="font-weight:800">[Client company]</span></h1>
+    </div>
+
+    <div class="trip">
+      <div><span class="label">Event</span><b>HANNOVER MESSE 2027</b><span class="v">Hannover, Germany · Apr 5–8, 2027</span></div>
+      <div><span class="label">Travel dates</span><b class="ph">[DD–DD Mon]</b></div>
+      <div><span class="label">Travellers</span><b class="ph">[No. of pax]</b></div>
+      <div><span class="label">Hotel</span><b class="ph">[Hotel name]</b></div>
+    </div>
+
+    <div class="cols">
+      <div class="tl">
+        <p class="sec-h">Day by day</p>
+        <div class="day"><div class="d">Day<strong>01</strong><span class="ph">[Date]</span></div><div>
+          <h3>Manila to Hannover</h3>
+          <ul>
+            <li><time class="ph">[00:00]</time><i class="ic" data-i="briefcase"></i><span>Meet the coordinator at NAIA <span class="ph">[Terminal]</span>, check-in and bag drop</span></li>
+            <li><time class="ph">[00:00]</time><i class="ic" data-i="plane"></i><span>Flight <span class="ph">[XX 000]</span> Manila → <span class="ph">[hub]</span> → Hannover</span></li>
+          </ul></div></div>
+        <div class="day"><div class="d">Day<strong>02</strong><span class="ph">[Date]</span></div><div>
+          <h3>Arrival and hotel check-in</h3>
+          <ul>
+            <li><time class="ph">[00:00]</time><i class="ic" data-i="car"></i><span>Private transfer, Hannover Airport to <span class="ph">[hotel]</span></span></li>
+            <li><time class="ph">[00:00]</time><i class="ic" data-i="users"></i><span>Team briefing: badges, show map, meeting schedule</span></li>
+          </ul></div></div>
+        <div class="day show"><div class="d">Day<strong>03</strong><span class="ph">[Date]</span></div><div>
+          <h3>Show day 1 · Hannover Exhibition Grounds</h3>
+          <ul>
+            <li><time class="ph">[00:00]</time><i class="ic" data-i="ticket"></i><span>Badge collection and entry, Hall <span class="ph">[00]</span></span></li>
+            <li><time class="ph">[00:00]</time><i class="ic" data-i="chat"></i><span>Supplier meeting with <span class="ph">[company]</span>, booth <span class="ph">[A00]</span>, interpreter present</span></li>
+          </ul></div></div>
+        <div class="day show"><div class="d">Day<strong>04</strong><span class="ph">[Date]</span></div><div>
+          <h3>Show day 2 · meetings and halls</h3>
+          <ul>
+            <li><time class="ph">[00:00]</time><i class="ic" data-i="pin"></i><span><span class="ph">[Halls or sectors to cover]</span></span></li>
+            <li><time class="ph">[00:00]</time><i class="ic" data-i="car"></i><span>Return transfer to hotel</span></li>
+          </ul></div></div>
+        <div class="day show"><div class="d">Day<strong>05</strong><span class="ph">[Date]</span></div><div>
+          <h3>Show day 3 or factory visit</h3>
+          <ul>
+            <li><time class="ph">[00:00]</time><i class="ic" data-i="building"></i><span>Visit to <span class="ph">[supplier or factory]</span>, <span class="ph">[city]</span></span></li>
+            <li><time class="ph">[00:00]</time><i class="ic" data-i="users"></i><span>Debrief with the coordinator: follow-ups and samples</span></li>
+          </ul></div></div>
+        <div class="day"><div class="d">Day<strong>06</strong><span class="ph">[Date]</span></div><div>
+          <h3>Hannover to Manila</h3>
+          <ul>
+            <li><time class="ph">[00:00]</time><i class="ic" data-i="hotel"></i><span>Hotel check-out, transfer to Hannover Airport</span></li>
+            <li><time class="ph">[00:00]</time><i class="ic" data-i="plane"></i><span>Flight <span class="ph">[XX 000]</span> Hannover → <span class="ph">[hub]</span> → Manila</span></li>
+          </ul></div></div>
+      </div>
+
+      <aside class="side">
+        <p class="sec-h" style="margin-bottom:0">Key contacts</p>
+        <div class="card hot">
+          <h4><i class="ic" data-i="user"></i>Your coordinator</h4>
+          <p class="big ph">[Coordinator name]</p>
+          <p class="ph">[Mobile number, on call during the trip]</p>
+          <p>inquiry@expobusinesstravel.ph</p>
+        </div>
+        <div class="card">
+          <h4><i class="ic" data-i="hotel"></i>Hotel</h4>
+          <p class="big ph">[Hotel name]</p>
+          <p class="ph">[Address]</p>
+          <p>Booking ref. <span class="ph">[000000]</span></p>
+        </div>
+        <div class="card">
+          <h4><i class="ic" data-i="plane"></i>Flights</h4>
+          <p>Out: <span class="ph">[XX 000, date, time]</span></p>
+          <p>Return: <span class="ph">[XX 000, date, time]</span></p>
+          <p>Booking ref. <span class="ph">[PNR]</span></p>
+        </div>
+        <div class="card">
+          <h4><i class="ic" data-i="shield"></i>In an emergency</h4>
+          <p>Philippine Embassy: <span class="ph">[contact]</span></p>
+          <p>Local emergency: <span class="ph">[number]</span></p>
+          <p>Insurance: <span class="ph">[policy and hotline]</span></p>
+        </div>
+      </aside>
+    </div>
+
+    <div class="carry"><span class="label">Carry on every day</span><span><i class="ic" data-i="visa"></i>Passport and printed visa</span><span><i class="ic" data-i="ticket"></i>Expo badge</span><span><i class="ic" data-i="file"></i>This itinerary</span><span><i class="ic" data-i="briefcase"></i>Business cards</span></div>
+    <footer class="doc-foot">
+      <div><b>ExpoBusiness Travel Services</b> · Metro Manila, Philippines · inquiry@expobusinesstravel.ph<br>Times are local. Please carry this itinerary with your passport and visa.</div>
+      <div class="bars fbars"><i></i><i></i><i></i></div>
+    </footer>
+  </div>
+</section>
+<script src="collateral.js"></script>
+</body>
+</html>

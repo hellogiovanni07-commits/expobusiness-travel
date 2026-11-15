@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>LinkedIn banner · ExpoBusiness Travel Services</title>
+<link rel="stylesheet" href="collateral.css">
+<style>
+  :root { --w: 1128px; --h: 191px; }
+  @page { size: 1128px 191px; margin: 0; }
+  .bg { background: var(--navy); }
+  .glow { position: absolute; left: 520px; top: -220px; width: 600px; height: 520px; background: radial-gradient(closest-side, rgba(242,106,27,.32), transparent); }
+  .photo { position: absolute; left: 0; top: 0; bottom: 0; width: 330px; background: url(img/expo-hall.jpg) center 40% / cover; }
+  .photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(22,22,58,.55), rgba(22,22,58,1)); }
+  .trim { position: absolute; left: 360px; right: 36px; top: 0; bottom: 6px; width: auto; height: auto; display: flex; align-items: center; gap: 34px; }
+  .msg { flex: 1; min-width: 0; }
+  .msg .eyebrow { font-size: 10.5px; color: #ffb27d; }
+  .msg h1 { margin-top: 9px; color: #fff; font-size: 29px; line-height: 1.05; letter-spacing: -.03em; }
+  .msg h1 em { font-style: normal; color: var(--or-hot); }
+  .msg p { margin-top: 8px; font-size: 12.5px; color: var(--navy-soft); }
+  .nums { display: flex; gap: 26px; flex: none; }
+  .nums div { border-top: 3px solid var(--or); padding-top: 8px; }
+  .nums b { display: block; font: 800 36px/1 var(--fh); color: #fff; letter-spacing: -.03em; }
+  .nums span { display: block; margin-top: 5px; font-size: 11px; color: var(--navy-soft); }
+  .base { position: absolute; left: 0; right: 0; bottom: 0; height: 5px; }
+</style>
+</head>
+<body class="solo">
+<section class="page">
+  <div class="bg"></div><div class="bg dotgrid" style="background-size:18px 18px;opacity:.5"></div><div class="glow"></div>
+  <div class="photo"></div>
+  <div class="trim">
+    <div class="msg">
+      <span class="eyebrow">Business travel for Philippine companies</span>
+      <h1>Trade shows, missions and corporate trips. <em>One coordinator.</em></h1>
+      <p>Flights · Hotels · Business visas · Expo registration · Ground transport · Interpreters</p>
+    </div>
+    <div class="nums"><div><b>102</b><span>expos, 2027</span></div><div><b>21</b><span>countries</span></div></div>
+  </div>
+  <div class="base stripe"></div>
+</section>
+<script src="collateral.js"></script>
+</body>
+</html>

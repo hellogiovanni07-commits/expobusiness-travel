@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Trade-booth backdrop · ExpoBusiness Travel Services</title>
+<link rel="stylesheet" href="collateral.css">
+<style>
+  :root { --w: 3000mm; --h: 2400mm; --bl: 10mm; }
+  @page { size: 3020mm 2420mm; margin: 0; }
+  .left { position: absolute; left: 0; top: 0; bottom: 0; width: calc(1820mm + var(--bl)); background: var(--navy); }
+  .left .glow { position: absolute; left: 700mm; top: -600mm; width: 2000mm; height: 2000mm; background: radial-gradient(closest-side, rgba(242,106,27,.26), transparent); }
+  .left .dots { position: absolute; inset: 0; background-size: 60mm 60mm; opacity: .5; }
+  .right { position: absolute; right: 0; top: 0; bottom: 0; width: calc(1180mm + var(--bl)); background: var(--navy) url(img/expo-hall.jpg) 38% center / cover; }
+  .right::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(22,22,58,.85), rgba(22,22,58,.1) 35%, rgba(22,22,58,.25) 70%, rgba(22,22,58,.7)); }
+  .seam { position: absolute; top: 0; bottom: 0; left: calc(1820mm + var(--bl)); width: 24mm; background: linear-gradient(180deg, var(--or-hot), var(--or), var(--or-ink), var(--red)); }
+  .trim { position: relative; }
+  .lcol { position: absolute; left: 160mm; top: 150mm; bottom: 150mm; width: 1540mm; display: flex; flex-direction: column; }
+  .logo { height: 220mm; align-self: flex-start; }
+  .eyb { margin-top: 130mm; display: flex; align-items: center; gap: 40mm; font: 700 44mm/1 var(--fh); letter-spacing: .14em; text-transform: uppercase; color: #ffb27d; }
+  .eyb::before { content: ""; width: 130mm; height: 9mm; background: currentColor; }
+  h1 { margin-top: 55mm; color: #fff; font-size: 150mm; line-height: .98; letter-spacing: -.04em; }
+  h1 em { font-style: normal; color: var(--or-hot); }
+  .stats { margin-top: 110mm; font-size: 48mm; border-color: rgba(255,255,255,.18); }
+  .stats .stat::before { height: 10mm; width: 2em; }
+  .stats .stat b { font-size: 2.3em; }
+  .sub { margin-top: auto; font: 500 46mm/1.3 var(--fb); color: var(--navy-soft); max-width: 1450mm; }
+  .svcs { margin-top: 60mm; display: flex; gap: 70mm; font: 700 44mm/1 var(--fh); color: #fff; }
+  .svcs span { display: flex; align-items: center; gap: 20mm; }
+  .svcs .ic { width: 60mm; height: 60mm; color: var(--or-hot); }
+  .svcs .ic svg { stroke-width: 1.5; }
+  .card { position: absolute; right: 90mm; top: 160mm; width: 1000mm; background: #fff; padding: 64mm 60mm 70mm; border-radius: 16mm; }
+  .card .lockup { --lk-h: 95mm; --lk-gap: 40mm; }
+  .card .lockup .partner small { font-size: 22mm; }
+  .card .line { margin-top: 60mm; padding-top: 50mm; border-top: 3mm solid var(--line); }
+  .card b { display: block; font: 800 64mm/1.1 var(--fh); color: var(--navy); }
+  .card span { display: flex; align-items: center; gap: 18mm; margin-top: 22mm; font: 700 50mm/1 var(--fh); color: var(--or-ink); }
+  .card span .ic { width: 52mm; height: 52mm; }
+  .card small { display: block; margin-top: 20mm; font: 500 34mm/1.2 var(--fb); color: var(--ink-2); }
+  .table { position: absolute; left: 0; right: 0; bottom: 0; height: 1000mm; border-top: 3mm dashed rgba(255,255,255,0); }
+</style>
+</head>
+<body>
+<section class="page">
+  <div class="left"><div class="glow"></div><div class="dots dotgrid"></div></div>
+  <div class="right"></div>
+  <div class="seam"></div>
+  <div class="trim">
+    <div class="lcol">
+    <img class="logo" src="../img/logo/expobusiness-horizontal-reverse.svg" alt="ExpoBusiness Travel Services">
+    <p class="eyb">Business travel for Philippine companies</p>
+    <h1>Trade shows, missions and corporate trips. <em>One coordinator.</em></h1>
+    <ul class="stats on-navy">
+      <li class="stat"><b>102</b><span>trade expos on our 2027 calendar</span></li>
+      <li class="stat"><b>21</b><span>countries on that calendar</span></li>
+      <li class="stat"><b>1</b><span>coordinator per trip</span></li>
+    </ul>
+    <p class="sub">Flights, hotels, business visas, expo registration and ground transport, on one itemised proposal and billed in your company's name.</p>
+    <div class="svcs">
+      <span><i class="ic" data-i="plane"></i>Flights</span><span><i class="ic" data-i="hotel"></i>Hotels</span><span><i class="ic" data-i="visa"></i>Visas</span><span><i class="ic" data-i="ticket"></i>Registration</span><span><i class="ic" data-i="car"></i>Transport</span>
+    </div>
+    </div>
+    <div class="card">
+      <div class="lockup">
+        <img class="eb" src="../img/logo/expobusiness-horizontal-colour.svg" alt="ExpoBusiness Travel Services">
+        <span class="rule"></span>
+        <div class="partner"><small>In partnership<br>with</small><img src="img/immaculate-connections.png" alt="Immaculate Connections Tour Services"></div>
+      </div>
+      <div class="line">
+        <b>Ask us about your next show trip</b>
+        <span><i class="ic" data-i="mail"></i>inquiry@expobusinesstravel.ph</span>
+        <small>Metro Manila, Philippines</small>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="collateral.js"></script>
+</body>
+</html>

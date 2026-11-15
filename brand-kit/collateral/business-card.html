@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Business card · ExpoBusiness Travel Services</title>
+<link rel="stylesheet" href="collateral.css">
+<style>
+  :root { --w: 90mm; --h: 54mm; --bl: 3mm; }
+  @page { size: 96mm 60mm; margin: 0; }
+  /* front */
+  .front .bg { background: var(--navy); }
+  .front .grid { position: absolute; inset: 0; opacity: .7; }
+  .front .glow { position: absolute; right: -30mm; top: -26mm; width: 80mm; height: 80mm; background: radial-gradient(closest-side, rgba(242,106,27,.32), transparent); }
+  .front .big-bars { position: absolute; right: 6mm; bottom: 0; width: 25mm; height: 31mm; gap: 2.2mm; opacity: .95; }
+  .front .arc { position: absolute; right: 1mm; bottom: 15mm; width: 38mm; }
+  .front .logo { position: absolute; left: 7mm; top: 7.5mm; height: 9.5mm; }
+  .front .line { position: absolute; left: 7mm; bottom: 7mm; width: 44mm; font: 600 7.4pt/1.35 var(--fh); color: #fff; letter-spacing: -.005em; }
+  .front .line em { font-style: normal; color: var(--or-hot); }
+  .front .base { position: absolute; left: 0; right: 0; bottom: 0; height: 1.6mm; }
+  /* back */
+  .back .trim { padding: 6.5mm 7mm 5.5mm; display: flex; flex-direction: column; }
+  .back .name { font: 800 12.5pt/1.05 var(--fh); color: var(--navy); letter-spacing: -.02em; }
+  .back .role { margin-top: 1.2mm; font: 600 7pt/1.2 var(--fb); color: var(--or-ink); }
+  .back ul { list-style: none; margin-top: 4mm; display: grid; gap: 1.5mm; font-size: 6.9pt; color: var(--ink); }
+  .back li { display: flex; align-items: center; gap: 1.8mm; }
+  .back li .ic { color: var(--or); width: 3.1mm; height: 3.1mm; }
+  .back .foot { margin-top: auto; padding-top: 2.6mm; border-top: 1px solid var(--line); --lk-h: 5.6mm; --lk-p: 9mm; --lk-gap: 3mm; }
+  .back .corner { position: absolute; right: 7mm; top: 6.5mm; width: 6mm; height: 6.5mm; gap: .7mm; }
+</style>
+</head>
+<body>
+<!-- FRONT -->
+<section class="page front">
+  <div class="bg"></div>
+  <div class="bg grid dotgrid"></div>
+  <div class="glow"></div>
+  <svg class="arc" viewBox="0 0 120 60" fill="none"><path d="M2 58 C 30 10, 80 0, 116 8" stroke="#d7261e" stroke-width="2" stroke-linecap="round" stroke-dasharray="1 5"/></svg>
+  <div class="bars big-bars"><i></i><i></i><i></i></div>
+  <img class="logo" src="../img/logo/expobusiness-horizontal-reverse.svg" alt="ExpoBusiness Travel Services">
+  <p class="line h" style="color:#fff;font-weight:600;letter-spacing:-.005em">Corporate travel, trade-show trips and delegations for <em>Philippine companies.</em></p>
+  <div class="base stripe"></div>
+</section>
+<!-- BACK -->
+<section class="page back">
+  <div class="trim">
+    <p class="name">[Full name]</p>
+    <p class="role">[Job title] · ExpoBusiness Travel Services</p>
+    <ul>
+      <li><i class="ic" data-i="mail"></i>inquiry@expobusinesstravel.ph</li>
+      <li><i class="ic" data-i="phone"></i><span class="ph">[Mobile number]</span></li>
+      <li><i class="ic" data-i="pin"></i>Metro Manila, Philippines</li>
+    </ul>
+    <div class="foot lockup">
+      <img class="eb" src="../img/logo/expobusiness-horizontal-colour.svg" alt="ExpoBusiness Travel Services">
+      <span class="rule"></span>
+      <div class="partner"><small>In partnership<br>with</small><img src="img/immaculate-connections.png" alt="Immaculate Connections Tour Services"></div>
+    </div>
+  </div>
+</section>
+<script src="collateral.js"></script>
+</body>
+</html>

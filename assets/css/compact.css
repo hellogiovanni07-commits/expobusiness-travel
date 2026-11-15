@@ -233,3 +233,15 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--gold-ink); 
 .xc-body h3 { font-size: 1.08rem; }
 .xc-logo, .er-logo { box-shadow: none; }
 .hx-chip b, .promo-chip b { white-space: nowrap; }
+
+/* partner lockup: "In partnership with" + Immaculate Connections logo (footer and About) */
+.partner-lockup { display: inline-flex; align-items: center; gap: 12px; font: 600 .72rem var(--h); letter-spacing: .12em; text-transform: uppercase; }
+.partner-lockup a { display: inline-flex; align-items: center; background: #fff; border-radius: 8px; padding: 4px 8px; line-height: 0; }
+.partner-lockup img { height: 44px; width: auto; display: block; }
+.site-footer .partner-lockup { color: #9fb0c5; }
+.f-mid { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 28px; margin-top: 16px; }
+.f-mid .f-meta { margin: 0; }
+.ab-partner { margin: 0 0 20px; color: var(--ink-2); }
+.ab-partner a { border: 1px solid var(--ig-grid, #e6e6ee); padding: 6px 10px; }
+.ab-partner img { height: 56px; }
+.hx-chip b, .promo-chip b { flex-shrink: 0; }

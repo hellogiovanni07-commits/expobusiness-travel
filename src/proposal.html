@@ -1,10 +1,10 @@
-<!--meta {"title": "Request a corporate proposal · ExpoBusiness Travel Services", "desc": "Send your trip brief: company, expo or destination, headcount and the services you need. Receive an itemised corporate travel proposal.", "nav": "proposal", "crumb": "Request Corporate Proposal", "scripts": ["proposal.js"]} -->
+<!--meta {"title": "Request a corporate proposal · ExpoBusiness Travel Services", "desc": "Send your trip brief: company, expo or destination, headcount and services needed. Receive an itemised corporate travel proposal from ExpoBusiness, Metro Manila.", "nav": "proposal", "crumb": "Request Corporate Proposal", "scripts": ["proposal.js"]} -->
 <section class="page-hero">
   <img src="https://images.unsplash.com/photo-1694253988732-816ab6e60caa?w=1600&q=60&auto=format&fit=crop" alt="" fetchpriority="high">
   <div class="wrap">
     <p class="crumbs"><a href="index.html">Home</a> / Request Corporate Proposal</p>
     <h1>Request a corporate travel proposal</h1>
-    <p>Three short steps. A coordinator replies with an itemised proposal, usually within one working day.</p>
+    <p>Three short steps. A coordinator reviews your brief and replies with an itemised proposal.</p>
   </div>
 </section>
 
@@ -32,26 +32,26 @@
             <label class="field full"><span>Target expo / purpose <i>*</i></span>
               <select name="Target" id="p-target" required>
                 <option value="">Choose one</option>
-                <optgroup label="Canton Fair 2027">
+                <optgroup label="Trade expos and missions">
+                  <option value="expo">An expo from the 2027 calendar</option>
+                  <option value="factory">Sourcing trip or factory audit</option>
+                </optgroup>
+                <optgroup label="Corporate and group travel">
+                  <option value="corporate">Corporate travel (meetings, training, client visits)</option>
+                  <option value="mice">Delegation, conference or incentive trip</option>
+                </optgroup>
+                <optgroup label="Canton Fair and Guangzhou fairs 2027">
                   <option value="canton">Canton Fair, phase not decided</option>
                   <option value="canton-1">Canton Fair Phase 1 (electronics, machinery, lighting, hardware)</option>
                   <option value="canton-2">Canton Fair Phase 2 (home goods, furniture, gifts, building materials)</option>
                   <option value="canton-3">Canton Fair Phase 3 (textiles, fashion, toys, health, food)</option>
-                </optgroup>
-                <optgroup label="Other trade expos">
                   <option value="ciff">CIFF, China International Furniture Fair</option>
                   <option value="prolight">Prolight + Sound Guangzhou</option>
-                  <option value="expo">Another expo from the 2027 calendar</option>
-                </optgroup>
-                <optgroup label="Business travel">
-                  <option value="factory">Custom factory audit / sourcing trip</option>
-                  <option value="mice">Delegation, conference or incentive trip</option>
-                  <option value="corporate">Corporate travel (meetings, training, client visits)</option>
                 </optgroup>
               </select><small class="msg"></small></label>
             <label class="field full" id="p-expo-wrap" hidden><span>Which expo?</span><select name="Expo" id="p-expo"><option value="">Choose from the calendar</option>{{EXPO_OPTIONS}}<option value="other">Not listed (name it in the notes)</option></select></label>
-            <label class="field"><span>Destination city</span><input type="text" name="Destination" placeholder="e.g. Guangzhou"></label>
-            <label class="field"><span>Departing from</span><select name="Departure"><option>Cebu</option><option>Manila</option><option>Clark</option><option>Davao</option><option>Other</option></select></label>
+            <label class="field"><span>Destination city</span><input type="text" name="Destination" placeholder="e.g. Frankfurt"></label>
+            <label class="field"><span>Departing from</span><select name="Departure"><option>Manila</option><option>Cebu</option><option>Clark</option><option>Davao</option><option>Other</option></select></label>
             <label class="field"><span>Estimated headcount <i>*</i></span><select name="Headcount" id="p-pax" required><option value="">Choose</option><option value="1-3">1–3</option><option value="4-9">4–9</option><option value="10-24">10–24</option><option value="25+">25+</option></select><small class="msg"></small></label>
             <label class="field"><span>Preferred travel dates</span><input type="text" name="Dates" placeholder="e.g. 14–19 April 2027"></label>
           </div>
@@ -64,13 +64,13 @@
             <label class="check"><input type="checkbox" name="Needs" value="Flights">Flights</label>
             <label class="check"><input type="checkbox" name="Needs" value="4-star hotel">4-star hotel</label>
             <label class="check"><input type="checkbox" name="Needs" value="5-star hotel">5-star hotel</label>
-            <label class="check"><input type="checkbox" name="Needs" value="Business visa (China M visa or other)" id="need-visa">Business / M visa processing</label>
+            <label class="check"><input type="checkbox" name="Needs" value="Business visa" id="need-visa">Business visa processing</label>
             <label class="check"><input type="checkbox" name="Needs" value="Bilingual interpreter">Bilingual interpreter</label>
-            <label class="check"><input type="checkbox" name="Needs" value="Factory transport">Factory transport</label>
+            <label class="check"><input type="checkbox" name="Needs" value="Factory / supplier visit transport">Factory and supplier visits</label>
             <label class="check"><input type="checkbox" name="Needs" value="Expo buyer registration">Expo buyer registration</label>
             <label class="check"><input type="checkbox" name="Needs" value="Group logistics / MICE">Group logistics / MICE</label>
           </div>
-          <label class="field" style="margin-top:20px"><span>Notes for your coordinator</span><textarea name="Notes" placeholder="Products you are sourcing, meetings planned, budget range, anything else"></textarea></label>
+          <label class="field" style="margin-top:20px"><span>Notes for your coordinator</span><textarea name="Notes" placeholder="Products sourced, meetings planned, budget range, anything else"></textarea></label>
         </fieldset>
 
         <div class="form-nav">
@@ -83,7 +83,7 @@
 
       <div class="success" id="p-success" tabindex="-1">
         <h2 class="success-h">{{ICON_OK}} Your brief is ready to send</h2>
-        <p>Reference <span class="ref" id="p-ref"></span>. Your email app has opened with the brief filled in: press <b>Send</b> there to reach our coordinators.</p>
+        <p>Reference <span class="ref" id="p-ref"></span>. Your email app has opened with the brief filled in. Press <b>Send</b> there to reach our coordinators.</p>
         <p>Email app did not open? Copy the brief and send it to <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>.</p>
         <div class="actions" style="margin-top:12px"><a class="btn" id="p-mail" href="#">Open email again</a><button class="btn btn-ghost" type="button" id="p-copy">Copy brief</button></div>
       </div>
@@ -94,7 +94,7 @@
         <h3>What happens next</h3>
         <ul class="ticks" style="margin:0">
           <li>{{ICON_CHECK}}A coordinator reviews your brief</li>
-          <li>{{ICON_CHECK}}You receive an itemised proposal, usually within one working day</li>
+          <li>{{ICON_CHECK}}You receive an itemised proposal</li>
           <li>{{ICON_CHECK}}Nothing is booked or paid until you approve</li>
         </ul>
       </div>

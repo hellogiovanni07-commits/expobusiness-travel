@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Web banner 300x250 · ExpoBusiness Travel Services</title>
+<link rel="stylesheet" href="collateral.css">
+<style>
+  :root { --w: 300px; --h: 250px; }
+  @page { size: 300px 250px; margin: 0; }
+  .bg { background: var(--navy); }
+  .glow { position: absolute; right: -90px; top: -90px; width: 260px; height: 260px; background: radial-gradient(closest-side, rgba(242,106,27,.38), transparent); }
+  .trim { padding: 18px 20px 0; color: #fff; }
+  .logo { height: 26px; }
+  h1 { margin-top: 18px; color: #fff; font-size: 25px; line-height: 1.02; letter-spacing: -.03em; }
+  h1 em { font-style: normal; color: var(--or-hot); }
+  p { margin-top: 8px; font-size: 11.5px; line-height: 1.4; color: var(--navy-soft); width: 200px; }
+  .cta { position: absolute; left: 20px; bottom: 20px; display: inline-flex; align-items: center; gap: 6px; background: var(--or-ink); color: #fff; font: 700 12px/1 var(--fh); padding: 10px 14px; border-radius: 99px; }
+  .cta .ic { width: 13px; height: 13px; }
+  .mini { position: absolute; right: 18px; bottom: 20px; width: 70px; height: 52px; display: grid; grid-template-columns: repeat(12, 1fr); gap: 2px; align-items: end; border-bottom: 1px solid rgba(255,255,255,.5); }
+  .mini i { display: block; background: linear-gradient(180deg, var(--or), var(--or-ink)); border-radius: 1px 1px 0 0; }
+  .base { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; }
+</style>
+</head>
+<body class="solo">
+<section class="page">
+  <div class="bg"></div><div class="bg dotgrid" style="background-size:16px 16px;opacity:.5"></div><div class="glow"></div>
+  <div class="trim">
+    <img class="logo" src="../img/logo/expobusiness-horizontal-reverse.svg" alt="ExpoBusiness Travel Services">
+    <h1>102 trade expos.<br><em>One coordinator.</em></h1>
+    <p>Show trips planned end to end for Philippine companies.</p>
+  </div>
+  <div class="mini" title="Expos per month, 2027"><i style="height:48%"></i><i style="height:5%"></i><i style="height:100%"></i><i style="height:86%"></i><i style="height:57%"></i><i style="height:14%"></i><i style="height:10%"></i><i style="height:5%"></i><i style="height:57%"></i><i style="height:48%"></i><i style="height:57%"></i><i style="height:2%"></i></div>
+  <span class="cta">Plan a show trip <i class="ic" data-i="arrow"></i></span>
+  <div class="base stripe"></div>
+</section>
+<script src="collateral.js"></script>
+</body>
+</html>

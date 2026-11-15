@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Invoice layout · ExpoBusiness Travel Services</title>
+<link rel="stylesheet" href="collateral.css">
+<style>
+  :root { --w: 210mm; --h: 297mm; }
+  @page { size: A4; margin: 0; }
+  .doc-head { align-items: flex-start; }
+  .doc-head .lockup { --lk-h: 9.5mm; --lk-gap: 4.5mm; }
+  .doc-head .ttl { text-align: right; }
+  .doc-head .ttl h1 { font-size: 20pt; letter-spacing: .02em; }
+  .doc-head .ttl .no { margin-top: 2mm; display: inline-grid; grid-template-columns: auto 30mm; gap: 1.2mm 3mm; font-size: 8pt; text-align: left; }
+  .doc-head .ttl .no span:nth-child(odd) { font: 700 6.6pt/1.6 var(--fh); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); text-align: right; }
+  .doc-head .ttl .no span:nth-child(even) { border-bottom: 1px solid #cfcdda; }
+  .parties { margin-top: 6mm; display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+  .party { border: 1px solid var(--line); border-radius: 2mm; padding: 4mm 4.5mm; }
+  .party h4 { font: 700 6.8pt/1.2 var(--fh); letter-spacing: .12em; text-transform: uppercase; color: var(--or-ink); margin-bottom: 2.5mm; }
+  .party .kv { grid-template-columns: 29mm 1fr; }
+  .party .kv dd { border-bottom: 1px solid #e6e4ee; min-height: 5mm; }
+  .party.seller .kv dd { border: 0; }
+  table.tbl td { height: 8.4mm; }
+  table.tbl td + td { border-left: 1px solid var(--line); }
+  .bottom { margin-top: 5mm; display: grid; grid-template-columns: 1fr 78mm; gap: 7mm; align-items: start; }
+  .sum div { display: flex; justify-content: space-between; padding: 1.9mm 2.5mm; border-bottom: 1px solid var(--line); font-size: 8pt; }
+  .sum div span:last-child { width: 26mm; border-bottom: 1px solid #cfcdda; }
+  .sum .grand { background: var(--navy); color: #fff; font: 700 9pt/1.4 var(--fh); border: 0; }
+  .sum .grand span:last-child { border-color: rgba(255,255,255,.4); }
+  .pay { font-size: 8pt; }
+  .pay .opts { display: flex; gap: 6mm; margin: 1.5mm 0 4mm; color: var(--navy); }
+  .pay .opts span { display: inline-flex; align-items: center; gap: 2mm; }
+  .pay .sig { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; margin-top: 3mm; }
+  .atp { margin-top: 6mm; border: 1px dashed #e3b597; background: #fffaf6; padding: 3mm 4mm; font-size: 7pt; color: var(--or-ink); line-height: 1.5; }
+</style>
+</head>
+<body>
+<section class="page">
+  <div class="doc">
+    <header class="doc-head">
+      <div>
+        <div class="lockup">
+          <img class="eb" src="../img/logo/expobusiness-horizontal-colour.svg" alt="ExpoBusiness Travel Services">
+          <span class="rule"></span>
+          <div class="partner"><small>In partnership<br>with</small><img src="img/immaculate-connections.png" alt="Immaculate Connections Tour Services"></div>
+        </div>
+      </div>
+      <div class="ttl">
+        <span class="eyebrow">Billing document</span>
+        <h1>INVOICE</h1>
+        <div class="no"><span>No.</span><span class="ph">[0000]</span><span>Date</span><span></span><span>Proposal ref.</span><span></span></div>
+      </div>
+    </header>
+
+    <div class="parties">
+      <div class="party seller">
+        <h4>From</h4>
+        <dl class="kv">
+          <dt>Registered name</dt><dd>ExpoBusiness Travel Services</dd>
+          <dt>Address</dt><dd>Metro Manila, Philippines <span class="ph">[registered address]</span></dd>
+          <dt>TIN</dt><dd class="ph">[000-000-000-00000]</dd>
+          <dt>Tax type</dt><dd class="ph">[VAT / Non-VAT registered]</dd>
+        </dl>
+      </div>
+      <div class="party">
+        <h4>Billed to</h4>
+        <dl class="kv">
+          <dt>Registered name</dt><dd></dd>
+          <dt>Address</dt><dd></dd>
+          <dt>TIN</dt><dd></dd>
+          <dt>Business style</dt><dd></dd>
+        </dl>
+      </div>
+    </div>
+
+    <p class="sec-h">Particulars</p>
+    <table class="tbl">
+      <thead><tr><th style="width:9mm">#</th><th>Description</th><th class="r" style="width:16mm">Qty</th><th class="r" style="width:30mm">Unit price</th><th class="r" style="width:32mm">Amount</th></tr></thead>
+      <tbody>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="bottom">
+      <div class="pay">
+        <span class="label">Payment</span>
+        <div class="opts"><span><i class="box"></i>Bank transfer</span><span><i class="box"></i>Cheque</span><span><i class="box"></i>Other</span></div>
+        <span class="label">Bank or cheque details</span>
+        <div class="field"></div>
+        <div class="sig">
+          <div><div class="field"></div><span class="label">Received by (name, signature)</span></div>
+          <div><div class="field"></div><span class="label">Date received</span></div>
+        </div>
+      </div>
+      <div class="sum">
+        <div><span>VATable sales</span><span></span></div>
+        <div><span>VAT-exempt sales</span><span></span></div>
+        <div><span>Zero-rated sales</span><span></span></div>
+        <div><span>VAT</span><span></span></div>
+        <div><span>Less: withholding tax</span><span></span></div>
+        <div class="grand"><span>Total amount due (PHP)</span><span></span></div>
+      </div>
+    </div>
+
+    <p class="atp">[Printer's block: BIR Authority to Print / accreditation details, date of issue, serial number range and printer's name and TIN, exactly as issued. To be completed by the accredited printer; do not use this layout as an invoice until it carries them.]</p>
+
+    <footer class="doc-foot">
+      <div><b>ExpoBusiness Travel Services</b> · Metro Manila, Philippines · inquiry@expobusinesstravel.ph</div>
+      <div class="bars fbars"><i></i><i></i><i></i></div>
+    </footer>
+  </div>
+</section>
+<script src="collateral.js"></script>
+</body>
+</html>

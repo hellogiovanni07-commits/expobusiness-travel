@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Compliment slip · ExpoBusiness Travel Services</title>
+<link rel="stylesheet" href="collateral.css">
+<style>
+  :root { --w: 210mm; --h: 99mm; --bl: 3mm; }
+  @page { size: 216mm 105mm; margin: 0; }
+  .trim { display: grid; grid-template-columns: 82mm 1fr; }
+  .l { padding: 11mm 0 0 12mm; display: flex; flex-direction: column; }
+  .l h1 { font-size: 25pt; line-height: 1; margin-top: 9mm; }
+  .l h1 em { font-style: normal; color: var(--or); }
+  .l p { margin-top: 3.5mm; font-size: 7.6pt; color: var(--ink-2); line-height: 1.5; max-width: 60mm; }
+  .r { padding: 12mm 12mm 0 6mm; display: flex; flex-direction: column; gap: 8mm; }
+  .r .lbl { font: 700 6.4pt/1 var(--fh); letter-spacing: .14em; text-transform: uppercase; color: var(--mute); }
+  .r .ln { border-bottom: 1px solid #dcdae6; height: 0; }
+  .band { position: absolute; left: 0; right: 0; bottom: 0; height: calc(13mm + var(--bl)); background: var(--navy); }
+  .band .stripe { position: absolute; left: 0; right: 0; top: 0; height: 1.2mm; }
+  .band-in { position: absolute; left: 12mm; right: 12mm; bottom: 0; height: 13mm; display: flex; align-items: center; justify-content: space-between; color: var(--navy-soft); font-size: 7.2pt; }
+  .band-in b { color: #fff; font-weight: 600; }
+  .band-in span { display: inline-flex; align-items: center; gap: 1.6mm; }
+  .band-in .ic { color: var(--or-hot); }
+</style>
+</head>
+<body>
+<section class="page">
+  <div class="band"><div class="stripe"></div></div>
+  <div class="trim">
+    <div class="l">
+      <div class="lockup" style="--lk-h:8.5mm;--lk-gap:4mm">
+        <img class="eb" src="../img/logo/expobusiness-horizontal-colour.svg" alt="ExpoBusiness Travel Services">
+        <span class="rule"></span>
+        <div class="partner"><small>In partnership<br>with</small><img src="img/immaculate-connections.png" alt="Immaculate Connections Tour Services"></div>
+      </div>
+      <h1>With<br><em>compliments.</em></h1>
+      <p>Corporate travel, trade-show trips and delegations for Philippine companies.</p>
+    </div>
+    <div class="r">
+      <span class="lbl">Note</span>
+      <div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div>
+    </div>
+    <div class="band-in" style="grid-column:1/-1">
+      <b>ExpoBusiness Travel Services</b>
+      <span><i class="ic" data-i="mail"></i>inquiry@expobusinesstravel.ph</span>
+      <span><i class="ic" data-i="pin"></i>Metro Manila, Philippines</span>
+    </div>
+  </div>
+</section>
+<script src="collateral.js"></script>
+</body>
+</html>

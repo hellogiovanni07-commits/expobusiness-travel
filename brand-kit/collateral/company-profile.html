@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Company profile · ExpoBusiness Travel Services</title>
+<link rel="stylesheet" href="collateral.css">
+<style>
+  :root { --w: 210mm; --h: 297mm; --bl: 3mm; }
+  @page { size: 216mm 303mm; margin: 0; }
+  .hero { position: absolute; left: 0; right: 0; top: 0; height: calc(118mm + var(--bl)); background: var(--navy); }
+  .hero .photo { position: absolute; inset: 0; background-image: url(img/expo-hall.jpg); background-position: center 35%; }
+  .hero .shade { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(22,22,58,.97) 0%, rgba(22,22,58,.9) 45%, rgba(22,22,58,.55) 100%); }
+  .hero .stripe { position: absolute; left: 0; right: 0; bottom: 0; height: 2mm; }
+  .trim { padding: 13mm 15mm 0; }
+  .top { display: flex; justify-content: space-between; align-items: center; position: relative; }
+  .top img { height: 10.5mm; }
+  .top .tag { font: 700 6.8pt/1 var(--fh); letter-spacing: .16em; text-transform: uppercase; color: #ffb27d; }
+  .intro { position: relative; margin-top: 13mm; width: 128mm; }
+  .intro h1 { color: #fff; font-size: 27pt; line-height: 1.04; margin-top: 3.5mm; }
+  .intro h1 em { font-style: normal; color: var(--or-hot); }
+  .intro p { margin-top: 4mm; font-size: 9.2pt; line-height: 1.55; color: var(--navy-soft); }
+  .hstats { position: relative; margin-top: 8mm; font-size: 8.4pt; }
+  .hstats .stat b { font-size: 2.5em; }
+  .body { position: relative; margin-top: 12mm; display: grid; grid-template-columns: 1fr 1fr; gap: 0 10mm; }
+  .sec-h { margin-top: 0; }
+  .list { list-style: none; display: grid; gap: 2.4mm; font-size: 8.2pt; line-height: 1.4; }
+  .list li { display: grid; grid-template-columns: 5.5mm 1fr; gap: 2mm; align-items: start; }
+  .list .ic { width: 4.6mm; height: 4.6mm; color: var(--or); }
+  .list b { display: block; font: 700 8.6pt/1.3 var(--fh); color: var(--navy); }
+  .list span { color: var(--ink-2); }
+  .svc { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 2.6mm 4mm; font-size: 8.4pt; color: var(--navy); }
+  .svc li { display: flex; align-items: center; gap: 2mm; padding-bottom: 2.2mm; border-bottom: 1px solid var(--line); }
+  .svc .ic { color: var(--or); width: 4.4mm; height: 4.4mm; }
+  .flow { position: relative; margin-top: 7mm; display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; }
+  .flow > div { position: relative; padding: 4mm 3.5mm 4mm 4mm; background: var(--cloud); border-radius: 2mm; font-size: 7.6pt; line-height: 1.45; color: var(--ink-2); }
+  .flow > div:not(:last-child)::after { content: ""; position: absolute; right: -3.4mm; top: 50%; width: 2.8mm; height: 2.8mm; border-top: 1.5px solid var(--or); border-right: 1.5px solid var(--or); transform: translateY(-50%) rotate(45deg); }
+  .flow .num { font-size: 17pt; display: block; margin-bottom: 1.5mm; }
+  .flow b { display: block; font: 700 8.6pt/1.25 var(--fh); color: var(--navy); margin-bottom: .8mm; }
+  .chartbox { margin-top: 7mm; display: grid; grid-template-columns: 52mm 1fr; gap: 8mm; align-items: end; }
+  .chartbox h3 { font-size: 13pt; line-height: 1.15; margin-top: 2mm; }
+  .chartbox p { font-size: 7.6pt; color: var(--ink-2); margin-top: 2mm; line-height: 1.45; }
+  .mchart { height: 30mm; font-size: 8pt; margin-bottom: 4mm; }
+  .foot { position: absolute; left: 0; right: 0; bottom: 0; height: calc(24mm + var(--bl)); border-top: 1px solid var(--line); }
+  .foot-in { position: absolute; left: 15mm; right: 15mm; bottom: 0; height: 24mm; display: flex; align-items: center; justify-content: space-between; }
+  .foot-in .lockup { --lk-h: 9mm; --lk-gap: 4.5mm; }
+  .cta { text-align: right; }
+  .cta b { display: block; font: 800 10.5pt/1.2 var(--fh); color: var(--navy); }
+  .cta span { display: inline-flex; align-items: center; gap: 1.6mm; margin-top: 1.4mm; font: 600 8.6pt/1 var(--fb); color: var(--or-ink); }
+  .cta small { display: block; margin-top: 1.4mm; font-size: 7pt; color: var(--ink-2); }
+</style>
+</head>
+<body>
+<section class="page">
+  <div class="hero"><div class="photo" style="background-size:cover"></div><div class="shade"></div><div class="stripe"></div></div>
+  <div class="bg dotgrid" style="height:calc(118mm + var(--bl));opacity:.5"></div>
+  <div class="foot"></div>
+  <div class="trim">
+    <div class="top">
+      <img src="../img/logo/expobusiness-horizontal-white.svg" alt="ExpoBusiness Travel Services">
+      <span class="tag">Company profile · 2027</span>
+    </div>
+    <div class="intro">
+      <span class="eyebrow" style="color:#ffb27d">Business travel for Philippine companies</span>
+      <h1>Business travel your finance team can <em>reconcile.</em></h1>
+      <p>We plan corporate travel, trade-show and expo trips, trade missions, delegations and MICE. Visas, flights, hotels, registration and ground transport are handled together, by one coordinator, and billed in your company's name.</p>
+    </div>
+    <ul class="stats hstats on-navy">
+      <li class="stat"><b>102</b><span>trade expos on our 2027 calendar</span></li>
+      <li class="stat"><b>21</b><span>countries on that calendar</span></li>
+      <li class="stat"><b>1</b><span>coordinator from first inquiry to homecoming</span></li>
+      <li class="stat"><b>1</b><span>itemised invoice, in your company's name</span></li>
+    </ul>
+
+    <div class="body">
+      <div>
+        <p class="sec-h">Who we work with</p>
+        <ul class="list">
+          <li><i class="ic" data-i="briefcase"></i><div><b>Importers and sourcing teams</b><span>Supplier visits, factory tours and buying trips.</span></div></li>
+          <li><i class="ic" data-i="building"></i><div><b>HR, admin and finance teams</b><span>Corporate travel with proposals and receipts that reconcile.</span></div></li>
+          <li><i class="ic" data-i="users"></i><div><b>Chambers, associations and LGUs</b><span>Delegations, trade missions and MICE groups.</span></div></li>
+          <li><i class="ic" data-i="ticket"></i><div><b>Buyers and exhibitors</b><span>Trade shows in Europe, the Middle East, Asia and the USA.</span></div></li>
+        </ul>
+      </div>
+      <div>
+        <p class="sec-h">What we handle</p>
+        <ul class="svc">
+          <li><i class="ic" data-i="plane"></i>Flights</li>
+          <li><i class="ic" data-i="hotel"></i>Hotels</li>
+          <li><i class="ic" data-i="visa"></i>Business visas</li>
+          <li><i class="ic" data-i="ticket"></i>Expo registration</li>
+          <li><i class="ic" data-i="car"></i>Ground transport</li>
+          <li><i class="ic" data-i="chat"></i>Interpreters</li>
+          <li><i class="ic" data-i="users"></i>Delegations and MICE</li>
+          <li><i class="ic" data-i="receipt"></i>Official invoices</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flow">
+      <div><span class="num">01</span><b>Send your brief</b>Destination, dates, headcount and what the trip must achieve.</div>
+      <div><span class="num">02</span><b>Receive a proposal</b>Itemised, line by line. Nothing is booked until you approve.</div>
+      <div><span class="num">03</span><b>We file and book</b>Visas, flights, hotels, registration and transport, tracked.</div>
+      <div><span class="num">04</span><b>Travel with support</b>Briefing before departure; a coordinator on call while away.</div>
+    </div>
+
+    <div class="chartbox">
+      <div>
+        <span class="eyebrow">2027 expo calendar</span>
+        <h3>Most trade shows fall in March, April and the autumn.</h3>
+        <p>Expos per month on our 2027 calendar, 102 in total. Visa lead times make early planning count.</p>
+      </div>
+      <div class="mchart"><div class="m" style="--v:10"><b>10</b><i></i><span>Jan</span></div><div class="m" style="--v:1"><b>1</b><i></i><span>Feb</span></div><div class="m" style="--v:21"><b>21</b><i></i><span>Mar</span></div><div class="m" style="--v:18"><b>18</b><i></i><span>Apr</span></div><div class="m" style="--v:12"><b>12</b><i></i><span>May</span></div><div class="m" style="--v:3"><b>3</b><i></i><span>Jun</span></div><div class="m" style="--v:2"><b>2</b><i></i><span>Jul</span></div><div class="m" style="--v:1"><b>1</b><i></i><span>Aug</span></div><div class="m" style="--v:12"><b>12</b><i></i><span>Sep</span></div><div class="m" style="--v:10"><b>10</b><i></i><span>Oct</span></div><div class="m" style="--v:12"><b>12</b><i></i><span>Nov</span></div><div class="m" style="--v:0"><b>–</b><i></i><span>Dec</span></div></div>
+    </div>
+
+    <div class="foot-in">
+      <div class="lockup">
+        <img class="eb" src="../img/logo/expobusiness-horizontal-colour.svg" alt="ExpoBusiness Travel Services">
+        <span class="rule"></span>
+        <div class="partner"><small>In partnership<br>with</small><img src="img/immaculate-connections.png" alt="Immaculate Connections Tour Services"></div>
+      </div>
+      <div class="cta"><b>Request a corporate travel proposal</b><span><i class="ic" data-i="mail"></i>inquiry@expobusinesstravel.ph</span><small>Metro Manila, Philippines</small></div>
+    </div>
+  </div>
+</section>
+<script src="collateral.js"></script>
+</body>
+</html>

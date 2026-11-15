@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Share banner 1200x628 · ExpoBusiness Travel Services</title>
+<link rel="stylesheet" href="collateral.css">
+<style>
+  :root { --w: 1200px; --h: 628px; }
+  @page { size: 1200px 628px; margin: 0; }
+  .left { position: absolute; left: 0; top: 0; height: 528px; width: 700px; background: var(--navy); overflow: hidden; }
+  .left .glow { position: absolute; right: -200px; top: -200px; width: 600px; height: 600px; background: radial-gradient(closest-side, rgba(242,106,27,.3), transparent); }
+  .right { position: absolute; right: 0; top: 0; height: 528px; width: 500px; background: url(img/expo-hall.jpg) 35% center / cover; }
+  .right::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(22,22,58,.75), rgba(22,22,58,0) 40%); }
+  .seam { position: absolute; left: 0; right: 0; top: 528px; height: 6px; }
+  .trim { padding: 46px 56px 0; }
+  .logo { height: 42px; }
+  .eyebrow { margin-top: 44px; font-size: 13px; color: #ffb27d; }
+  h1 { margin-top: 14px; color: #fff; font-size: 50px; line-height: 1.02; letter-spacing: -.035em; width: 600px; }
+  h1 em { font-style: normal; color: var(--or-hot); }
+  .stats { position: absolute; left: 56px; top: 392px; width: 580px; font-size: 13px; }
+  .stats .stat { padding-top: 14px; }
+  .stats .stat b { font-size: 3em; }
+  .stats .stat span { font-size: 13px; }
+  .foot { position: absolute; left: 56px; right: 56px; bottom: 0; height: 94px; display: flex; align-items: center; justify-content: space-between; }
+  .foot .lockup { --lk-h: 34px; --lk-gap: 18px; }
+  .foot .lockup .partner small { font-size: 11px; }
+  .foot b { display: flex; align-items: center; gap: 8px; font: 700 18px/1 var(--fh); color: var(--or-ink); }
+</style>
+</head>
+<body class="solo">
+<section class="page">
+  <div class="left"><div class="glow"></div></div>
+  <div class="right"></div>
+  <div class="seam stripe"></div>
+  <div class="trim">
+    <img class="logo" src="../img/logo/expobusiness-horizontal-reverse.svg" alt="ExpoBusiness Travel Services">
+    <p class="eyebrow">Business travel for Philippine companies</p>
+    <h1>Trade shows, missions and corporate trips. <em>One coordinator.</em></h1>
+  </div>
+  <ul class="stats on-navy">
+    <li class="stat"><b>102</b><span>trade expos, 2027</span></li>
+    <li class="stat"><b>21</b><span>countries</span></li>
+    <li class="stat"><b>1</b><span>itemised invoice</span></li>
+  </ul>
+  <div class="foot">
+    <div class="lockup">
+      <img class="eb" src="../img/logo/expobusiness-horizontal-colour.svg" alt="ExpoBusiness Travel Services">
+      <span class="rule"></span>
+      <div class="partner"><small>In partnership<br>with</small><img src="img/immaculate-connections.png" alt="Immaculate Connections Tour Services"></div>
+    </div>
+    <b><i class="ic" data-i="mail"></i>inquiry@expobusinesstravel.ph</b>
+  </div>
+</section>
+<script src="collateral.js"></script>
+</body>
+</html>
